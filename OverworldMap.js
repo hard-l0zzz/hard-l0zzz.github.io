@@ -8,16 +8,12 @@ class OverworldMap{
         this.upperImage.src = config.upperSrc;
     }
 
-    drawLowerImage(ctx,cameraPerson){
-        ctx.drawImage(this.lowerImage,
-        utils.withGrid(5.5) - cameraPerson.x,
-        utils.withGrid(5.5) - cameraPerson.y)
+    drawLowerImage(ctx){
+        ctx.drawImage(this.lowerImage, 0, 0)
     }
 
-    drawUpperImage(ctx,cameraPerson) {
-        ctx.drawImage(this.upperImage,
-        utils.withGrid(5.5) - cameraPerson.x,
-        utils.withGrid(5.5) - cameraPerson.y)
+    drawUpperImage(ctx) {
+        ctx.drawImage(this.upperImage, 0, 0)
     }
 
     isSpaceTaken(currentX, currentY, direction) {
