@@ -12,8 +12,12 @@ class Overworld {
 
         this.ctx.clearRect(0,0,this.canvas.width, this.canvas.height);
         
+        const cameraPerson = this.map.gameObjects.hero;
+
+
+
         //нижнее изображение
-        this.map.drawLowerImage(this.ctx);
+        this.map.drawLowerImage(this.ctx,cameraPerson);
 
         //объекты
         Object.values(this.map.gameObjects).forEach(object => {
@@ -21,12 +25,12 @@ class Overworld {
           arrow: this.directionInput.direction,
           map: this.map
           })
-          object.sprite.draw(this.ctx);
+          object.sprite.draw(this.ctx,cameraPerson);
         })
 
 
         //верхнее изображение
-        this.map.drawUpperImage(this.ctx);
+        this.map.drawUpperImage(this.ctx, cameraPerson);
         requestAnimationFrame(() => {
           step();
         })
