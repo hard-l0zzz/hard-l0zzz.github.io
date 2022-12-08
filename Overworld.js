@@ -42,19 +42,27 @@ class Overworld {
     }
 
 
+    bindActionInput() {
+      new KeyPressListener ("KeyE", () => {
+        //проверка рядом ли нпс
+        this.map.checkForActionCutscene();
+      });
+    }
+
+
     init() {
       this.directionInput = new DirectionInput();
       this.directionInput.init();
       this.directionInput.direction;
       this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
       this.map.mountObjects();
+      this.bindActionInput();
       this.startGameLoop();
-      /*this.map.startCutScene([
-        {who:"hero", type: "walk", direction:"down"},
-        {who:"npc1", type: "walk", direction:"down"},
-        {who:"hero", type: "walk", direction:"left"},
+      this.map.startCutscene([
         {who:"cat", type: "walk", direction:"left"},
-        {who:"npc1", type: "walk", direction:"right"}
-      ])*/
+        {who:"cat", type: "walk", direction:"up"},
+        {who:"cat", type: "walk", direction:"up"},
+        {type:"textMessage", text: "Мяу~"}
+      ])
   }
 }

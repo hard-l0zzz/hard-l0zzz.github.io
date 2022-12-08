@@ -6,7 +6,7 @@ class OverworldMap{
         this.lowerImage.src = config.lowerSrc;
         this.upperImage = new Image();
         this.upperImage.src = config.upperSrc;
-        this.isCutScenePlaying = false;
+        this.isCutscenePlaying = false;
     }
 
     drawLowerImage(ctx,cameraPerson){
@@ -35,8 +35,8 @@ class OverworldMap{
         })
     }
 
-    async startCutScene(events){
-        this.isCutScenePlaying = true;
+    async startCutscene(events){
+        this.isCutscenePlaying = true;
 
         for(let i = 0; i < events.length; i++ ){
             const eventHandler = new OverworldEvent({
@@ -46,10 +46,23 @@ class OverworldMap{
             await eventHandler.init();
         }
 
-        this.isCutScenePlaying = false;
+        this.isCutscenePlaying = false;
         //ресет поведения нпс
         Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
     }
+
+    checkForActionCutscene(){
+        const hero = this.gameObjects["hero"];
+        const nextCoords = utils.nextPosition(hero.x,hero.y,hero.direction);
+        const match = Object.values(this.gameObjects).find(object => {
+            return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
+        });
+        if(!this.isCutscenePlaying && match && match.talking.length) {
+            this.startCutscene(match.talking[0].events)
+        }
+    }
+
+
 
     addWall(x,y){
         this.walls[`${x},${y}`] = true;
@@ -84,11 +97,15 @@ window.OverworldMaps = {
                 y: utils.withGrid(9),
                 src:"/images/characters/hero.png",
                 behaviorLoop: [
+                    {type:"stand",direction:"up",time:120},
                     {type:"walk", direction: "left"},
-                    {type:"stand",direction:"up",time:80},
-                    {type:"walk",direction:"up"},
-                    {type:"walk",direction:"down"},
-                    {type:"walk",direction:"right"}
+                    {type:"walk", direction: "left"},
+                    {type:"walk", direction: "down"},
+                    {type:"walk", direction: "down"},
+                    {type:"walk", direction: "right"},
+                    {type:"walk", direction: "right"},
+                    {type:"walk", direction: "up"},
+                    {type:"walk", direction: "up"},
                 ]
             }),
             npc1: new Person({
@@ -97,10 +114,18 @@ window.OverworldMaps = {
                 src:"/images/characters/people/npc1.png",
                 behaviorLoop: [
                     {type:"walk",direction:"right"},
-                    {type:"stand", direction: "left",time: 800},
+                    {type:"stand", direction: "left",time: 1200},
                     {type:"walk",direction:"left"},
                     {type:"stand",direction:"right",time:800}
-                ]
+                ],
+                talking: [
+                    {
+                      events: [
+                        { type: "textMessage", text: "Думаю........"},
+                        { type: "textMessage", text: "Не мешай!"},
+                      ]
+                    }
+                  ]
             })
         },
         walls:{
