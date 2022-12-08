@@ -49,12 +49,12 @@ class Overworld {
       this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
       this.map.mountObjects();
       this.startGameLoop();
-      this.map.startCutScene([
+      /*this.map.startCutScene([
         {who:"hero", type: "walk", direction:"down"},
         {who:"npc1", type: "walk", direction:"down"},
         {who:"hero", type: "walk", direction:"left"},
         {who:"cat", type: "walk", direction:"left"},
         {who:"npc1", type: "walk", direction:"right"}
-      ])
+      ])*/
   }
 }

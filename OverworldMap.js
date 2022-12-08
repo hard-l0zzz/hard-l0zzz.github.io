@@ -87,8 +87,8 @@ window.OverworldMaps = {
                     {type:"walk", direction: "left"},
                     {type:"stand",direction:"up",time:80},
                     {type:"walk",direction:"up"},
-                    {type:"walk",direction:"right"},
-                    {type:"walk",direction:"down"}
+                    {type:"walk",direction:"down"},
+                    {type:"walk",direction:"right"}
                 ]
             }),
             npc1: new Person({
@@ -96,11 +96,10 @@ window.OverworldMaps = {
                 y:utils.withGrid(5),
                 src:"/images/characters/people/npc1.png",
                 behaviorLoop: [
-                    {type:"walk", direction: "down"},
-                    {type:"stand",direction:"up",time:80},
                     {type:"walk",direction:"right"},
-                    {type:"walk",direction:"up"},
-                    {type:"walk",direction:"left"}
+                    {type:"stand", direction: "left",time: 800},
+                    {type:"walk",direction:"left"},
+                    {type:"stand",direction:"right",time:800}
                 ]
             })
         },
