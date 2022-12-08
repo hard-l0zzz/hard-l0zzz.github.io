@@ -6,6 +6,7 @@ class OverworldMap{
         this.lowerImage.src = config.lowerSrc;
         this.upperImage = new Image();
         this.upperImage.src = config.upperSrc;
+        this.isCutScenePlaying = false;
     }
 
     drawLowerImage(ctx,cameraPerson){
@@ -26,12 +27,29 @@ class OverworldMap{
     }
 
     mountObjects(){
-        Object.values(this.gameObjects).forEach(o => {
-            o.mount(this);
+        Object.keys(this.gameObjects).forEach(key => {
+            let object = this.gameObjects[key];
+            object.id = key;
+
+            object.mount(this);
         })
     }
 
+    async startCutScene(events){
+        this.isCutScenePlaying = true;
 
+        for(let i = 0; i < events.length; i++ ){
+            const eventHandler = new OverworldEvent({
+                event: events[i],
+                map: this
+            })
+            await eventHandler.init();
+        }
+
+        this.isCutScenePlaying = false;
+        //ресет поведения нпс
+        Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
+    }
 
     addWall(x,y){
         this.walls[`${x},${y}`] = true;
@@ -58,19 +76,39 @@ window.OverworldMaps = {
         gameObjects: {
             hero: new Person({
             isPlayerControlled: true,
-            x:utils.withGrid(5),
+            x:utils.withGrid(6),
             y:utils.withGrid(6)
             }),
             cat: new Person({
                 x:utils.withGrid(7),
                 y: utils.withGrid(9),
-                src:"/images/characters/hero.png"
+                src:"/images/characters/hero.png",
+                behaviorLoop: [
+                    {type:"walk", direction: "left"},
+                    {type:"stand",direction:"up",time:80},
+                    {type:"walk",direction:"up"},
+                    {type:"walk",direction:"right"},
+                    {type:"walk",direction:"down"}
+                ]
+            }),
+            npc1: new Person({
+                x:utils.withGrid(3),
+                y:utils.withGrid(5),
+                src:"/images/characters/people/npc1.png",
+                behaviorLoop: [
+                    {type:"walk", direction: "down"},
+                    {type:"stand",direction:"up",time:80},
+                    {type:"walk",direction:"right"},
+                    {type:"walk",direction:"up"},
+                    {type:"walk",direction:"left"}
+                ]
             })
         },
         walls:{
-           [utils.asGridCoord(7,6)]:true,
-           [utils.asGridCoord(8,6)]:true,
            [utils.asGridCoord(7,7)]:true,
+           [utils.asGridCoord(8,7)]:true,
+           [utils.asGridCoord(7,8)]:true,
+           [utils.asGridCoord(8,8)]:true,
            [utils.asGridCoord(1,3)]:true,
            [utils.asGridCoord(2,3)]:true,
            [utils.asGridCoord(3,4)]:true,
