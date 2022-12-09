@@ -236,6 +236,25 @@ window.OverworldMaps = {
                             {type:"textMessage",text:"Свиньи..",faceHero:["npc3"]}
                         ]
                     }
+                ],
+                behaviorLoop:[
+                    {type:"stand", direction:"left",time:200},
+                    {type:"stand",direction:"right",time:300}
+                ]
+            }),
+                npc2:new Person({
+                x:utils.withGrid(100),
+                y:utils.withGrid(100),
+                src:"images/characters/people/npc2.png",
+                behaviorLoop:[
+                    {type:"stand",direction:"down",time:800}
+                ],
+                talking: [
+                    {
+                        events:[
+                            {type:"textMessage",text:"..."}
+                        ]
+                    }
                 ]
             })
         },
@@ -294,6 +313,7 @@ window.OverworldMaps = {
             [utils.asGridCoord(9,7)]:true,
             [utils.asGridCoord(9,9)]:true,
             [utils.asGridCoord(10,9)]:true,
+            [utils.asGridCoord(11,4)]:true
         }  
 
         

@@ -9,15 +9,11 @@
     background: var(--menu-background);
     border-top:1px solid var(--menu-border-color);
     color: var(--menu-font-color);
-    animation:myAppearAnimation;
-    animation-duration: 0.5s;
 }
 .TextMessage_p{
     margin:0;
     font-size:12px;
     font-family:monospace;
-    animation:myAppearAnimation;
-    animation-duration: 0.5s;
 }
 .TextMessage_button{
     margin: 0;
@@ -31,9 +27,13 @@
     position: absolute;
     right:2px;
     bottom: 0;
-    animation:myAppearAnimation;
-    animation-duration: 0.5s;
 }
 @keyframes myAppearAnimation{
 	0%{transform:translate(-1000px,0);} 
+}
+.TextMessage span{
+    opacity:0;
+}
+.TextMessage span.revealed{
+    opacity:1;
 }
