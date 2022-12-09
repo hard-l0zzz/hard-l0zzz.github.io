@@ -49,20 +49,41 @@ class Overworld {
       });
     }
 
+    bindHeroPositioncheck(){
+      document.addEventListener("PersonWalkingComplete",e => {
+        if(e.detail.whoId === "hero"){
+          //позиция игрока поменялась
+          console.log("woo");
+          this.map.checkForFootstepCutscene();
+        }
+      })
+
+    }
+
+    startMap(mapConfig){
+      this.map = new OverworldMap(mapConfig);
+      this.map.overworld = this;
+      this.map.mountObjects();
+    }
+
 
     init() {
+      this.startMap(window.OverworldMaps.DemoRoom);
       this.directionInput = new DirectionInput();
       this.directionInput.init();
       this.directionInput.direction;
-      this.map = new OverworldMap(window.OverworldMaps.DemoRoom);
-      this.map.mountObjects();
       this.bindActionInput();
+      this.bindHeroPositioncheck();
       this.startGameLoop();
       this.map.startCutscene([
         {who:"cat", type: "walk", direction:"left"},
         {who:"cat", type: "walk", direction:"up"},
         {who:"cat", type: "walk", direction:"up"},
-        {type:"textMessage", text: "Мяу~"}
+        {type:"textMessage", text: "Мяу~"},
+        {who:"cat", type: "walk", direction:"left"},
+        {who:"cat", type: "walk", direction:"left"},
+        {who:"cat", type: "walk", direction:"up"},
+        {who:"cat", type: "walk", direction:"up"}
       ])
   }
 }
