@@ -19,7 +19,7 @@ class Person extends GameObject{
         }
         else
         {
-            if(!state.map.isCutScenePlaying && this.isPlayerControlled && state.arrow){
+            if( !state.map.isCutscenePlaying && this.isPlayerControlled && state.arrow){
                 this.startBehavior(state, {
                     type:"walk",
                     direction: state.arrow
