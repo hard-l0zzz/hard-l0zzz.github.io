@@ -106,14 +106,14 @@ window.OverworldMaps = {
                 src:"/images/characters/hero.png",
                 behaviorLoop: [
                     {type:"stand",direction:"up",time:120},
-                    {type:"stand", direction: "left"},
-                    {type:"stand", direction: "left"},
-                    {type:"stand", direction: "down"},
-                    {type:"stand", direction: "down"},
-                    {type:"stand", direction: "right"},
-                    {type:"stand", direction: "right"},
-                    {type:"stand", direction: "up"},
-                    {type:"stand", direction: "up"},
+                    {type:"walk", direction: "left"},
+                    {type:"walk", direction: "left"},
+                    {type:"walk", direction: "down"},
+                    {type:"walk", direction: "down"},
+                    {type:"walk", direction: "right"},
+                    {type:"walk", direction: "right"},
+                    {type:"walk", direction: "up"},
+                    {type:"walk", direction: "up"},
                 ]
             }),
             npc1: new Person({
@@ -144,11 +144,11 @@ window.OverworldMaps = {
                 talking: [
                     {
                         events:[
-                            {type:"textMessage",text:"..."}
+                            {type:"textMessage",text:"...",faceHero:"npc2"}
                         ]
                     }
                 ]
-            })
+            }),
         },
         walls:{
            [utils.asGridCoord(7,7)]:true,
@@ -256,7 +256,25 @@ window.OverworldMaps = {
                         ]
                     }
                 ]
-            })
+            }),
+            npc1: new Person({
+                x:utils.withGrid(99),
+                y:utils.withGrid(99),
+                src:"/images/characters/people/npc1.png",
+                behaviorLoop: [
+                    {type:"stand", direction: "left",time: 1200},
+                    {type:"stand",direction:"up",time:500},
+                    {type:"stand",direction:"down",time:800}
+                ],
+                talking: [
+                    {
+                      events: [
+                        { type: "textMessage", text: "Этот кот...",faceHero:"npc1"},
+                        { type: "textMessage", text: "Он мне не нравится!"}
+                      ]
+                    }
+                  ]
+            }),
         },
         cutsceneSpaces: {
             [utils.asGridCoord(5,10)]:[
@@ -313,7 +331,8 @@ window.OverworldMaps = {
             [utils.asGridCoord(9,7)]:true,
             [utils.asGridCoord(9,9)]:true,
             [utils.asGridCoord(10,9)]:true,
-            [utils.asGridCoord(11,4)]:true
+            [utils.asGridCoord(11,4)]:true,
+            [utils.asGridCoord(10,7)]:true,
         }  
 
         

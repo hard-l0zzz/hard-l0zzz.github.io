@@ -40,8 +40,8 @@ class OverworldEvent{
 
     textMessage(resolve){
         if(this.event.faceHero){
-            const object = this.map.gameObjects[this.event.faceHero];
-            object.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
+            const obj = this.map.gameObjects[this.event.faceHero];
+            obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
         }
 
         const message = new TextMessage({
@@ -51,10 +51,16 @@ class OverworldEvent{
         message.init(document.querySelector(".game-container"))
     }
 
-    changeMap(resolve){
-        this.map.overworld.startMap(window.OverworldMaps[this.event.map]);
-        resolve();
-    }
+    changeMap(resolve) {
+
+        const sceneTransition = new SceneTransition();
+        sceneTransition.init(document.querySelector(".game-container"), () => {
+          this.map.overworld.startMap( window.OverworldMaps[this.event.map] );
+    
+          sceneTransition.fadeOut();
+    
+        })
+      }
 
 
 

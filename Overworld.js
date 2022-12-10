@@ -76,15 +76,10 @@ class Overworld {
       this.bindHeroPositioncheck();
       this.startGameLoop();
       this.map.startCutscene([
-        //{type:"changeMap", map: "Kitchen"}
         {who:"cat", type: "walk", direction:"left"},
         {who:"cat", type: "walk", direction:"up"},
         {who:"cat", type: "walk", direction:"up"},
         {type:"textMessage", text: "Мяу~"},
-        {who:"cat", type: "walk", direction:"left"},
-        {who:"cat", type: "walk", direction:"left"},
-        {who:"cat", type: "walk", direction:"up"},
-        {who:"cat", type: "walk", direction:"up"}
       ])
   }
 }
