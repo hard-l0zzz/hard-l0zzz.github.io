@@ -15,7 +15,7 @@ window.Actions = {
             {type: "textMessage", text: "{CASTER} использует {ACTION}!"},
             {type: "stateChange", onCaster:true, status:{type: "Соус", expiresIn: 3} },
         ],
-        description:"Скушать помидоры"
+        description:"Скушать помидоры.Восстанавливает здоровье.Действует 3 хода"
     },
     saucyStatus2: {
         name: "Супер выжимка помидоров!!",
@@ -33,6 +33,27 @@ window.Actions = {
             {type: "stateChange", status:{type: "Масло", expiresIn: 3} },
             {type: "textMessage", text: "{TARGET} весь в масле!"},
         ],
-        description:"Бросить во врага масло!!"
+        description: "Бросить во врага масло!!Он может упасть. Действует 3 хода."
     },
+    //предметы
+    item_recoverStatus: {
+        name:"Молоко",
+        description:"Чувство свежести и теплоты перенесётся через ваше сознание. Убирает активные эффекты",
+        targetType:"friendly",
+        success: [
+            {type: "textMessage", text: "{CASTER} пьёт {ACTION}!"},
+            {type: "stateChange", status:null },
+            {type: "textMessage", text: "Чувствуется молоко!"},
+        ],
+    },
+    item_recoverHp: {
+        name: "Кусочек сыра",
+        description:"Ощущения невообразимости всех исходов событий.Восстанавливает здоровье.",
+        targetType:"friendly",
+        success: [
+            {type: "textMessage", text:"{CASTER} кушает {ACTION}!"},
+            {type: "stateChange", recover:10},
+            {type: "textMessage", text: "Чувствуется сыр, {CASTER} восстанавливает здоровье!"},
+        ]
+    }
 }

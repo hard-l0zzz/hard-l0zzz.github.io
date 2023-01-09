@@ -20,6 +20,7 @@
   .KeyboardMenu button:focus {
    background: var(--menu-selected-background);
    outline: 0;
+   height: 25px;
   }
   
   .KeyboardMenu .option {
@@ -31,12 +32,17 @@
     right:0;
     top:0;
     bottom:0;
+    font-size:10px;
+    display:flex;
+    align-items: center;
+    padding-right:3px;
     font-family:monospace;
    }
   
    .DescriptionBox {
     position:absolute;
     bottom:0;
+    height: 40px;
     left:0;
     right:0;
     color: var(--menu-font-color);
@@ -48,6 +54,7 @@
    .DescriptionBox p {
     font-size: 10px;
     margin:0;
+    width: 180px;
     font-family:monospace;
    }
   
