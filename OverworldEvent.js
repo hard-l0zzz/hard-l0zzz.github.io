@@ -50,7 +50,6 @@ class OverworldEvent{
           })
         message.init(document.querySelector(".game-container"))
     }
-
     changeMap(resolve) {
 
         const sceneTransition = new SceneTransition();
@@ -59,6 +58,20 @@ class OverworldEvent{
     
           sceneTransition.fadeOut();
     
+        })
+      }
+
+      battle(resolve){
+        const sceneTransition = new SceneTransition();
+        sceneTransition.init(document.querySelector(".game-container"), () => {
+            battle.init(document.querySelector(".game-container"));
+      
+            sceneTransition.fadeOut();
+          })
+        const battle = new Battle({
+            onComplete: () => {
+                resolve();
+            }
         })
       }
 

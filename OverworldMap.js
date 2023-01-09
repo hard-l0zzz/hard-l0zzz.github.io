@@ -13,14 +13,14 @@ class OverworldMap{
 
     drawLowerImage(ctx,cameraPerson){
         ctx.drawImage(this.lowerImage,
-        utils.withGrid(5.5) - cameraPerson.x,
-        utils.withGrid(5.5) - cameraPerson.y)
+        utils.withGrid(10) - cameraPerson.x,
+        utils.withGrid(6) - cameraPerson.y)
     }
 
     drawUpperImage(ctx,cameraPerson) {
         ctx.drawImage(this.upperImage,
-        utils.withGrid(5.5) - cameraPerson.x,
-        utils.withGrid(5.5) - cameraPerson.y)
+        utils.withGrid(10) - cameraPerson.x,
+        utils.withGrid(6) - cameraPerson.y)
     }
 
     isSpaceTaken(currentX, currentY, direction) {
@@ -64,6 +64,8 @@ class OverworldMap{
         }
     }
 
+
+
     checkForFootstepCutscene(){
         const hero = this.gameObjects["hero"];
         const match = this.cutsceneSpaces[`${hero.x},${hero.y}`];
@@ -100,21 +102,38 @@ window.OverworldMaps = {
             x:utils.withGrid(6),
             y:utils.withGrid(6)
             }),
+            /*box: new GameObject({
+                x:utils.withGrid(10),
+                y:utils.withGrid(6),
+                src:"/images/characters/box.png",
+                talking: [{
+                    events:[
+                        {type:"textMessage",text:"Это коробка"},
+                        {type:"textMessage",text:"Взять её?"}
+                    ]
+                }]
+            }),*/
             cat: new Person({
-                x:utils.withGrid(7),
+                x:utils.withGrid(6),
                 y: utils.withGrid(9),
                 src:"/images/characters/hero.png",
                 behaviorLoop: [
-                    {type:"stand",direction:"up",time:120},
+                    {type:"walk", direction: "up"},
+                    {type:"walk", direction: "up"},
                     {type:"walk", direction: "left"},
                     {type:"walk", direction: "left"},
                     {type:"walk", direction: "down"},
                     {type:"walk", direction: "down"},
                     {type:"walk", direction: "right"},
                     {type:"walk", direction: "right"},
-                    {type:"walk", direction: "up"},
-                    {type:"walk", direction: "up"},
-                ]
+                ],
+                /*talking: [
+                    {
+                        events: [
+                            {type:"textMessage",text:"мяу"}
+                        ]
+                    }
+                ]*/
             }),
             npc1: new Person({
                 x:utils.withGrid(3),
@@ -129,7 +148,8 @@ window.OverworldMaps = {
                     {
                       events: [
                         { type: "textMessage", text: "Этот кот...",faceHero:"npc1"},
-                        { type: "textMessage", text: "Он мне не нравится!"}
+                        { type: "textMessage", text: "Он мне не нравится!"},
+                        { type: "battle"}
                       ]
                     }
                   ]
@@ -224,7 +244,7 @@ window.OverworldMaps = {
             hero: new Person({
             isPlayerControlled:true,
             x:utils.withGrid(5),
-            y:utils.withGrid(5)
+            y:utils.withGrid(10)
             }),
             npc3: new Person({
                 x:utils.withGrid(7),

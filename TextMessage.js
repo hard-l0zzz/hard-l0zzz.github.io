@@ -12,7 +12,7 @@ class TextMessage {
 
     this.element.innerHTML = (`
       <p class="TextMessage_p"></p>
-      <button class="TextMessage_button">Ок</button>
+      <button class="TextMessage_button">>></button>
     `)
 
     //Init the typewriter effect
@@ -29,7 +29,6 @@ class TextMessage {
     this.actionListener = new KeyPressListener("KeyE", () => {
       this.done();
     })
-
   }
 
   done() {

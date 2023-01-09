@@ -2,10 +2,16 @@
 <html>
     <head>
         <title>Epic Adventure</title>
-        <link href = "/styles/global.css" type = "text/css" rel = "stylesheet">
+        <link href = "styles/global.css" type = "text/css" rel = "stylesheet">
         <link href = "favicon.ico" type = "image/x-icon" rel = "icon">
         <link href = "styles/TextMessage.css" type = "text/css" rel = "stylesheet">
         <link href = "styles/SceneTransition.css" type = "text/css" rel = "stylesheet">
+        <link href = "styles/KeyboardMenu.css" type = "text/css" rel = "stylesheet">
+        <!--файты-->
+        <link href = "styles/Battle.css" type = "text/css" rel = "stylesheet">
+        <link href = "styles/SubmissionMenu.css" type = "text/css" rel = "stylesheet">
+        <link href = "styles/Team.css" type = "text/css" rel = "stylesheet">
+        <link href = "styles/Combatant.css" type = "text/css" rel = "stylesheet">
     </head>
     <body>
         <audio id = myaudio loop>
@@ -16,8 +22,14 @@
             document.getElementById("myaudio").play();
         </script>
         <div class="game-container">
-            <canvas class="game-canvas" width="192" height="192"></canvas>
+            <canvas class="game-canvas" width="320" height="192"></canvas>
         </div>
+
+        <!--контент-->
+        <script src="Content/pizzas.js"></script>
+        <script src="Content/actions.js"></script>
+        <script src="Content/enemies.js"></script>
+
         <!--скрипты-->
         <script src = "utils.js"></script>
         <script src = "DirectionInput.js"></script>
@@ -31,7 +43,21 @@
         <script src = "KeyPressListener.js"></script>
         <script src = "RevealingText.js"></script>
         <script src = "SceneTransition.js"></script>
+        <script src = "KeyboardMenu.js"></script>
+
+        <!--файты-->
+        <script src = "Battle/Battle.js"></script>
+        <script src = "Battle/BattleEvent.js"></script>
+        <script src = "Battle/Combatant.js"></script>
+        <script src = "Battle/Team.js"></script>
+        <script src = "Battle/SubmissionMenu.js"></script>
+        <script src = "Battle/BattleEvent.js"></script>
+        <script src = "Battle/TurnCycle.js"></script>
+        <script src = "Battle/BattleAnimations.js"></script>
+
+
         <script src = "init.js"></script>
     </body>
 </html>
 <!--люблю кошкосвинку <3-->
+<!--külön köszönet Swup-->

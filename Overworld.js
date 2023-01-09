@@ -75,11 +75,5 @@ class Overworld {
       this.bindActionInput();
       this.bindHeroPositioncheck();
       this.startGameLoop();
-      this.map.startCutscene([
-        {who:"cat", type: "walk", direction:"left"},
-        {who:"cat", type: "walk", direction:"up"},
-        {who:"cat", type: "walk", direction:"up"},
-        {type:"textMessage", text: "Мяу~"},
-      ])
   }
 }
