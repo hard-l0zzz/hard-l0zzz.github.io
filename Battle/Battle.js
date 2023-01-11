@@ -39,8 +39,7 @@ class Battle {
       {actionId: "item_recoverStatus", instanceId: "p1", team: "player"},
       {actionId: "item_recoverStatus", instanceId: "p2", team: "player"},
       {actionId: "item_recoverStatus", instanceId: "p3", team: "enemy"},
-      {actionId: "item_recoverHp", instanceId: "p4", team: "player"},
-      {actionId: "item_recoverHp", instanceId: "p5", team: "player"}
+      {actionId: "item_recoverHp", team: "player"}
     ]
   }
 
@@ -52,7 +51,7 @@ class Battle {
       <img src="${'/images/characters/people/hero.png'}" alt="Hero" />
     </div>
     <div class="Battle_enemy">
-      <img src=${'/images/characters/people/npc3.png'} alt="Enemy" />
+      <img src=${'/images/characters/people/npc1.png'} alt="Enemy" />
     </div>
     `)
   }

@@ -102,7 +102,7 @@ window.OverworldMaps = {
             x:utils.withGrid(6),
             y:utils.withGrid(6)
             }),
-            /*box: new GameObject({
+            box: new Person({
                 x:utils.withGrid(10),
                 y:utils.withGrid(6),
                 src:"/images/characters/box.png",
@@ -112,7 +112,7 @@ window.OverworldMaps = {
                         {type:"textMessage",text:"Взять её?"}
                     ]
                 }]
-            }),*/
+            }),
             cat: new Person({
                 x:utils.withGrid(6),
                 y: utils.withGrid(9),
@@ -135,7 +135,8 @@ window.OverworldMaps = {
                     }
                 ]*/
             }),
-            npc1: new Person({
+            npc1: new Person(
+                {
                 x:utils.withGrid(3),
                 y:utils.withGrid(5),
                 src:"/images/characters/people/npc1.png",

@@ -1,7 +1,8 @@
 class SubmissionMenu { 
-  constructor({ caster, enemy, onComplete, items }) {
+  constructor({ caster, enemy, onComplete, items, replacements }) {
     this.caster = caster;
     this.enemy = enemy;
+    this.replacements = replacements;
     this.onComplete = onComplete;
 
     let quantityMap = {};
@@ -102,8 +103,15 @@ class SubmissionMenu {
   }
 
   decide() {
-    //TODO: Enemies should randomly decide what to do...
-    this.menuSubmit(Actions[ this.caster.actions[0] ]);
+    let who = this.caster;
+    if(who.hp < who.maxHp && who.status?.type != "Соус")
+    {
+      this.menuSubmit(Actions[ this.caster.actions[2]]);
+    }
+    else
+    {
+      this.menuSubmit(Actions[ this.caster.actions[utils.getRandomInt(2)]]);
+    }
   }
 
   showMenu(container) {

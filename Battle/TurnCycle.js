@@ -18,6 +18,17 @@ class TurnCycle {
         enemy
       })
 
+      if (submission.replacement) {
+        await this.onNewEvent({
+          type:"replace",
+          replacement: submission.replacement
+        })
+        await this.onNewEvent({
+          type:"textMessage",text:`Порви их всех,${submission.replacement.name}!`
+        })
+        return;
+      }
+
       if (submission.instanceId) {
         this.battle.items = this.battle.items.filter( i => i.instanceId !== submission.instanceId)
       }

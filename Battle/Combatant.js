@@ -82,12 +82,11 @@ class Combatant {
   }
 
   getReplacedEvents(originalEvents){
-    if(this.status?.type === "Масло" && utils.randomFromArray([true,false,false])){
+    if(this.status?.type === "Масло" && utils.randomFromArray([true,false])){
       return [
         {type:"textMessage", text:`${this.name} падает!`},
       ]
     }
-
 
 
     return(originalEvents)
@@ -97,7 +96,13 @@ class Combatant {
     if (this.status?.type === "Соус") {
       return [
         {type:"textMessage",text:"Чувствуется соус!"},
-        {type:"stateChange",recover:5,onCaster:true}
+        {type:"stateChange",recover:10,onCaster:true}
+      ]
+    }
+    if (this.status?.type === "Соусотечение") {
+      return [
+        {type:"textMessage",text:"Чувствуются грибы!"},
+        {type:"stateChange",recover:-15, onCaster:true}
       ]
     }
     return[];
@@ -106,13 +111,14 @@ class Combatant {
   decrementStatus(){
     if (this.status?.expiresIn > 0) {
       this.status.expiresIn -= 1;
-      if(this.status.expiresIn === 0) {
+      if(this.status.expiresIn === 0) 
+      {
         this.update({
           status:null
         })
         return{
-          type:"textMessage",
-          text:"Эффект кончился!"
+            type:"textMessage",
+            text:"Эффект кончился!"
         }
       }
     }

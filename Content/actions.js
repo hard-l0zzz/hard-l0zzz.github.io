@@ -17,6 +17,14 @@ window.Actions = {
         ],
         description:"Скушать помидоры.Восстанавливает здоровье.Действует 3 хода"
     },
+    mushStatus: {
+        name: "Грибной шквал!",
+        success: [
+            {type: "textMessage", text: "{CASTER} использует {ACTION}!"},
+            {type: "stateChange", status:{type: "Соусотечение", expiresIn: 3} },
+        ],
+        description:"Кинуть во врага грибы!Наносит урон.Действует 3 хода"
+    },
     saucyStatus2: {
         name: "Супер выжимка помидоров!!",
         success: [
@@ -31,14 +39,14 @@ window.Actions = {
             {type: "textMessage", text: "{CASTER} использует {ACTION}!"},
             {type: "animation", animation:"glob", color: '#dafd2a'},
             {type: "stateChange", status:{type: "Масло", expiresIn: 3} },
-            {type: "textMessage", text: "{TARGET} весь в масле!"},
+            {type: "textMessage", text: "{TARGET} вся в масле!"},
         ],
-        description: "Бросить во врага масло!!Он может упасть. Действует 3 хода."
+        description: "Бросить во врага масло!!Он может упасть, пропустив свой ход. Действует 3 хода."
     },
     //предметы
     item_recoverStatus: {
         name:"Молоко",
-        description:"Чувство свежести и теплоты перенесётся через ваше сознание. Убирает активные эффекты",
+        description:"Чувство свежести и теплоты перенесётся через ваше сознание. Убирает активные эффекты.",
         targetType:"friendly",
         success: [
             {type: "textMessage", text: "{CASTER} пьёт {ACTION}!"},
@@ -47,12 +55,12 @@ window.Actions = {
         ],
     },
     item_recoverHp: {
-        name: "Кусочек сыра",
+        name: "Бесконечный кусочек сыра",
         description:"Ощущения невообразимости всех исходов событий.Восстанавливает здоровье.",
         targetType:"friendly",
         success: [
             {type: "textMessage", text:"{CASTER} кушает {ACTION}!"},
-            {type: "stateChange", recover:10},
+            {type: "stateChange", recover:20},
             {type: "textMessage", text: "Чувствуется сыр, {CASTER} восстанавливает здоровье!"},
         ]
     }

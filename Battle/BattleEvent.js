@@ -10,7 +10,6 @@ class BattleEvent {
     .replace("{CASTER}", this.event.caster?.name)
     .replace("{TARGET}", this.event.target?.name)
     .replace("{ACTION}", this.event.action?.name)
-    .replace("{STATUS}", this.event.stateChange?.type.name)
 
     const message = new TextMessage({
       text,
@@ -63,10 +62,14 @@ class BattleEvent {
   }
 
   submissionMenu(resolve) {
+    const {caster} = this.event;
     const menu = new SubmissionMenu({
-      caster: this.event.caster,
+      caster: caster,
       enemy: this.event.enemy,
       items: this.battle.items,
+      replacements:Object.values(this.battle.combatants).filter(c => {
+        return c.id !== caster.id && c.team === caster.team && c.hp > 0
+      }),
       onComplete: submission => {
         //submission { what move to use, who to use it on }
         resolve(submission)

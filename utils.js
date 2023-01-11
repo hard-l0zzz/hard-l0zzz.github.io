@@ -20,6 +20,9 @@ const utils = {
     }
     return {x,y};
   },
+  getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  },
   oppositeDirection(direction) {
     if (direction === "left") { return "right" }
     if (direction === "right") { return "left" }
