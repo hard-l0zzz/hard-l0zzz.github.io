@@ -13,7 +13,7 @@ window.Pizzas = {
     description:"Классика",
     src: "/images/characters/pizzas/s001.png",
     icon: "/images/icons/spicy.png",
-    actions:["damage1","clumsyStatus","saucyStatus","mushStatus"]
+    actions:["damage1","clumsyStatus","saucyStatus"]
   },
   "s002": {
     name: "Пицца с беконом",
@@ -21,20 +21,20 @@ window.Pizzas = {
     type: PizzaTypes.spicy,
     src: "/images/characters/pizzas/s002.png",
     icon: "/images/icons/spicy.png",
-    actions:["damage1","clumsyStatus","saucyStatus"]
+    actions:["damage1","clumsyStatus","saucyStatus",]
   },
   "v001": {
     name: "Пицца с огурчиками",
     type: PizzaTypes.veggie,
     src: "/images/characters/pizzas/v001.png",
     icon: "/images/icons/veggie.png",
-    actions:["damage1","clumsyStatus","saucyStatus"]
+    actions:["damage1","clumsyStatus","item_recoverHp1"]
   },
   "f001": {
-    name: "Portobello Express",
+    name: "Портобелло Экспресс",
     type: PizzaTypes.fungi,
     src: "/images/characters/pizzas/f001.png",
     icon: "/images/icons/fungi.png",
-    actions:["damage1"]
+    actions:["damage1","clumsyStatus","item_recoverHp1"]
   }
 }

@@ -56,11 +56,21 @@ window.Actions = {
     },
     item_recoverHp: {
         name: "Бесконечный кусочек сыра",
-        description:"Ощущения невообразимости всех исходов событий.Восстанавливает здоровье.",
+        description:"Теперь уже конечный. Восстанавливает здоровье.",
         targetType:"friendly",
         success: [
             {type: "textMessage", text:"{CASTER} кушает {ACTION}!"},
             {type: "stateChange", recover:20},
+            {type: "textMessage", text: "Чувствуется сыр, {CASTER} восстанавливает здоровье!"},
+        ]
+    },
+    item_recoverHp1: {
+        name: "Кусочек сыра",
+        description:"Ощущения невообразимости всех исходов событий.Восстанавливает здоровье.",
+        targetType:"friendly",
+        success: [
+            {type: "textMessage", text:"{CASTER} кушает {ACTION}!"},
+            {type: "stateChange", recover:5},
             {type: "textMessage", text: "Чувствуется сыр, {CASTER} восстанавливает здоровье!"},
         ]
     }

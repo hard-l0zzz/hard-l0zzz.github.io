@@ -75,5 +75,9 @@ class Overworld {
       this.bindActionInput();
       this.bindHeroPositioncheck();
       this.startGameLoop();
+
+      // this.map.startCutscene([
+      //   {type:"battle", enemyId:"beth"}
+      // ])
   }
 }

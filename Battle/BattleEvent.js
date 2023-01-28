@@ -78,6 +78,54 @@ class BattleEvent {
     menu.init( this.battle.element )
   }
 
+  replacementMenu(resolve){
+    const menu = new ReplacementMenu({
+      replacements: Object.values(this.battle.combatants).filter(c => {
+        return c.team === this.event.team && c.hp >0
+      }),
+      onComplete: replacement => {
+        resolve(replacement)
+      }
+    })
+    menu.init(this.battle.element)
+  }
+
+  async replace(resolve){
+    const {replacement} = this.event;
+    const prevCombat = this.battle.combatants[this.battle.activeCombatants[replacement.team]];
+    this.battle.activeCombatants[replacement.team] = null;
+    prevCombat.update();
+    await utils.wait(400);
+    this.battle.activeCombatants[replacement.team] = replacement.id;
+    replacement.update();
+    await utils.wait(400);
+    
+    resolve();
+  }
+
+  giveXp(resolve){
+    let amount = this.event.xp;
+    const {combatant} = this.event;
+    const step = () => {
+      if (amount > 0){
+        amount -= 1;
+        combatant.xp += 1;
+
+        if(combatant.xp === combatant.maxXp) {
+          combatant.xp = 0;
+          combatant.maxXp = 100;
+          combatant.level += 1;
+        }
+
+        combatant.update();
+        requestAnimationFrame(step);
+        return;
+      }
+      resolve();
+    }
+    requestAnimationFrame(step);
+  }
+
   animation(resolve) {
     const fn = BattleAnimations[this.event.animation];
     fn(this.event, resolve);

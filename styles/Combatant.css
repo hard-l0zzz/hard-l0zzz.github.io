@@ -6,6 +6,7 @@
 }
 
 .Battle .Combatant {
+  transform:opacity 0.4s;
   transform: scale(2);
 }
 .Battle .Combatant[data-active="false"] {
@@ -118,6 +119,7 @@
 .Pizza {
   position: absolute;
   transform: scale(2);
+  transition: opacity 0.4s, transform 0.4s;
   background: url(/images/characters/pizzas/pizza-shadow.png) no-repeat no-repeat;
 }
 .Pizza[data-team="player"] {
@@ -130,7 +132,9 @@
 }
 .Pizza[data-active="false"] {
   opacity:0;
+  transform: translate3d(0,16px,0) scale(2);
 }
 .Pizza[data-active="true"] {
   opacity:1;
+  transform: translate3d(0,0,0) scale(2);
 }

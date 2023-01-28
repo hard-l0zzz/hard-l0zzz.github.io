@@ -55,6 +55,7 @@ class SubmissionMenu {
           label: "Поменять пиццу",
           description: "Поменять пиццу",
           handler: () => { 
+            this.keyboardMenu.setOptions(this.getPages().replacements)
             //See pizza options
           }
         },
@@ -87,8 +88,28 @@ class SubmissionMenu {
           }
         }),
         backOption
+      ],
+      replacements: [
+        ...this.replacements.map(replacement => {
+          return {
+            label: replacement.name,
+            description: replacement.description,
+            handler: () => {
+              //Swap me in, coach!
+              this.menuSubmitReplacement(replacement)
+            }
+          }
+        }),
+        backOption
       ]
     }
+  }
+  
+  menuSubmitReplacement(replacement) {
+    this.keyboardMenu?.end();
+    this.onComplete({
+      replacement
+    })
   }
 
   menuSubmit(action, instanceId=null) {
@@ -104,7 +125,7 @@ class SubmissionMenu {
 
   decide() {
     let who = this.caster;
-    if(who.hp < who.maxHp && who.status?.type != "Соус")
+    if(who.hp < who.maxHp * 0.60 && who.status?.type != "Соус")
     {
       this.menuSubmit(Actions[ this.caster.actions[2]]);
     }

@@ -102,7 +102,7 @@ window.OverworldMaps = {
             x:utils.withGrid(6),
             y:utils.withGrid(6)
             }),
-            box: new Person({
+            /*box: new Person({
                 x:utils.withGrid(10),
                 y:utils.withGrid(6),
                 src:"/images/characters/box.png",
@@ -112,7 +112,7 @@ window.OverworldMaps = {
                         {type:"textMessage",text:"Взять её?"}
                     ]
                 }]
-            }),
+            }),*/
             cat: new Person({
                 x:utils.withGrid(6),
                 y: utils.withGrid(9),
@@ -150,7 +150,7 @@ window.OverworldMaps = {
                       events: [
                         { type: "textMessage", text: "Этот кот...",faceHero:"npc1"},
                         { type: "textMessage", text: "Он мне не нравится!"},
-                        { type: "battle"}
+                        { type: "battle", enemyId:"beth"}
                       ]
                     }
                   ]
@@ -235,8 +235,6 @@ window.OverworldMaps = {
                 }
             ]
         }
-
-        
     },
     Kitchen: {
         lowerSrc: "/images/maps/KitchenLower.png",
