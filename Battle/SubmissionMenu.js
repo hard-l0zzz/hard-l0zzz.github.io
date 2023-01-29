@@ -129,6 +129,10 @@ class SubmissionMenu {
     {
       this.menuSubmit(Actions[ this.caster.actions[2]]);
     }
+    if(this.enemy.status?.type == "Масло")
+    {
+      this.menuSubmit(Actions[this.caster.actions[0]]);
+    }
     else
     {
       this.menuSubmit(Actions[ this.caster.actions[utils.getRandomInt(2)]]);

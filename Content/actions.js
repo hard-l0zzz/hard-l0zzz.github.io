@@ -8,6 +8,12 @@ window.Actions = {
         ],
         description:"Жёстко ударить врага >:D"
     },
+    test:{
+        name:"test",
+        success:[
+
+        ]
+    },
     saucyStatus: {
         name: "Выжимка помидоров :D",
         targetType:"friendly",

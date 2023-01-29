@@ -148,8 +148,8 @@ window.OverworldMaps = {
                 talking: [
                     {
                       events: [
-                        { type: "textMessage", text: "Этот кот...",faceHero:"npc1"},
-                        { type: "textMessage", text: "Он мне не нравится!"},
+                        { type: "textMessage", text: "Бетт:Этот кот...",faceHero:"npc1"},
+                        { type: "textMessage", text: "Бетт:Он мне не нравится!"},
                         { type: "battle", enemyId:"beth"}
                       ]
                     }
@@ -165,7 +165,7 @@ window.OverworldMaps = {
                 talking: [
                     {
                         events:[
-                            {type:"textMessage",text:"...",faceHero:"npc2"}
+                            {type:"textMessage",text:"Охранник:...",faceHero:"npc2"}
                         ]
                     }
                 ]
@@ -221,7 +221,7 @@ window.OverworldMaps = {
                     events:[
                         {who:"npc2",type:"walk",direction:"left"},
                         {who:"npc2",type:"stand",direction:"up",time:500},
-                        {type:"textMessage",text:"Тебе сюда нельзя."},
+                        {type:"textMessage",text:"Охранник:Тебе сюда нельзя."},
                         {who:"npc2",type:"walk",direction:"right"},
                         {who:"hero",type:"walk",direction:"down"}
                     ]
@@ -252,48 +252,52 @@ window.OverworldMaps = {
                 talking:[
                     {
                         events:[
-                            {type:"textMessage",text:"Свиньи..",faceHero:["npc3"]}
+                            {type:"textMessage",text:"???:Странная эта ящерка...",faceHero:["npc3"]},
+                            {who:"npc3",type:"stand",direction:"left"},
+                            {type:"textMessage",text:"???:Мне от неё жутко"}
                         ]
                     }
                 ],
                 behaviorLoop:[
                     {type:"stand", direction:"left",time:200},
-                    {type:"stand",direction:"right",time:300}
+                    {type:"stand", direction:"right",time:300}
                 ]
             }),
-                npc2:new Person({
-                x:utils.withGrid(100),
-                y:utils.withGrid(100),
-                src:"images/characters/people/npc2.png",
+                lizard_girl:new Person({
+                x:utils.withGrid(4),
+                y:utils.withGrid(4),
+                src:"images/characters/people/lizard_girl.png",
                 behaviorLoop:[
                     {type:"stand",direction:"down",time:800}
                 ],
                 talking: [
                     {
                         events:[
-                            {type:"textMessage",text:"..."}
+                            {type:"textMessage",text:"Ящерка: külön"},
+                            {type:"textMessage",text:"Ящерка: köszönet"},
+                            {type:"changeMap",map:"secret"}
                         ]
                     }
                 ]
             }),
-            npc1: new Person({
-                x:utils.withGrid(99),
-                y:utils.withGrid(99),
-                src:"/images/characters/people/npc1.png",
-                behaviorLoop: [
-                    {type:"stand", direction: "left",time: 1200},
-                    {type:"stand",direction:"up",time:500},
-                    {type:"stand",direction:"down",time:800}
-                ],
-                talking: [
-                    {
-                      events: [
-                        { type: "textMessage", text: "Этот кот...",faceHero:"npc1"},
-                        { type: "textMessage", text: "Он мне не нравится!"}
-                      ]
-                    }
-                  ]
-            }),
+            // npc1: new Person({
+            //     x:utils.withGrid(99),
+            //     y:utils.withGrid(99),
+            //     src:"/images/characters/people/npc1.png",
+            //     behaviorLoop: [
+            //         {type:"stand", direction: "left",time: 1200},
+            //         {type:"stand",direction:"up",time:500},
+            //         {type:"stand",direction:"down",time:800}
+            //     ],
+            //     talking: [
+            //         {
+            //           events: [
+            //             { type: "textMessage", text: "Бетт:Этот кот...",faceHero:"npc1"},
+            //             { type: "textMessage", text: "Бетт:Он мне не нравится!"}
+            //           ]
+            //         }
+            //       ]
+            // }),
         },
         cutsceneSpaces: {
             [utils.asGridCoord(5,10)]:[
@@ -355,5 +359,35 @@ window.OverworldMaps = {
         }  
 
         
-    }
+    },
+    secret: {
+        lowerSrc: "/images/characters/hero.png",
+        upperSrc: "/images/characters/hero.png",
+        gameObjects: {
+            hero: new Person({
+            isPlayerControlled:true,
+            x:utils.withGrid(5),
+            y:utils.withGrid(10)
+            }),
+                lizard_girl:new Person({
+                x:utils.withGrid(4),
+                y:utils.withGrid(4),
+                src:"images/characters/people/lizard_girl.png",
+                behaviorLoop:[
+                    {type:"stand",direction:"down",time:800}
+                ],
+                talking: [
+                    {
+                        events:[
+                            {type:"textMessage",text:"Ящерка: külön"},
+                            {type:"textMessage",text:"Ящерка: köszönet"},
+                            {type:"changeMap",map:"Kitchen"}
+                        ]
+                    }
+                ]
+            }),
+        }, 
+
+        
+    },
 }
