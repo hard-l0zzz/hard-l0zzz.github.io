@@ -275,6 +275,7 @@ window.OverworldMaps = {
                         events:[
                             {type:"textMessage",text:"Ящерка: külön"},
                             {type:"textMessage",text:"Ящерка: köszönet"},
+                            {type:"battle", enemyId:"lizard"},
                             {type:"changeMap",map:"secret"}
                         ]
                     }
@@ -361,8 +362,8 @@ window.OverworldMaps = {
         
     },
     secret: {
-        lowerSrc: "/images/characters/hero.png",
-        upperSrc: "/images/characters/hero.png",
+        lowerSrc: "/images/maps/EpicSecret.png",
+        upperSrc: "/images/maps/KitchenUpper.png",
         gameObjects: {
             hero: new Person({
             isPlayerControlled:true,
@@ -379,8 +380,7 @@ window.OverworldMaps = {
                 talking: [
                     {
                         events:[
-                            {type:"textMessage",text:"Ящерка: külön"},
-                            {type:"textMessage",text:"Ящерка: köszönet"},
+                            {type:"textMessage",text:"Ящерка: степа лошара"},
                             {type:"changeMap",map:"Kitchen"}
                         ]
                     }

@@ -1,6 +1,6 @@
 window.Enemies = {
      "erio":{
-        name:"Erio",
+        name:"Эрио",
         src:"/images/characters/people/erio.png",
         pizzas:{
             "a":{
@@ -18,7 +18,7 @@ window.Enemies = {
         }
     },
     "beth":{
-        name:"Beth",
+        name:"Бетт",
         src:"/images/characters/people/npc1.png",
         pizzas:{
             "a":{
@@ -28,6 +28,32 @@ window.Enemies = {
                 //attackBonus: 20000,
                 //.........
             }
+        }
+    },
+    "lizard":{
+        name:"Ящеркой",
+        src:"/images/characters/people/lizard_girl.png",
+        pizzas:{
+            "a":{
+                pizzaId:"stepalox",
+                maxHp:35,
+                level:-99,
+            },
+            // "b":{
+            //     pizzaId:"f001",
+            //     maxHp:1,
+            //     level:1,
+            // },
+            // "c":{
+            //     pizzaId:"f001",
+            //     maxHp:1,
+            //     level:1,
+            // },
+            // "d":{
+            //     pizzaId:"f001",
+            //     maxHp:1,
+            //     level:1,
+            // },
         }
     }
 }

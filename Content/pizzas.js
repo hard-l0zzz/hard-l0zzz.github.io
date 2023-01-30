@@ -36,5 +36,12 @@ window.Pizzas = {
     src: "/images/characters/pizzas/f001.png",
     icon: "/images/icons/fungi.png",
     actions:["damage1","clumsyStatus","item_recoverHp1"]
+  },
+  "stepalox": {
+    name: "Степа Лошара",
+    type: PizzaTypes.fungi,
+    src: "/images/maps/demolower.png",
+    icon: "/images/icons/veggie.png",
+    actions:["damage1","damage1","damage1","damage1"]
   }
 }

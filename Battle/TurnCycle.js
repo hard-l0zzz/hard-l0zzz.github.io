@@ -32,8 +32,12 @@ class TurnCycle {
       }
 
       if (submission.instanceId) {
-        
-        this.battle.items = this.battle.items.filter( i => i.instanceId !== submission.instanceId)
+
+        //Add to list to persist to player state later
+        this.battle.usedInstanceIds[submission.instanceId] = true;
+  
+        //Removing item from battle state
+        this.battle.items = this.battle.items.filter(i => i.instanceId !== submission.instanceId)
       }
 
       const resultingEvents = caster.getReplacedEvents(submission.action.success);
@@ -151,10 +155,11 @@ class TurnCycle {
     }
 
     async init() {
-      // await this.onNewEvent({
-      //   type: "textMessage",
-      //   text: "Битва начинается!"
-      // })
+      await this.onNewEvent({
+        type: "textMessage",
+        text: `Битва с ${this.battle.enemy.name} начинается!`
+      })
+      
   
       //Start the first turn!
       this.turn();
