@@ -1,7 +1,8 @@
 class OverworldMap{
     constructor(config) {
         this.overworld = null;
-        this.gameObjects = config.gameObjects;
+        this.gameObjects = {};
+        this.configObjects = config.configObjects;
         this.walls = config.walls || {};
         this.lowerImage = new Image();
         this.lowerImage.src = config.lowerSrc;
@@ -9,6 +10,8 @@ class OverworldMap{
         this.upperImage.src = config.upperSrc;
         this.isCutscenePlaying = false;
         this.cutsceneSpaces = config.cutsceneSpaces || {};
+        this.isPaused = false;
+        this.retryTimeout = null;
     }
 
     drawLowerImage(ctx,cameraPerson){
@@ -25,15 +28,28 @@ class OverworldMap{
 
     isSpaceTaken(currentX, currentY, direction) {
         const {x,y} = utils.nextPosition(currentX,currentY,direction)
-        return this.walls[`${x},${y}`] || false;
+        if(this.walls[`${x},${y}`]) {
+            return true;
+        }
+        return Object.values(this.gameObjects).find(obj => {
+            if(obj.x === x && obj.y === y) {return true;}
+            if(obj.intentPosition && obj.intentPosition[0] === x && obj.intentPosition[1] === y)
+            return true;
+        })
     }
 
     mountObjects(){
-        Object.keys(this.gameObjects).forEach(key => {
-            let object = this.gameObjects[key];
+        Object.keys(this.configObjects).forEach(key => {
+            let object = this.configObjects[key];
             object.id = key;
 
-            object.mount(this);
+            let instance;
+            if(object.type === "Person"){
+                instance = new Person(object);
+            }
+            this.gameObjects[key] = instance;
+            this.gameObjects[key].id = key;
+            instance.mount(this);
         })
     }
 
@@ -49,8 +65,8 @@ class OverworldMap{
         }
 
         this.isCutscenePlaying = false;
-        //ресет поведения нпс
-        Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
+                //ресет поведения нпс
+                Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
     }
 
     checkForActionCutscene(){
@@ -73,19 +89,6 @@ class OverworldMap{
             this.startCutscene(match[0].events);
         }
     }
-
-    addWall(x,y){
-        this.walls[`${x},${y}`] = true;
-    }
-    removeWall(x,y){
-        delete this.walls[`${x},${y}`];
-    }
-    moveWall(wasX,wasY,direction){
-        this.removeWall(wasX,wasY);
-        const{x,y} = utils.nextPosition(wasX,wasY,direction);
-        this.addWall(x,y);
-    }
-
 }
 
 
@@ -96,12 +99,16 @@ window.OverworldMaps = {
     DemoRoom: {
         lowerSrc: "/images/maps/DemoLower.png",
         upperSrc: "/images/maps/DemoUpper.png",
-        gameObjects: {
-            hero: new Person({
+        configObjects: {
+            hero: {
+            type:"stand",
+            direction:"up",
+            time:1,
+            type: "Person",
             isPlayerControlled: true,
-            x:utils.withGrid(6),
-            y:utils.withGrid(6)
-            }),
+            x:utils.withGrid(5),
+            y:utils.withGrid(9)
+            },
             /*box: new Person({
                 x:utils.withGrid(10),
                 y:utils.withGrid(6),
@@ -113,7 +120,8 @@ window.OverworldMaps = {
                     ]
                 }]
             }),*/
-            cat: new Person({
+            cat:{
+                type: "Person",
                 x:utils.withGrid(6),
                 y: utils.withGrid(9),
                 src:"/images/characters/hero.png",
@@ -127,16 +135,17 @@ window.OverworldMaps = {
                     {type:"walk", direction: "right"},
                     {type:"walk", direction: "right"},
                 ],
-                /*talking: [
-                    {
-                        events: [
-                            {type:"textMessage",text:"мяу"}
-                        ]
-                    }
-                ]*/
-            }),
-            npc1: new Person(
+                // talking: [
+                //     {
+                //         events: [
+                //             {type:"textMessage",text:"мяу"}
+                //         ]
+                //     }
+                // ]
+            },
+            npc1:
                 {
+                type: "Person",
                 x:utils.withGrid(3),
                 y:utils.withGrid(5),
                 src:"/images/characters/people/npc1.png",
@@ -154,8 +163,9 @@ window.OverworldMaps = {
                       ]
                     }
                   ]
-            }),
-            npc2:new Person({
+            },
+            npc2:{
+                type: "Person",
                 x:utils.withGrid(8),
                 y:utils.withGrid(5),
                 src:"images/characters/people/npc2.png",
@@ -165,11 +175,12 @@ window.OverworldMaps = {
                 talking: [
                     {
                         events:[
-                            {type:"textMessage",text:"Охранник:...",faceHero:"npc2"}
+                            {type:"textMessage",text:"Охранник:...",faceHero:"npc2"},
+                            //{type:"disappear", who:"npc2"}
                         ]
                     }
                 ]
-            }),
+            },
         },
         walls:{
            [utils.asGridCoord(7,7)]:true,
@@ -239,13 +250,18 @@ window.OverworldMaps = {
     Kitchen: {
         lowerSrc: "/images/maps/KitchenLower.png",
         upperSrc: "/images/maps/KitchenUpper.png",
-        gameObjects: {
-            hero: new Person({
+        configObjects: {
+            hero: {
+                type:"stand",
+                direction:"up",
+                time:1,
+                type: "Person",
             isPlayerControlled:true,
             x:utils.withGrid(5),
-            y:utils.withGrid(10)
-            }),
-            npc3: new Person({
+            y:utils.withGrid(9)
+            },
+            npc3: {
+                type: "Person",
                 x:utils.withGrid(7),
                 y:utils.withGrid(5),
                 src:"/images/characters/people/npc3.png",
@@ -262,8 +278,9 @@ window.OverworldMaps = {
                     {type:"stand", direction:"left",time:200},
                     {type:"stand", direction:"right",time:300}
                 ]
-            }),
-                lizard_girl:new Person({
+            },
+                lizard_girl:{
+                    type: "Person",
                 x:utils.withGrid(4),
                 y:utils.withGrid(4),
                 src:"images/characters/people/lizard_girl.png",
@@ -280,7 +297,7 @@ window.OverworldMaps = {
                         ]
                     }
                 ]
-            }),
+            },
             // npc1: new Person({
             //     x:utils.withGrid(99),
             //     y:utils.withGrid(99),
@@ -364,13 +381,15 @@ window.OverworldMaps = {
     secret: {
         lowerSrc: "/images/maps/EpicSecret.png",
         upperSrc: "/images/maps/KitchenUpper.png",
-        gameObjects: {
-            hero: new Person({
+        configObjects: {
+            hero: {
+                type: "Person",
             isPlayerControlled:true,
             x:utils.withGrid(5),
             y:utils.withGrid(10)
-            }),
-                lizard_girl:new Person({
+            },
+                lizard_girl:{
+                    type: "Person",
                 x:utils.withGrid(4),
                 y:utils.withGrid(4),
                 src:"images/characters/people/lizard_girl.png",
@@ -385,7 +404,7 @@ window.OverworldMaps = {
                         ]
                     }
                 ]
-            }),
+            },
         }, 
 
         

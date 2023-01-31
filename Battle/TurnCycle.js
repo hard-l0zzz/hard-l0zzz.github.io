@@ -76,11 +76,17 @@ class TurnCycle {
       }
     }
 
-      const winner = this.getWinningTeam();
+      let winner = this.getWinningTeam();
       if(winner) {
+        if(winner == "player"){
+          winner = "Игрок"
+        }
+        else if(winner == "enemy"){
+          winner = this.battle.enemy.name
+        }
         await this.onNewEvent({
           type:"textMessage",
-          text:"Победитель!"
+          text:`${winner} побеждает!`
         })
         this.onWinner(winner);
         return;

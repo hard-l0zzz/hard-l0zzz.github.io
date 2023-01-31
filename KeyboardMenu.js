@@ -1,10 +1,11 @@
 class KeyboardMenu {
-    constructor() {
+    constructor(config = {}) {
       this.options = []; //set by updater method
       this.up = null;
       this.down = null;
       this.prevFocus = null;
       this.select = null;
+      this.descriptionContainer = config.descriptionContainer || null;
     }
   
     setOptions(options) {
@@ -76,7 +77,7 @@ class KeyboardMenu {
   
     init(container) {
       this.createElement();
-      container.appendChild(this.descriptionElement);
+      (this.descriptionContainer || container).appendChild(this.descriptionElement);
       container.appendChild(this.element);
   
       this.up = new KeyPressListener("KeyW", () => {

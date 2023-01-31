@@ -4,7 +4,7 @@ class GameObject{
         this.isMounted = false;
         this.x = config.x || 0;
         this.y = config.y || 0;
-        this.direction = config.direction || "down";
+        this.direction = config.direction || "up";
         this.sprite = new Sprite({
             gameObject: this,
             src: config.src || "/images/characters/people/hero.png",
@@ -21,7 +21,6 @@ class GameObject{
 
     mount(map){
         this.isMounted = true;
-        map.addWall(this.x, this.y);
 
 
         setTimeout(() => {
@@ -36,11 +35,20 @@ class GameObject{
     }
 
     async doBehaviorEvent(map){
-        if(map.isCutscenePlaying || this.behaviorLoop.length === 0 || this.isStanding){
+        if(map.isCutscenePlaying || this.behaviorLoop.length === 0){
             return;
         }
 
+        if(map.isCutscenePlaying){
 
+            if(this.retryTimeout){
+                clearTimeout(this.retryTimeout);
+            }
+            this.retryTimeout = setTimeout(() => {
+                this.doBehaviorEvent(map);
+            },100)
+            return;
+        }
 
 
 

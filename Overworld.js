@@ -34,9 +34,12 @@ class Overworld {
 
         //верхнее изображение
         this.map.drawUpperImage(this.ctx, cameraPerson);
+
+        if(!this.map.isPaused){
         requestAnimationFrame(() => {
           step();
         })
+      }
       }
       step();
     }
@@ -47,6 +50,13 @@ class Overworld {
         //проверка рядом ли нпс
         this.map.checkForActionCutscene();
       });
+      new KeyPressListener("Escape", () => {
+        if(!this.map.isCutscenePlaying){
+          this.map.startCutscene([
+            {type: "pause"}
+          ])
+        }
+      })
     }
 
     bindHeroPositioncheck(){

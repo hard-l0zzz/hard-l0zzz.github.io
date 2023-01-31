@@ -31,7 +31,7 @@ window.Enemies = {
         }
     },
     "lizard":{
-        name:"Ящеркой",
+        name:"Ящерка",
         src:"/images/characters/people/lizard_girl.png",
         pizzas:{
             "a":{
