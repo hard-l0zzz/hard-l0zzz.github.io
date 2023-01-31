@@ -66,7 +66,7 @@ class OverworldMap{
 
         this.isCutscenePlaying = false;
                 //ресет поведения нпс
-                Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
+                //Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
     }
 
     checkForActionCutscene(){
@@ -135,13 +135,13 @@ window.OverworldMaps = {
                     {type:"walk", direction: "right"},
                     {type:"walk", direction: "right"},
                 ],
-                // talking: [
-                //     {
-                //         events: [
-                //             {type:"textMessage",text:"мяу"}
-                //         ]
-                //     }
-                // ]
+                talking: [
+                    {
+                        events: [
+                            {type:"textMessage",text:"мяу"}
+                        ]
+                    }
+                ]
             },
             npc1:
                 {
