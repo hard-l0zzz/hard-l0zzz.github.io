@@ -47,6 +47,9 @@ class OverworldMap{
             if(object.type === "Person"){
                 instance = new Person(object);
             }
+            if(object.type === "PizzaStone"){
+                instance = new PizzaStone(object);
+            }
             this.gameObjects[key] = instance;
             this.gameObjects[key].id = key;
             instance.mount(this);
@@ -61,7 +64,10 @@ class OverworldMap{
                 event: events[i],
                 map: this
             })
-            await eventHandler.init();
+            const result = await eventHandler.init();
+            if(result === "LOST_BATTLE"){
+                break;
+            }
         }
 
         this.isCutscenePlaying = false;
@@ -76,7 +82,14 @@ class OverworldMap{
             return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
         });
         if(!this.isCutscenePlaying && match && match.talking.length) {
-            this.startCutscene(match.talking[0].events)
+
+            const relevantScenario = match.talking.find(scenario => {
+                return(scenario.required || []).every(sf => {
+                    return playerState.storyFlags[sf]
+                })
+            })
+
+            relevantScenario && this.startCutscene(relevantScenario.events)
         }
     }
 
@@ -90,9 +103,6 @@ class OverworldMap{
         }
     }
 }
-
-
-
 
 
 window.OverworldMaps = {
@@ -137,8 +147,15 @@ window.OverworldMaps = {
                 ],
                 talking: [
                     {
+                    required: ["USED_PIZZA_STONE"],
+                    events:[
+                        {type:"textMessage",text:"Кот:Ого, ты умеешь использовать алтари пицц!"}
+                    ]
+
+                    },
+                    {
                         events: [
-                            {type:"textMessage",text:"мяу"}
+                            {type:"textMessage",text:"Кот:мяу"}
                         ]
                     }
                 ]
@@ -156,10 +173,22 @@ window.OverworldMaps = {
                 ],
                 talking: [
                     {
+                      required: ["TALKED_TO_NPC2"],
+                      events:[
+                        { type: "textMessage", text: "Бетт:Охранник подозрительный..."},
+                        { type: "textMessage", text: "Бетт:Да что я вообще тут делаю??"},
+                        ],
+                        required: ["DEFEATED_BETH"],
+                        events:[
+                            { type:"textMessage",text:"Ты меня одолел!"}
+                        ]
+                    },
+                    {
                       events: [
                         { type: "textMessage", text: "Бетт:Этот кот...",faceHero:"npc1"},
                         { type: "textMessage", text: "Бетт:Он мне не нравится!"},
-                        { type: "battle", enemyId:"beth"}
+                        { type: "battle", enemyId:"beth"},
+                        { type: "addStoryFlag", flag:"DEFEATED_BETH"},
                       ]
                     }
                   ]
@@ -176,11 +205,19 @@ window.OverworldMaps = {
                     {
                         events:[
                             {type:"textMessage",text:"Охранник:...",faceHero:"npc2"},
+                            {type:"addStoryFlag",flag:"TALKED_TO_NPC2"}
                             //{type:"disappear", who:"npc2"}
                         ]
                     }
                 ]
             },
+            pizzaStone: {
+                type: "PizzaStone",
+                x: utils.withGrid(2),
+                y: utils.withGrid(7),
+                storyFlag: "USED_PIZZA_STONE",
+                pizzas: ["v001", "f001"],
+              },
         },
         walls:{
            [utils.asGridCoord(7,7)]:true,

@@ -25,6 +25,7 @@ window.Pizzas = {
   },
   "v001": {
     name: "Пицца с огурчиками",
+    description:"Морской бриз и свежесть зелёности!",
     type: PizzaTypes.veggie,
     src: "/images/characters/pizzas/v001.png",
     icon: "/images/icons/veggie.png",
@@ -32,6 +33,7 @@ window.Pizzas = {
   },
   "f001": {
     name: "Портобелло Экспресс",
+    description:"Быстрота и невероятность изменений!",
     type: PizzaTypes.fungi,
     src: "/images/characters/pizzas/f001.png",
     icon: "/images/icons/fungi.png",

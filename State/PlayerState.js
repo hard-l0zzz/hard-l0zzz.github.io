@@ -3,7 +3,7 @@ class PlayerState {
         this.pizzas = {
             "p1":{
                 pizzaId:"s001",
-                hp: 1,
+                hp: 50,
                 maxHp: 50,
                 xp: 0,
                 maxXp: 100,
@@ -12,7 +12,7 @@ class PlayerState {
             },
             "p2":{
                 pizzaId:"s002",
-                hp: 1,
+                hp: 50,
                 maxHp: 50,
                 xp: 0,
                 maxXp: 100,
@@ -26,7 +26,28 @@ class PlayerState {
             { actionId: "item_recoverHp", instanceId: "item2" },
             { actionId: "item_recoverHp", instanceId: "item3" },
         ]
+        this.storyFlags = {
+            // "DID_SOMETHING":true,
+            // "DEFEATED_FIRST_BOSS":true,
+            //TALKED_TO_NPC2: true
+        }
     }
+    addPizza(pizzaId) {
+        const newId = `p${Date.now()}`+Math.floor(Math.random() * 99999);
+        this.pizzas[newId] = {
+          pizzaId,
+          hp: 50,
+          maxHp: 50,
+          xp: 0,
+          maxXp: 100,
+          level: 1,
+          status: null,
+        }
+        if (this.lineup.length < 3) {
+          this.lineup.push(newId)
+        }
+        utils.emitEvent("LineupChanged");
+      }
     swapLineup(oldId, incomingId) {
         const oldIndex = this.lineup.indexOf(oldId);
         this.lineup[oldIndex] = incomingId;
