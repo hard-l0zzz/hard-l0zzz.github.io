@@ -76,6 +76,7 @@ class Battle {
   addCombatant(id,team, config){
     this.combatants[id] = new Combatant({
       ...Pizzas[config.pizzaId],
+      ...Actions[config.actionId],
       ...config,
       team,
       isPlayerControlled: team === "player"

@@ -52,8 +52,7 @@ class OverworldEvent{
   }
 
   disappear(){
-    const who = this.map.gameObjects[this.event.who];
-    who.isMounted = false;
+    this.map.gameObjects.hero.isMounted = false;
   }
   changeMap(resolve) {
 
@@ -65,7 +64,11 @@ class OverworldEvent{
 
       const sceneTransition = new SceneTransition();
       sceneTransition.init(document.querySelector(".game-container"), () => {
-        this.map.overworld.startMap( window.OverworldMaps[this.event.map] );
+        this.map.overworld.startMap( window.OverworldMaps[this.event.map],{
+          x:this.event.x,
+          y:this.event.y,
+          direction:this.event.direction,
+        } );
         resolve();
         sceneTransition.fadeOut();
   
@@ -91,6 +94,7 @@ class OverworldEvent{
     pause(resolve){
         this.map.isPaused = true;
         const menu = new PauseMenu({
+          progress:this.map.overworld.progress,
             onComplete: () => {
                 resolve();
                 this.map.isPaused = false;
@@ -108,6 +112,15 @@ class OverworldEvent{
     craftingMenu(resolve) {
         const menu = new CraftingMenu({
           pizzas: this.event.pizzas,
+          onComplete: () => {
+            resolve();
+          }
+        })
+        menu.init(document.querySelector(".game-container"))
+      }
+      lootMenu(resolve) {
+        const menu = new LootMenu({
+          items: this.event.items,
           onComplete: () => {
             resolve();
           }

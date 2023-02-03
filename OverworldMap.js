@@ -50,6 +50,9 @@ class OverworldMap{
             if(object.type === "PizzaStone"){
                 instance = new PizzaStone(object);
             }
+            if(object.type === "Box"){
+                instance = new Box(object);
+            }
             this.gameObjects[key] = instance;
             this.gameObjects[key].id = key;
             instance.mount(this);
@@ -107,13 +110,14 @@ class OverworldMap{
 
 window.OverworldMaps = {
     DemoRoom: {
+        id:"DemoRoom",
         lowerSrc: "/images/maps/DemoLower.png",
         upperSrc: "/images/maps/DemoUpper.png",
         configObjects: {
             hero: {
-            type:"stand",
-            direction:"up",
-            time:1,
+            // type:"stand",
+            // direction:"up",
+            // time:1,
             type: "Person",
             isPlayerControlled: true,
             x:utils.withGrid(5),
@@ -178,15 +182,39 @@ window.OverworldMaps = {
                         { type: "textMessage", text: "Бетт:Охранник подозрительный..."},
                         { type: "textMessage", text: "Бетт:Да что я вообще тут делаю??"},
                         ],
+                    },
+                    {
+                        required: ["WAS_IN_KITCHEN"],
+                        events:[
+                            { type: "textMessage", text:"Бетт:Ну как там на кухне?"}
+                        ],
+                    },
+                    {
                         required: ["DEFEATED_BETH"],
                         events:[
-                            { type:"textMessage",text:"Ты меня одолел!"}
+                            { type:"textMessage",text:"Бетт:Ты меня одолел!"}
+                        ],
+                    },
+                    {
+                        required:["DEFEATED_BETH2"],
+                        events:[
+                            { type:"textMessage",text:"Бетт:Всё-таки ты смог меня одолеть в реванше..."}
+                        ]
+                    },
+                    {
+                        required: ["LOST_BETH"],
+                        events:[
+                            { type:"textMessage",text:"Бетт:Хаха!"},
+                            { type:"textMessage",text:"Бетт:Одолеть тебя ещё раз?"},
+                            { type: "battle", enemyId:"beth"},
+                            { type: "addStoryFlag", flag:"DEFEATED_BETH2"},
                         ]
                     },
                     {
                       events: [
                         { type: "textMessage", text: "Бетт:Этот кот...",faceHero:"npc1"},
                         { type: "textMessage", text: "Бетт:Он мне не нравится!"},
+                        { type: "addStoryFlag", flag:"LOST_BETH"},
                         { type: "battle", enemyId:"beth"},
                         { type: "addStoryFlag", flag:"DEFEATED_BETH"},
                       ]
@@ -205,8 +233,8 @@ window.OverworldMaps = {
                     {
                         events:[
                             {type:"textMessage",text:"Охранник:...",faceHero:"npc2"},
-                            {type:"addStoryFlag",flag:"TALKED_TO_NPC2"}
-                            //{type:"disappear", who:"npc2"}
+                            {type:"addStoryFlag",flag:"TALKED_TO_NPC2"},
+                            //{type:"disappear",who:"hero"}
                         ]
                     }
                 ]
@@ -218,6 +246,13 @@ window.OverworldMaps = {
                 storyFlag: "USED_PIZZA_STONE",
                 pizzas: ["v001", "f001"],
               },
+            // box: {
+            //     type:"Box",
+            //     x:utils.withGrid(3),
+            //     y:utils.withGrid(8),
+            //     items:["item_recoverHp","item_recoverHp"],
+            //     storyFlag: "USED_BOX"
+            // }
         },
         walls:{
            [utils.asGridCoord(7,7)]:true,
@@ -271,31 +306,34 @@ window.OverworldMaps = {
                         {who:"npc2",type:"stand",direction:"up",time:500},
                         {type:"textMessage",text:"Охранник:Тебе сюда нельзя."},
                         {who:"npc2",type:"walk",direction:"right"},
-                        {who:"hero",type:"walk",direction:"down"}
+                        {who:"hero",type:"walk",direction:"down"},
+                        {type:"addStoryFlag",flag:"TALKED_TO_NPC2"}
                     ]
                 }
             ],
             [utils.asGridCoord(5,10)]:[
                 {
                     events:[
-                        {type:"changeMap",map:"Kitchen"}
+                        {type:"changeMap",map:"Kitchen",x:utils.withGrid(5),y:utils.withGrid(9),direction:"up"},
+                        {type:"addStoryFlag",flag:"WAS_IN_KITCHEN"}
                     ]
                 }
             ]
         }
     },
     Kitchen: {
+        id:"Kitchen",
         lowerSrc: "/images/maps/KitchenLower.png",
         upperSrc: "/images/maps/KitchenUpper.png",
         configObjects: {
             hero: {
-                type:"stand",
-                direction:"up",
-                time:1,
+                // type:"stand",
+                // direction:"up",
+                // time:1,
                 type: "Person",
             isPlayerControlled:true,
-            x:utils.withGrid(5),
-            y:utils.withGrid(9)
+            // x:utils.withGrid(5),
+            // y:utils.withGrid(9)
             },
             npc3: {
                 type: "Person",
@@ -330,35 +368,17 @@ window.OverworldMaps = {
                             {type:"textMessage",text:"Ящерка: külön"},
                             {type:"textMessage",text:"Ящерка: köszönet"},
                             {type:"battle", enemyId:"lizard"},
-                            {type:"changeMap",map:"secret"}
+                            {type:"changeMap",map:"secret",x:0,y:0,direction:"up"}
                         ]
                     }
                 ]
             },
-            // npc1: new Person({
-            //     x:utils.withGrid(99),
-            //     y:utils.withGrid(99),
-            //     src:"/images/characters/people/npc1.png",
-            //     behaviorLoop: [
-            //         {type:"stand", direction: "left",time: 1200},
-            //         {type:"stand",direction:"up",time:500},
-            //         {type:"stand",direction:"down",time:800}
-            //     ],
-            //     talking: [
-            //         {
-            //           events: [
-            //             { type: "textMessage", text: "Бетт:Этот кот...",faceHero:"npc1"},
-            //             { type: "textMessage", text: "Бетт:Он мне не нравится!"}
-            //           ]
-            //         }
-            //       ]
-            // }),
         },
         cutsceneSpaces: {
             [utils.asGridCoord(5,10)]:[
                 {
                     events:[
-                        {type:"changeMap",map:"DemoRoom"}
+                        {type:"changeMap",map:"DemoRoom",x:utils.withGrid(5),y:utils.withGrid(9),direction:"up"}
                     ]
                 }
             ]
@@ -416,6 +436,7 @@ window.OverworldMaps = {
         
     },
     secret: {
+        id:"Secret",
         lowerSrc: "/images/maps/EpicSecret.png",
         upperSrc: "/images/maps/KitchenUpper.png",
         configObjects: {
@@ -437,11 +458,18 @@ window.OverworldMaps = {
                     {
                         events:[
                             {type:"textMessage",text:"Ящерка: степа лошара"},
-                            {type:"changeMap",map:"Kitchen"}
+                            {type:"changeMap",map:"Kitchen",x:0,y:0,direction:"up"}
                         ]
                     }
                 ]
             },
+            pizzaStone:{
+                type:"PizzaStone",
+                x:utils.withGrid(42),
+                y:utils.withGrid(42),
+                storyFlag: "USED_PIZZA_STONE1",
+                pizzas: ["stepalox", "stepalox","stepalox"],
+              },
         }, 
 
         

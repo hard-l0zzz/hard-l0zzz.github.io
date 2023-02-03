@@ -44,6 +44,6 @@ window.Pizzas = {
     type: PizzaTypes.fungi,
     src: "/images/characters/pizzas/stepalox2.png",
     icon: "/images/icons/veggie.png",
-    actions:["damage1","damage1","damage1","damage1"]
+    actions:["suicide","damage1","damage1","damage1"]
   }
 }

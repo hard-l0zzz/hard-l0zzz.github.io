@@ -14,6 +14,14 @@ window.Actions = {
 
         ]
     },
+    suicide:{
+        name:"Самоубийство",
+        targetType:"friendly",
+        success:[
+            {type: "textMessage", text: "{CASTER} использует {ACTION}!"},
+            {type:"stateChange",recover:-100}
+        ]
+    },
     saucyStatus: {
         name: "Выжимка помидоров :D",
         targetType:"friendly",

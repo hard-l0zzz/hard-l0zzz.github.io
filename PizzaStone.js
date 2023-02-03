@@ -13,6 +13,9 @@ class PizzaStone extends GameObject {
       this.storyFlag = config.storyFlag;
       this.pizzas = config.pizzas;
   
+
+
+      
       this.talking = [
         {
           required: [this.storyFlag],
