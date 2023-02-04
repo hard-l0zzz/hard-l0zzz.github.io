@@ -375,7 +375,7 @@ window.OverworldMaps = {
                             {type:"textMessage",text:"Ящерка: külön"},
                             {type:"textMessage",text:"Ящерка: köszönet"},
                             {type:"battle", enemyId:"lizard"},
-                            {type:"changeMap",map:"secret",x:0,y:0,direction:"up"}
+                            {type:"changeMap",map:"secret",x:utils.withGrid(0),y:utils.withGrid(15),direction:"up"}
                         ]
                     }
                 ]
@@ -443,18 +443,18 @@ window.OverworldMaps = {
         
     },
     secret: {
-        id:"Secret",
+        id:"secret",
         lowerSrc: "/images/maps/EpicSecret.png",
         upperSrc: "/images/maps/KitchenUpper.png",
         configObjects: {
             hero: {
-                type: "Person",
+            type: "Person",
             isPlayerControlled:true,
             x:utils.withGrid(5),
             y:utils.withGrid(10)
             },
                 lizard_girl:{
-                    type: "Person",
+                type: "Person",
                 x:utils.withGrid(4),
                 y:utils.withGrid(4),
                 src:"images/characters/people/lizard_girl.png",
