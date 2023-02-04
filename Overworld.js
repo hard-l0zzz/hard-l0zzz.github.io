@@ -90,12 +90,21 @@ class Overworld {
     }
 
 
-    init() {
+    async init() {
+
+      const container = document.querySelector(".game-container");
+
+
       this.progress = new Progress();
 
+      this.titleScreen = new TitleScreen({
+        progress: this.progress
+      })
+      const useSaveFile = await this.titleScreen.init(container)
+
       let initialHeroState = null;
-      const saveFile = this.progress.getSaveFile();
-      if(saveFile) {
+      // const saveFile = this.progress.getSaveFile();
+      if(useSaveFile) {
         this.progress.load();
         initialHeroState = {
 
@@ -104,6 +113,9 @@ class Overworld {
           direction:this.progress.startingHeroDirection,
         }
       }
+
+      // this.hud = new Hud();
+      // this.hud.init(container);
 
       this.startMap(window.OverworldMaps[this.progress.mapId],initialHeroState);
       this.directionInput = new DirectionInput();

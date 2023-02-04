@@ -28,6 +28,7 @@ class CraftingMenu {
     }
   
     close() {
+      this.esc?.unbind();
       this.keyboardMenu.end();
       this.element.remove();
       this.onComplete();
@@ -43,5 +44,8 @@ class CraftingMenu {
       this.keyboardMenu.setOptions(this.getOptions())
   
       container.appendChild(this.element);
+      // this.esc = new KeyPressListener("Escape", () => {
+      //   this.close();
+      // })
     }
   }
