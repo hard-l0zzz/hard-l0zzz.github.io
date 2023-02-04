@@ -63,7 +63,7 @@ class Overworld {
       document.addEventListener("PersonWalkingComplete",e => {
         if(e.detail.whoId === "hero"){
           //позиция игрока поменялась
-          console.log("woo");
+          // console.log("woo");
           this.map.checkForFootstepCutscene();
         }
       })
@@ -86,7 +86,6 @@ class Overworld {
       this.progress.startingHeroX = this.map.gameObjects.hero.x;
       this.progress.startingHeroY = this.map.gameObjects.hero.y;
       this.progress.startingHeroDirection = this.map.gameObjects.hero.direction;
-
     }
 
 
@@ -124,9 +123,5 @@ class Overworld {
       this.bindActionInput();
       this.bindHeroPositioncheck();
       this.startGameLoop();
-
-      // this.map.startCutscene([
-      //   {type:"battle", enemyId:"beth"}
-      // ])
   }
 }

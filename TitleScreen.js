@@ -20,7 +20,7 @@ class TitleScreen {
         },
         safeFile ? {
           label: "Продолжить игру",
-          description: "Продолжить эпик приключение.",
+          description: "Продолжить эпик приключение!",
           handler: () => {
             const sceneTransition = new SceneTransition();
             sceneTransition.init(document.querySelector(".game-container"), () => {

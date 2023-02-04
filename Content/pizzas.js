@@ -13,7 +13,7 @@ window.Pizzas = {
     description:"Классика",
     src: "/images/characters/pizzas/s001.png",
     icon: "/images/icons/spicy.png",
-    actions:["test","damage1","clumsyStatus","saucyStatus"]
+    actions:["nothing","damage1","clumsyStatus","saucyStatus"]
   },
   "s002": {
     name: "Пицца с беконом",
@@ -21,7 +21,7 @@ window.Pizzas = {
     type: PizzaTypes.spicy,
     src: "/images/characters/pizzas/s002.png",
     icon: "/images/icons/spicy.png",
-    actions:["test","damage1","clumsyStatus","saucyStatus",]
+    actions:["damage1","clumsyStatus","saucyStatus",]
   },
   "v001": {
     name: "Пицца с огурчиками",
@@ -34,9 +34,9 @@ window.Pizzas = {
   "f001": {
     name: "Портобелло Экспресс",
     description:"Быстрота и невероятность изменений!",
-    type: PizzaTypes.fungi,
-    src: "/images/characters/pizzas/f001.png",
-    icon: "/images/icons/fungi.png",
+    type: PizzaTypes.veggie,
+    src: "/images/characters/pizzas/v003.png",
+    icon: "/images/icons/veggie.png",
     actions:["damage1","clumsyStatus","item_recoverHp1"]
   },
   "stepalox": {

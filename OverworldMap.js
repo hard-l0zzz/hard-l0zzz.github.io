@@ -159,7 +159,7 @@ window.OverworldMaps = {
                     },
                     {
                         events: [
-                            {type:"textMessage",text:"Кот:мяу"}
+                            {type:"textMessage",text:"Кот:мяу"},
                         ]
                     }
                 ]
@@ -311,6 +311,13 @@ window.OverworldMaps = {
                     ]
                 }
             ],
+            // [utils.asGridCoord(5,9)]:[
+            //     {
+            //     events:[
+            //         {type:"textMessage", text:"Однажды вы жили в богатой семье знаменитых на весь мир поваров..."}
+            //     ]
+            // }
+            // ],
             [utils.asGridCoord(5,10)]:[
                 {
                     events:[

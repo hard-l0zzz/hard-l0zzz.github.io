@@ -52,7 +52,8 @@ class OverworldEvent{
   }
 
   disappear(){
-    this.map.gameObjects.hero.isMounted = false;
+    const who = this.map.gameObjects["npc1"];
+    who.isMounted = false;
   }
   changeMap(resolve) {
 

@@ -30,8 +30,23 @@ class PauseMenu {
             }
           },
           {
+            label:"Музыка",
+            description:"Включить или выключить музыку.",
+            handler:() => {
+              var myaudio = document.getElementById("myaudio");
+              myaudio.volume = 0.42
+              if(myaudio.paused == true){
+                document.getElementById("myaudio").play();
+                label.innerHTML = "Включить музыку"
+              }
+              if(myaudio.paused == false){
+                document.getElementById("myaudio").pause();
+              }
+            }
+          },
+          {
             label: "Закрыть",
-            description: "Закрыть меню",
+            description: "Закрыть меню.",
             handler: () => {
               this.close();
             }

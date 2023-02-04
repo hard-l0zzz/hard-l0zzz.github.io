@@ -8,6 +8,14 @@ window.Actions = {
         ],
         description:"Жёстко ударить врага >:D"
     },
+    nothing:{
+        name:"Бездействие!",
+        success:[
+            {type:"textMessage",text:"{CASTER} абсолютно ничего не делает!"},
+            
+        ],
+        description:"Эпично ничего не делать!!!Пропускает ход"
+    },
     test:{
         name:"test",
         success:[

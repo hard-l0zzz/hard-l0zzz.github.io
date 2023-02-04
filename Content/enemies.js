@@ -23,7 +23,7 @@ window.Enemies = {
         pizzas:{
             "a":{
                 pizzaId:"f001",
-                maxHp:1,
+                maxHp:50,
                 level:1,
                 //attackBonus: 20000,
                 //.........
