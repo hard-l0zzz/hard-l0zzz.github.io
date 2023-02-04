@@ -1,0 +1,43 @@
+.TitleScreen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-family: monospace;
+    background: #000;
+  }
+  
+  .TitleScreen_logo {
+    display: block;
+    font-family: monospace;
+    margin: 0 auto;
+    width: 128px;
+    image-rendering: pixelated;
+  }
+  
+  .TitleScreen .KeyboardMenu {
+    position: relative;
+    width: 100px;
+    font-family: monospace;
+    margin: 0 auto;
+    background: transparent;
+    border: 0;
+  }
+  .TitleScreen button {
+    color: #fff;
+    font-family: monospace;
+    justify-content: center;
+    padding:0;
+  }
+  
+  .TitleScreen .DescriptionBox {
+    background: transparent;
+    height:20px;
+    color: #fff;
+    margin-left:66px;
+    border: 0;
+    text-align: center;
+    font-family: monospace;
+  }
+  
