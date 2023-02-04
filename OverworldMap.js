@@ -465,7 +465,7 @@ window.OverworldMaps = {
                     {
                         events:[
                             {type:"textMessage",text:"Ящерка: степа лошара"},
-                            {type:"changeMap",map:"Kitchen",x:0,y:0,direction:"up"}
+                            {type:"changeMap",map:"Kitchen",x:utils.withGrid(4),y:utils.withGrid(5),direction:"up"}
                         ]
                     }
                 ]
