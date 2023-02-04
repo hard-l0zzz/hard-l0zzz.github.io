@@ -87,7 +87,7 @@ class Combatant {
   }
 
   getReplacedEvents(originalEvents){
-    if(this.status?.type === "Масло" && utils.randomFromArray([true,false])){
+    if(this.status?.type === "Масло" && utils.getRandomInt(100) > 66){
       return [
         {type:"textMessage", text:`${this.name} падает!`},
       ]

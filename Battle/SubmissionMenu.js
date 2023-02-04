@@ -125,13 +125,23 @@ class SubmissionMenu {
 
   decide() {
     let who = this.caster;
-    if(who.hp < who.maxHp * 0.60 && who.status?.type != "Соус")
-    {
-      this.menuSubmit(Actions[ this.caster.actions[2]]);
-    }
     if(this.enemy.status?.type == "Масло")
     {
       this.menuSubmit(Actions[this.caster.actions[0]]);
+      // if(utils.getRandomInt(100) >= 50){
+
+      // }
+      // else if(who.hp <= who.maxHp && who.status?.type != "Соус"){
+      //   this.menuSubmit(Actions[this.caster.actions[2]]);
+      // }
+    }
+    if(who.hp <= who.maxHp * 0.33 && who.status?.type != "Соус")
+    {
+      this.menuSubmit(Actions[ this.caster.actions[2]]);
+    }
+    if(who.hp <= who.maxHp && who.status?.type != "Соус")
+    {
+      this.menuSubmit(Actions[ this.caster.actions[utils.getRandomInt(2)]]);
     }
     else
     {
