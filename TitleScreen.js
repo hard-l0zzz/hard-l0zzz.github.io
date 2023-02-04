@@ -10,16 +10,24 @@ class TitleScreen {
           label: "Новая игра",
           description: "Начать новое эпик приключение!",
           handler: () => {
-            this.close();
-            resolve();
+            const sceneTransition = new SceneTransition();
+            sceneTransition.init(document.querySelector(".game-container"), () => {
+              this.close();
+              resolve();
+              sceneTransition.fadeOut();
+            })
           }
         },
         safeFile ? {
           label: "Продолжить игру",
           description: "Продолжить эпик приключение.",
           handler: () => {
-            this.close();
-            resolve(safeFile);
+            const sceneTransition = new SceneTransition();
+            sceneTransition.init(document.querySelector(".game-container"), () => {
+              this.close();
+              resolve(safeFile);
+              sceneTransition.fadeOut();
+            })
           }
         } : null
       ].filter(v => v);
