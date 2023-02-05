@@ -636,6 +636,28 @@ window.OverworldMaps = {
                     }
                 ]
             },
+        },
+        cutsceneSpaces:{
+            [utils.asGridCoord(25,5)]:
+        [
+            {
+                events:[
+                    {type:"changeMap",map:"streetNorth",direction:"up",x:utils.withGrid(7),y:utils.withGrid(15)}
+                ]
+            }
+        ]
+        }
+    },
+    streetNorth:{
+        id:"streetNorth",
+        lowerSrc:"/images/maps/StreetNorthLower.png",
+        upperSrc:"/images/maps/StreetNorthUpper.png",
+        configObjects:{
+            hero:{
+                type:"Person",
+                isPlayerControlled:true,
+                direction:"up"
+            }
         }
     }
 }
