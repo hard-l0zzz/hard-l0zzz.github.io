@@ -1,6 +1,6 @@
 class KeyboardMenu {
     constructor(config = {}) {
-      this.options = []; //set by updater method
+      this.options = []; 
       this.up = null;
       this.down = null;
       this.prevFocus = null;
@@ -31,6 +31,7 @@ class KeyboardMenu {
         button.addEventListener("keyup", () => {
             if (event.keyCode === 69){
                 const chosenOption = this.options[ Number(button.dataset.button) ];
+                // var buttonSound
                 chosenOption.handler();
             }
         })
@@ -56,7 +57,7 @@ class KeyboardMenu {
       this.element = document.createElement("div");
       this.element.classList.add("KeyboardMenu");
   
-      //Description box element
+      //место с описанием
       this.descriptionElement = document.createElement("div");
       this.descriptionElement.classList.add("DescriptionBox");
       this.descriptionElement.innerHTML = (`<p>тут должна быть информация!</p>`);
@@ -65,11 +66,10 @@ class KeyboardMenu {
   
     end() {
   
-      //Remove menu element and description element
+      //убрать меню и описание
       this.element.remove();
       this.descriptionElement.remove();
   
-      //Clean up bindings
       this.up.unbind();
       this.down.unbind();
       this.select.unbind();

@@ -211,6 +211,13 @@ window.OverworldMaps = {
                         ]
                     },
                     {
+                        required: ["USED_PIZZA_STONE"],
+                        events:[
+                            {type:"textMessage", text:"Бетт:Ого, ты умеешь использовать алтари пицц!"},
+                            {type:"removeStoryFlag",flag:"USED_PIZZA_STONE"}
+                        ]
+                    },
+                    {
                       events: [
                         { type: "textMessage", text: "Бетт:Этот кот...",faceHero:"npc1"},
                         { type: "textMessage", text: "Бетт:Он мне не нравится!"},
@@ -235,6 +242,12 @@ window.OverworldMaps = {
                             {type:"textMessage",text:"Охранник:...",faceHero:"npc2"},
                             {type:"addStoryFlag",flag:"TALKED_TO_NPC2"},
                             //{type:"disappear",who:"hero"}
+                        ]
+                    },
+                    {
+                        required:["SEEN_INTRO"],
+                        events:[
+                            {type:"textMessage",text:"Wow"}
                         ]
                     }
                 ]
@@ -311,6 +324,23 @@ window.OverworldMaps = {
                     ]
                 }
             ],
+            // [utils.asGridCoord(5,8)]:[
+            //     {
+            //         events:[
+            //             {type:"addStoryFlag",flag:"HAS_TO_SEE_INTRO"}
+            //         ],
+            //         required:["HAS_TO_SEE_INTRO"],
+            //         events:[
+            //             {type:"textMessage", text:"wow"},
+            //             {type:"addStoryFlag",flag:"SEEN_INTRO"},
+            //             {type:"removeStoryFlag",flag:"HAS_TO_SEE_INTRO"}
+            //         ],
+            //         required:["SEEN_INTRO"],
+            //         events:[
+            //             {type:"addStoryFlag",flag:"NOTHING"}
+            //         ]
+            //     },
+            // ],
             // [utils.asGridCoord(5,9)]:[
             //     {
             //     events:[
@@ -481,4 +511,131 @@ window.OverworldMaps = {
 
         
     },
+    startZone:{
+        id:"startZone",
+        lowerSrc: "images/maps/KitchenUpper.png",
+        upperSrc: "images/maps/KitchenUpper.png",
+        configObjects: {
+            hero:{
+                type:"Person",
+                isPlayerControlled:true,
+                x:utils.withGrid(15),
+                y:utils.withGrid(15),
+                direction:"up"
+            },
+            hero2:{
+                type:"Person",
+                x:utils.withGrid(15),
+                y:utils.withGrid(10),
+                src:"images/characters/people/lizard_girl.png",
+                talking:[
+                    {
+                        events:[
+                            {type:"textMessage",text:"???:Тебе, наверное, интересно, как ты сюда попал."},
+                        ]
+                    }
+                ]
+            },
+        },
+        walls:
+        {
+            // [utils.asGridCoord(15,16)]:true,
+            // [utils.asGridCoord(14,15)]:true,
+            // [utils.asGridCoord(15,14)]:true,
+            // [utils.asGridCoord(16,15)]:true
+        }
+    },
+    street:{
+        id:"street",
+        lowerSrc:"images/maps/StreetLower.png",
+        upperSrc:"images/maps/StreetUpper.png",
+        configObjects:{
+            hero:{
+                isPlayerControlled:true,
+                type:"Person",
+                direction:"right",
+                x:utils.withGrid(6),
+                y:utils.withGrid(12)
+            },
+            npc1:{
+                type:"Person",
+                src:"/images/characters/people/npc1.png",
+                x:utils.withGrid(8),
+                y:utils.withGrid(10),
+                talking:[
+                    {
+                        events:[
+                            {type:`textMessage`,text:`It's an animal. It is pink. It's doing "Oink" sound.`},
+                            {type:`textMessage`,text:`It can eat carrots in minecraft.`},
+                            {type:`textMessage`,text:`It has piglet.`},
+                            {type:`textMessage`,text:`If you guessed it right, congratulations!`},
+                        ]
+                    }
+                ]
+            },
+            npc2:{
+                type:"Person",
+                src:"/images/characters/people/npc2.png",
+                x:utils.withGrid(12),
+                y:utils.withGrid(10),
+                talking:[
+                    {
+                        events:[
+                            {type:`textMessage`,text:`It's an electronic computing device.`},
+                            {type:`textMessage`,text:`It can run minecraft.`},
+                            {type:`textMessage`,text:`You can bring it with you and it has touchpad.`},
+                            {type:`textMessage`,text:`If you guessed it right, congratulations!`},
+                        ]
+                    }
+                ]
+            },
+            npc3:{
+                type:"Person",
+                src:"/images/characters/people/npc3.png",
+                x:utils.withGrid(14),
+                y:utils.withGrid(9),
+                talking:[
+                    {
+                        events:[
+                            {type:`textMessage`,text:`Nobody loves to do this.`},
+                            {type:`textMessage`,text:`Some teachers may ask students to do it in home.`},
+                            {type:`textMessage`,text:`This sentence is a part of it.`},
+                            {type:`textMessage`,text:`If you guessed it right, congratulations!`},
+                        ]
+                    }
+                ]
+            },
+            npc4:{
+                type:"Person",
+                src:"/images/characters/people/npc4.png",
+                x:utils.withGrid(10),
+                y:utils.withGrid(10),
+                talking:[
+                    {
+                        events:[
+                            {type:`textMessage`,text:`It is a geometric figure.`},
+                            {type:`textMessage`,text:`The ancient egyptians built it out of sand.`},
+                            {type:`textMessage`,text:`If you guessed it right, congratulations!`},
+                        ]
+                    }
+                ]
+            },
+            npc5:{
+                type:"Person",
+                src:"/images/characters/people/npc5.png",
+                x:utils.withGrid(15),
+                y:utils.withGrid(8),
+                talking:[
+                    {
+                        events:[
+                            {type:`textMessage`,text:`It's a part of the answer on 3nd question.`},
+                            {type:`textMessage`,text:`You use it to move here.`},
+                            {type:`textMessage`,text:`It has buttons and some of them can light.`},
+                            {type:`textMessage`,text:`If you guessed it right, congratulations!`},
+                        ]
+                    }
+                ]
+            },
+        }
+    }
 }

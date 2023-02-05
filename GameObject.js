@@ -10,7 +10,7 @@ class GameObject {
         src: config.src || "/images/characters/people/hero.png",
       });
   
-      //These happen once on map startup.
+      //начало запуска карты
       this.behaviorLoop = config.behaviorLoop || [];
       this.behaviorLoopIndex = 0;
       this.talking = config.talking || [];
@@ -20,7 +20,7 @@ class GameObject {
     mount(map) {
       this.isMounted = true;
   
-      //If we have a behavior, kick off after a short delay
+      //если есть поведение, начать его после задержки
       setTimeout(() => {
         this.doBehaviorEvent(map);
       }, 10)
@@ -31,7 +31,7 @@ class GameObject {
   
     async doBehaviorEvent(map) { 
   
-      //Don't do anything if I don't have config to do anything
+      //ничего не делать если нет поведения
       if (this.behaviorLoop.length === 0) {
         return;  
       }
@@ -49,21 +49,20 @@ class GameObject {
       }
   
   
-      //Setting up our event with relevant info
+      //подготовка для ивента
       let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];
       eventConfig.who = this.id;
   
-      //Create an event instance out of our next event config
       const eventHandler = new OverworldEvent({ map, event: eventConfig });
       await eventHandler.init(); 
   
-      //Setting the next event to fire
+      //подготовка следующего ивента к запуску
       this.behaviorLoopIndex += 1;
       if (this.behaviorLoopIndex === this.behaviorLoop.length) {
         this.behaviorLoopIndex = 0;
       } 
   
-      //Do it again!
+      //сделать еще раз
       this.doBehaviorEvent(map);
       
   

@@ -110,6 +110,11 @@ class OverworldEvent{
         resolve();
     }
 
+    removeStoryFlag(resolve){
+      window.playerState.storyFlags[this.event.flag] = false;
+      resolve();
+    }
+
     craftingMenu(resolve) {
         const menu = new CraftingMenu({
           pizzas: this.event.pizzas,

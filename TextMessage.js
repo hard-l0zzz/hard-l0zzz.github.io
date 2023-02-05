@@ -6,7 +6,7 @@ class TextMessage {
   }
 
   createElement() {
-    //Create the element
+    //создать элемент
     this.element = document.createElement("div");
     this.element.classList.add("TextMessage");
 
@@ -15,14 +15,14 @@ class TextMessage {
       <button class="TextMessage_button">>></button>
     `)
 
-    //Init the typewriter effect
+    //запустить эффект написания
     this.revealingText = new RevealingText({
       element: this.element.querySelector(".TextMessage_p"),
       text: this.text
     })
 
     this.element.querySelector("button").addEventListener("click", () => {
-      //Close the text message
+      //закрыть сообщение
       this.done();
     });
 

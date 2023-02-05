@@ -56,13 +56,13 @@ class Sprite {
 
 
     updateAnimationProgress(){
-        //Downtick frame progress
+        //убавлять процесс смены кадров
         if(this.animationFrameProgress > 0){
             this.animationFrameProgress -= 1;
             return;
         }
 
-        //reset
+        //ресет
 
         this.animationFrameProgress = this.animationFrameLimit;
         this.currentAnimationFrame += 1;

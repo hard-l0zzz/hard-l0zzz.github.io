@@ -6,7 +6,7 @@ class PauseMenu {
   
     getOptions(pageKey) {
   
-      //Case 1: Show the first page of options
+      //показать первую страницу опций
       if (pageKey === "root") {
         const lineupPizzas = playerState.lineup.map(id => {
           const {pizzaId} = playerState.pizzas[id];
@@ -37,7 +37,7 @@ class PauseMenu {
               myaudio.volume = 0.42
               if(myaudio.paused == true){
                 document.getElementById("myaudio").play();
-                label.innerHTML = "Включить музыку"
+                description.innerHTML = "Выключить музыку";
               }
               if(myaudio.paused == false){
                 document.getElementById("myaudio").pause();
@@ -54,7 +54,7 @@ class PauseMenu {
         ]
       }
   
-      //Case 2: Show the options for just one pizza (by id)
+      //показать опции для одной пиццы
       const unequipped = Object.keys(playerState.pizzas).filter(id => {
         return playerState.lineup.indexOf(id) === -1;
       }).map(id => {
