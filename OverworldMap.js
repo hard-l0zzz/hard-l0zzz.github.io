@@ -636,6 +636,36 @@ window.OverworldMaps = {
                     }
                 ]
             },
+            cat:{
+                type: "Person",
+                x:utils.withGrid(12),
+                y: utils.withGrid(18),
+                src:"/images/characters/hero.png",
+                behaviorLoop: [
+                    {type:"walk", direction: "up"},
+                    {type:"walk", direction: "up"},
+                    {type:"walk", direction: "left"},
+                    {type:"walk", direction: "left"},
+                    {type:"walk", direction: "down"},
+                    {type:"walk", direction: "down"},
+                    {type:"walk", direction: "right"},
+                    {type:"walk", direction: "right"},
+                ],
+                talking: [
+                    {
+                    required: ["USED_PIZZA_STONE"],
+                    events:[
+                        {type:"textMessage",text:"Кот:Ого, ты умеешь использовать алтари пицц!"}
+                    ]
+
+                    },
+                    {
+                        events: [
+                            {type:"textMessage",text:"Кот:мяу"},
+                        ]
+                    }
+                ]
+            },
         },
         cutsceneSpaces:{
             [utils.asGridCoord(25,5)]:
