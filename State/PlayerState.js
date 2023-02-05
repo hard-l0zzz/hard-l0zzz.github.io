@@ -27,9 +27,7 @@ class PlayerState {
             { actionId: "item_recoverHp", instanceId: "item3" },
         ]
         this.storyFlags = {
-            // "DID_SOMETHING":true,
-            // "DEFEATED_FIRST_BOSS":true,
-            //TALKED_TO_NPC2: true
+            // HAS_TO_SEE_INTRO:true
         }
     }
     addPizza(pizzaId) {

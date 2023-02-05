@@ -25,7 +25,7 @@
   left: 1px;
 }
 .Battle_hero img {
-  transform: translateY(-64px); /* Nudge hero spritesheet */
+  transform: translateY(-64px); 
 }
 .Battle_enemy {
   top: 42px;
