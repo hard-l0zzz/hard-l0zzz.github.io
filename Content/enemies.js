@@ -30,6 +30,17 @@ window.Enemies = {
             }
         }
     },
+    "cat":{
+        name:"Кот",
+        src:"images/characters/hero.png",
+        pizzas:{
+            "a":{
+                pizzaId:"s001",
+                maxHp:50,
+                level:1,
+            },
+        }
+    },
     "lizard":{
         name:"Ящерка",
         src:"/images/characters/people/lizard_girl.png",
