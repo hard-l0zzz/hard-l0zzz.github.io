@@ -662,6 +662,7 @@ window.OverworldMaps = {
                     {
                         events: [
                             {type:"textMessage",text:"Кот:мяу"},
+                            {type:"battle", enemyId:"cat"},
                         ]
                     }
                 ]
