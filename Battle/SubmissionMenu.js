@@ -39,7 +39,7 @@ class SubmissionMenu {
           label: "Атаковать",
           description: "Выбрать вид атаки",
           handler: () => {
-            //Do something when chosen...
+            //делать что-то после выбора
             this.keyboardMenu.setOptions( this.getPages().attacks )
           }
         },
@@ -47,7 +47,7 @@ class SubmissionMenu {
           label: "Предметы",
           description: "Выбрать предмет",
           handler: () => {
-            //Go to items page...
+            //перейти на страницу с предметами
             this.keyboardMenu.setOptions( this.getPages().items )
           }
         },
@@ -56,7 +56,7 @@ class SubmissionMenu {
           description: "Поменять пиццу",
           handler: () => { 
             this.keyboardMenu.setOptions(this.getPages().replacements)
-            //See pizza options
+            //посмотреть варианты для смены пиццы
           }
         },
       ],
@@ -95,7 +95,7 @@ class SubmissionMenu {
             label: replacement.name,
             description: replacement.description,
             handler: () => {
-              //Swap me in, coach!
+              //поменять пиццу
               this.menuSubmitReplacement(replacement)
             }
           }
@@ -158,7 +158,7 @@ class SubmissionMenu {
   init(container) {
 
     if (this.caster.isPlayerControlled) {
-      //Show some UI
+      //показать интерфейс
       this.showMenu(container)
     } else {
       this.decide()

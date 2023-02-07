@@ -24,12 +24,12 @@ window.BattleAnimations = {
           </svg>
         `);
     
-        //Remove class when animation is fully complete
+        //Удалить класс после завершения анимации
         div.addEventListener("animationend", () => {
           div.remove();
         });
     
-        //Add to scene
+        //Добавить на сцену
         document.querySelector(".Battle").appendChild(div);
     
         await utils.wait(820);

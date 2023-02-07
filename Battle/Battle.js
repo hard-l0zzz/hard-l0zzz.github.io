@@ -3,46 +3,6 @@ class Battle {
     this.enemy = enemy;
     this.onComplete = onComplete;
     this.combatants = {
-      // "player1": new Combatant({
-      //   ...Pizzas.s001,
-      //   team: "player",
-      //   hp: 50,
-      //   maxHp: 50,
-      //   xp: 0,
-      //   maxXp: 100,
-      //   level: 1,
-      //   status: null,
-      //   isPlayerControlled:true
-      // }, this),
-      // "player2": new Combatant({
-      //   ...Pizzas.s002,
-      //   team: "player",
-      //   hp: 50,
-      //   maxHp: 50,
-      //   xp: 0,
-      //   maxXp: 100,
-      //   level: 1,
-      //   status: null,
-      //   isPlayerControlled:true
-      // }, this),
-      // "enemy1": new Combatant({
-      //   ...Pizzas.v001,
-      //   team: "enemy",
-      //   hp: 1,
-      //   maxHp: 50,
-      //   xp: 0,
-      //   maxXp: 100,
-      //   level: 1,
-      // }, this),
-      // "enemy2": new Combatant({
-      //   ...Pizzas.f001,
-      //   team: "enemy",
-      //   hp: 1,
-      //   maxHp: 50,
-      //   xp: 0,
-      //   maxXp: 100,
-      //   level: 1,
-      // }, this)
     }
 
     this.activeCombatants = {
@@ -50,7 +10,7 @@ class Battle {
       enemy: null,
     }
 
-    //Dynamically add the Player team
+    //Добавить команду игрока
     window.playerState.lineup.forEach(id => {
       this.addCombatant(id, "player", window.playerState.pizzas[id])
     }); 
@@ -60,10 +20,10 @@ class Battle {
     })
 
     
-    //Start empty
+    //Начинать с 0 предметами
     this.items = []
 
-    //Add in player items
+    //Добавить предметы
     window.playerState.items.forEach(item => {
       this.items.push({
         ...item,
@@ -97,6 +57,11 @@ class Battle {
   }
 
   init(container) {
+    if(myaudio.paused == false){
+      document.getElementById("myaudio").pause();
+    }
+    document.getElementById("battleaudio").play();
+    document.getElementById("battleaudio").volume = 0.12;
     this.createElement();
     container.appendChild(this.element);
 
@@ -126,13 +91,17 @@ class Battle {
               playerStatePizza.level = combatant.level;
             }
           })
-          //Get rid of player used items
+          //Удалить использованные игроком предметы
           playerState.items = playerState.items.filter(item => {
             return !this.usedInstanceIds[item.instanceId]
           })
         }
         this.element.remove();
         this.onComplete(winner === "player");
+        if(myaudio.paused == true){
+          document.getElementById("myaudio").play();
+        }
+        document.getElementById("battleaudio").pause();
       }
     })
     this.turnCycle.init();

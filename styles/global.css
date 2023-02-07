@@ -30,6 +30,16 @@ body {
   transform: scale(3.4) translateY(40%);
 }
 
+.desc {
+  position: absolute;
+  left:0; right:0;
+  bottom: 0;
+  text-align:right;
+  font-size: 12px;
+  font-family: monospace;
+  color: #333;
+}
+
 .game-container canvas {
   image-rendering: pixelated;
 }

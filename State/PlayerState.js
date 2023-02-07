@@ -46,16 +46,6 @@ class PlayerState {
         }
         utils.emitEvent("LineupChanged");
       }
-      addItem(instanceId) {
-        const newId = `p${Date.now()}`+Math.floor(Math.random() * 99999);
-        this.items[newId] = {
-          instanceId,
-        }
-        if (this.lineup.length < 3) {
-          this.lineup.push(newId)
-        }
-        utils.emitEvent("LineupChanged");
-      }
     swapLineup(oldId, incomingId) {
         const oldIndex = this.lineup.indexOf(oldId);
         this.lineup[oldIndex] = incomingId;

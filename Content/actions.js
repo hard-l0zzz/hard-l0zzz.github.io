@@ -22,6 +22,14 @@ window.Actions = {
 
         ]
     },
+    damage2:{
+        name:"Слабый удар пиццы",
+        success:[
+            {type:"textMessage",text:"{CASTER} слабо атакует!"},
+            {type:"animation",animation:"spin"},
+            {type:"stateChange",damage:5}
+        ]
+    },
     suicide:{
         name:"Самоубийство",
         targetType:"friendly",

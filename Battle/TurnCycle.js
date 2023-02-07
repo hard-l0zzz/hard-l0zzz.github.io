@@ -3,11 +3,11 @@ class TurnCycle {
     this.battle = battle;
     this.onNewEvent = onNewEvent;
     this.onWinner = onWinner;
-    this.currentTeam = "player"; //or "enemy"
+    this.currentTeam = "player"; //или "enemy"
   }
 
   async turn() {
-    //Get the caster
+    //получить того кто действует
     const casterId = this.battle.activeCombatants[this.currentTeam];
     const caster = this.battle.combatants[casterId];
     const enemyId = this.battle.activeCombatants[caster.team === "player" ? "enemy" : "player"]
@@ -19,7 +19,7 @@ class TurnCycle {
       enemy
     })
 
-    //Stop here if we are replacing this Pizza
+    //остановиться если меняем пиццу
     if (submission.replacement) {
       await this.onNewEvent({
         type: "replace",
@@ -35,10 +35,9 @@ class TurnCycle {
 
     if (submission.instanceId) {
 
-      //Add to list to persist to player state later
       this.battle.usedInstanceIds[submission.instanceId] = true;
 
-      //Removing item from battle state
+      //убрать предметы с боя
       this.battle.items = this.battle.items.filter(i => i.instanceId !== submission.instanceId)
     }
 
@@ -55,7 +54,7 @@ class TurnCycle {
       await this.onNewEvent(event);
     }
 
-    //Did the target die?
+    //цель умерла?
     const targetDead = submission.target.hp <= 0;
     if (targetDead) {
       await this.onNewEvent({ 
@@ -79,7 +78,7 @@ class TurnCycle {
       }
     }
 
-    //Do we have a winning team?
+    //у нас есть победитель?
       let winner = this.getWinningTeam();
       if(winner) {
         if(winner == "player"){
@@ -97,17 +96,8 @@ class TurnCycle {
         this.onWinner(winner);
         return;
       }
-    // const winner = this.getWinningTeam();
-    // if (winner) {
-    //   await this.onNewEvent({
-    //     type: "textMessage",
-    //     text: "Winner!"
-    //   })
-    //   this.onWinner(winner);
-    //   return;
-    // }
       
-    //We have a dead target, but still no winner, so bring in a replacement
+    //цель мертва, но нет победителя, поэтому меняем пиццу на оставшиеся
     if (targetDead) {
       const replacement = await this.onNewEvent({
         type: "replacementMenu",
@@ -132,8 +122,8 @@ class TurnCycle {
       }
 
 
-    //Check for post events
-    //(Do things AFTER your original turn submission)
+    //проверить на последующие события
+    //делают эффекты после хода
     const postEvents = caster.getPostEvents();
     for (let i=0; i < postEvents.length; i++ ) {
       const event = {
@@ -146,7 +136,7 @@ class TurnCycle {
       await this.onNewEvent(event);
     }
 
-    //Check for status expire
+    //проверить на конец действия эффекта
     const expiredEvent = caster.decrementStatus();
     if (expiredEvent) {
       await this.onNewEvent(expiredEvent)
@@ -178,7 +168,7 @@ class TurnCycle {
       text: `Битва с ${this.battle.enemy.name} начинается!`
     })
 
-    //Start the first turn!
+    //начать первый ход
     this.turn();
 
   }

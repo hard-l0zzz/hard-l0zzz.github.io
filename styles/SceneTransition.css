@@ -6,10 +6,10 @@
   bottom:0;
   background: black;
   opacity: 0;
-  animation: scene-transition-fade-in 0.5s forwards;
+  animation: scene-transition-fade-in 0.42s forwards;
 }
 .SceneTransition.fade-out {
-  animation: scene-transition-fade-out 0.5s forwards;
+  animation: scene-transition-fade-out 0.42s forwards;
 }
 
 @keyframes scene-transition-fade-in {

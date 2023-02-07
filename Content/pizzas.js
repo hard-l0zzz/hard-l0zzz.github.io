@@ -15,6 +15,14 @@ window.Pizzas = {
     icon: "/images/icons/spicy.png",
     actions:["nothing","damage1","clumsyStatus","saucyStatus"]
   },
+  "nedotepa":{
+    name: `Неудачная "Пицца Купперов"`,
+    type:PizzaTypes.normal,
+    description:"Полный крах...Но это всё, на что вы способны.",
+    scr:"images/characters/pizzas/v001.png",
+    icon:"/images/icons/chill.png",
+    actions:["damage2","clumsyStatus2"]
+  },
   "s002": {
     name: "Пицца с беконом",
     description:"Эпичный бекон, солёное буйство!",

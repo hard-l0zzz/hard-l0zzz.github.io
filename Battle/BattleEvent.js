@@ -24,12 +24,12 @@ class BattleEvent {
     const {caster, target, damage,recover,status, action} = this.event;
     let who = this.event.onCaster ? caster : target;
     if (damage) {
-      //modify the target to have less HP
+      //наносить урон цели чтобы у неё уменьшалось хп
       target.update({
         hp: target.hp - damage
       })
       
-      //start blinking
+      //начать моргать пицце после получения урона
       target.pizzaElement.classList.add("battle-damage-blink");
     }
     if(recover){
@@ -53,10 +53,10 @@ class BattleEvent {
       })
     }
 
-    //Wait a little bit
+    //немного подождать
     await utils.wait(600)
 
-    //stop blinking
+    //перестать моргать пицце после получения урона
     target.pizzaElement.classList.remove("battle-damage-blink");
     resolve();
   }
@@ -71,7 +71,7 @@ class BattleEvent {
         return c.id !== caster.id && c.team === caster.team && c.hp > 0
       }),
       onComplete: submission => {
-        //submission { what move to use, who to use it on }
+        //что использовать и на кого, само действие
         resolve(submission)
       }
     })
