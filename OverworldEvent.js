@@ -124,15 +124,6 @@ class OverworldEvent{
         })
         menu.init(document.querySelector(".game-container"))
       }
-      lootMenu(resolve) {
-        const menu = new LootMenu({
-          items: this.event.items,
-          onComplete: () => {
-            resolve();
-          }
-        })
-        menu.init(document.querySelector(".game-container"))
-      }
 
   init(){
       return new Promise(resolve => {

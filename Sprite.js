@@ -18,7 +18,7 @@ class Sprite {
         }
 
         this.animations = config.animations || {
-            "idle-down" : [ [0,0] ],
+            "idle-down" : [ [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[2,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
             "idle-right": [ [0,1] ],
             "idle-up"   : [ [0,2] ],
             "idle-left" : [ [0,3] ],

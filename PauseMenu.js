@@ -34,7 +34,7 @@ class PauseMenu {
             description:"Включить или выключить музыку.",
             handler:() => {
               var myaudio = document.getElementById("myaudio");
-              myaudio.volume = 0.42
+              myaudio.volume = 0.12;
               if(myaudio.paused == true){
                 document.getElementById("myaudio").play();
                 description.innerHTML = "Выключить музыку";

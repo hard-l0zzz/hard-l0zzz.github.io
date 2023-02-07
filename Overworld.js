@@ -92,8 +92,6 @@ class Overworld {
     async init() {
 
       const container = document.querySelector(".game-container");
-
-
       this.progress = new Progress();
 
       this.titleScreen = new TitleScreen({
@@ -123,5 +121,7 @@ class Overworld {
       this.bindActionInput();
       this.bindHeroPositioncheck();
       this.startGameLoop();
+      // document.getElementById("myaudio").volume = 0.12;
+      // document.getElementById("myaudio").play();
   }
 }
