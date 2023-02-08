@@ -920,7 +920,7 @@ window.OverworldMaps = {
                         required:["RUINED_GUEST"],
                         events:
                         [
-                            {type:"textMessage",text:"Отец:..."},
+                            {type:"textMessage",text:"Отец:...",faceHero:"batya"},
                             {type:"textMessage",text:"Отец:Как такое возможно..."},
                             {type:"textMessage",text:"Отец:Ты хоть понимаешь..."},
                             {type:"textMessage",text:"Отец:ЧТО ТЫ НАДЕЛАЛ?!!"},
