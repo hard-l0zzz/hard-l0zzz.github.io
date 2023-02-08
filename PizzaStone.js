@@ -25,7 +25,7 @@ class PizzaStone extends GameObject {
         },
         {
           events: [
-            { type: "textMessage", text: "Вы потревожили алтарь пиццы!" },
+            { type: "textMessage", text: "Вы делаете пиццу изо всех сил..." },
             { type: "craftingMenu", pizzas: this.pizzas },
             { type: "addStoryFlag", flag: this.storyFlag },
           ]
