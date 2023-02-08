@@ -14,12 +14,26 @@
         <link href = "styles/TitleScreen.css" type = "text/css" rel = "stylesheet">
     </head>
     <body>
+        <!--музыка и звуки-->
         <audio id = myaudio loop>
-            <source src = "main_music1.mp3">
+            <source src = "sounds/main_music1.mp3">
         </audio>
         <audio id = battleaudio loop>
-            <source src = "battle.mp3">
+            <source src = "sounds/battle.mp3">
         </audio>
+        <audio id = charsound>
+            <source src = "sounds/char_sound.mp3">
+        </audio>
+        <audio id = charsound1>
+            <source src = "sounds/charsound1.mp3">
+        </audio>
+        <audio id = hitsound1>
+            <source src = "Sounds/hit_sound.mp3">
+        </audio>
+
+
+
+
         <div class="game-container">
             <canvas class="game-canvas" width="320" height="192"></canvas>
         </div>

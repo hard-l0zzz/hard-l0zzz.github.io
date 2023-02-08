@@ -11,10 +11,10 @@ class RevealingText {
     revealOneCharacter(list) {
       const next = list.splice(0,1)[0];
       next.span.classList.add("revealed");
-  
       if (list.length > 0) {
         this.timeout = setTimeout(() => {
           this.revealOneCharacter(list)
+          document.getElementById("charsound").play();
         }, next.delayAfter)
       } else {
         this.isDone = true;
@@ -32,19 +32,15 @@ class RevealingText {
     init() {
       let characters = [];
       this.text.split("").forEach(character => {
-  
         let span = document.createElement("span");
         span.textContent = character;
         this.element.appendChild(span);
-  
         characters.push({
           span,
           delayAfter: character === " " ? 0 : this.speed         
         })
       })
-  
       this.revealOneCharacter(characters);
-  
     }
   
   }

@@ -382,13 +382,50 @@ window.OverworldMaps = {
                 ],
                 talking: [
                     {
+                        required:["MADE_FIRST_PIZZA","TALKED_TO_FATHER"],
+                        events:[
+                            {type:"textMessage",text:"Отец:Окей, на вид выглядит неплохо, надеюсь и на вкус тоже."},
+                            {type:"textMessage",text:"Отец:Всё, времени уже нет, нужно быстрее её нести!"},
+                            {type:"changeMap",map:"diningRoom2",direction:"down",x:utils.withGrid(3),y:utils.withGrid(6)},
+                            // {type:"textMessage",text:"Отец:Что скажете, граф Де Рубильдо?Вам нравится?"},
+                            // {type:"textMessage",text:"Отец:Наши лучшие повара старались изо всех сил для такого гостя, как вы!"},
+                            // {type:"textMessage",text:"Отец:К тому же наше семейное фирменное блюдо требует большой подготовки для создания."},
+                            // {type:"textMessage",text:"Де Рубильдо:И ЭТО ВЫ НАЗЫВАЕТЕ УВАЖЕНИЕМ К СВОИМ КЛИЕНТАМ?!"},
+                            // {type:"textMessage",text:"Де Рубильдо:ЭТО НЕУВАЖЕНИЕ НЕ ТОЛЬКО КО МНЕ, НО И КО ВСЕМ ПОСЕТИТЕЛЯМ ДАННОГО ЗАВЕДЕНИЯ!"},
+                            // {type:"textMessage",text:"Де Рубильдо:ДА Я ДАЖЕ ВРАГУ НЕ ПОСМЕЮ РЕКОММЕНДОВАТЬ ЭТУ ПИЦЦЕРИЮ!ПОЛНЫЙ УЖАС!!!"},
+                            // {type:"textMessage",text:"Де Рубильдо:ПРОТИВНО ОТ ЭТОГО МЕСТА!"},
+                            // {who:"epicGuest",type:"walk",direction:"down"}
+                        ]
+                    },
+                    {
+                        required:["MADE_FIRST_PIZZA"],
+                        events:[
+                            {type:"textMessage",text:"Отец:Ого, ты уже сделал пиццу!Неплохая работа, недотёпа."},
+                            {type:"textMessage",text:"Отец:Ну всё, нужно скорее её нести гостю!"},
+                            {type:"changeMap",map:"diningRoom2",direction:"down",x:utils.withGrid(3),y:utils.withGrid(6)},
+                            // {type:"textMessage",text:"Отец:Что скажете, граф Де Рубильдо?Вам нравится?"},
+                            // {type:"textMessage",text:"Отец:Наши лучшие повара старались изо всех сил для такого гостя, как вы!"},
+                            // {type:"textMessage",text:"Отец:К тому же наше семейное фирменное блюдо требует большой подготовки для создания."},
+                            // {type:"textMessage",text:"Де Рубильдо:И ЭТО ВЫ НАЗЫВАЕТЕ УВАЖЕНИЕМ К СВОИМ КЛИЕНТАМ?!"},
+                            // {type:"textMessage",text:"Де Рубильдо:ЭТО НЕУВАЖЕНИЕ НЕ ТОЛЬКО КО МНЕ, НО И КО ВСЕМ ПОСЕТИТЕЛЯМ ДАННОГО ЗАВЕДЕНИЯ!"},
+                            // {type:"textMessage",text:"Де Рубильдо:ДА Я ДАЖЕ ВРАГУ НЕ ПОСМЕЮ РЕКОММЕНДОВАТЬ ЭТУ ПИЦЦЕРИЮ!ПОЛНЫЙ УЖАС!!!"},
+                            // {type:"textMessage",text:"Де Рубильдо:ПРОТИВНО ОТ ЭТОГО МЕСТА!"},
+                        ]
+                    },
+                    {
+                        required:["TALKED_TO_FATHER"],
+                        events:[
+                            {type:"textMessage",text:"Отец:Поторопись!Время не ждёт."}
+                        ]
+                    },
+                    {
                         events: [
                             { type: "textMessage", text: "Отец:Наконец-то я тебя дождался, недотёпа!", faceHero: ["batya"] },
                             { type: "textMessage", text: "Отец:В общем, у нас сегодня утром поступил очень важный заказ." },
                             { type: "textMessage", text: "Отец:Сам граф Де Рубильдо хочет нашу фирменную пиццу!Тебе нельзя облажаться." },
                             { type: "textMessage", text: "Отец:Я поручаю это задание тебе, ведь тебе нужно доказать, что ты чего-то стоишь в нашей семье." },
-                            { type: "textMessage", text: "Отец:А теперь, покажи все свои навыки и приготовь пиццу, достойную графа!" },
-
+                            { type: "textMessage", text: "Отец:А теперь, покажи все свои навыки и приготовь пиццу, достойную графа!Он уже ждёт!" },
+                            {type:"addStoryFlag",flag:"TALKED_TO_FATHER"}
                         ]
                     }
                 ],
@@ -648,7 +685,8 @@ window.OverworldMaps = {
             [
                 {
                     events:[
-                        {type:"changeMap",map:"diningRoom", direction:"up", x:utils.withGrid(6), y:utils.withGrid(11)}
+                        // {type:"changeMap",map:"diningRoom", direction:"up", x:utils.withGrid(6), y:utils.withGrid(11)}
+                        {type:"textMessage",text:"Мне пока лучше не возвращаться..."}
                     ]
                 }
             ]
@@ -735,13 +773,190 @@ window.OverworldMaps = {
                 type: "Person",
                 isPlayerControlled: true,
             },
-            // epicGuest:{
-            //     type:"Person",
-            //     src:"/images/characters/people/npc5.png",
-            //     x:utils.withGrid(2),
-            //     y:utils.withGrid(7),
-            //     direction:"right"
-            // }
+            epicGuest:{
+                type:"Person",
+                src:"/images/characters/people/erio.png",
+                x:utils.withGrid(2),
+                y:utils.withGrid(7),
+                direction:"right",
+                talking:[
+                    {
+                        required:["TALKED_TO_FATHER"],
+                        events:[
+                            {type:"textMessage",text:"Де Рубильдо:ГДЕ МОЯ ФИРМЕННАЯ ЗНАМЕНИТАЯ ХВАЛЁНАЯ ПИЦЦА КУППЕРОВ?!"},
+                            {type:"textMessage",text:"Де Рубильдо:ПРИНЕСИТЕ ЖЕ ЕЁ БЫСТРЕЕ!!!"}
+                        ]
+                    },
+                    {
+                        events:[
+                            {type:"textMessage",text:"Посетитель:ГДЕ МОЯ ФИРМЕННАЯ ЗНАМЕНИТАЯ ХВАЛЁНАЯ ПИЦЦА КУППЕРОВ?!"},
+                            {type:"textMessage",text:"Посетитель:ПРИНЕСИТЕ ЖЕ ЕЁ БЫСТРЕЕ!!!"}
+                        ]
+                    }
+                ]
+            }
+        },
+        cutsceneSpaces: {
+            [utils.asGridCoord(7, 3)]: [
+                {
+                    events: [
+                        {
+                            type: "changeMap",
+                            map: "Kitchen",
+                            x: utils.withGrid(5),
+                            y: utils.withGrid(9),
+                            direction: "up"
+                        }
+                    ]
+                }
+            ],
+            [utils.asGridCoord(6, 12)]: [
+                {
+                    events: [
+                        
+                            {type:"textMessage",text:"Вы:Сначала нужно помочь отцу."}
+                        
+                    ]
+                }
+            ],
+        },
+        walls: {
+            [utils.asGridCoord(6, 3)]: true,
+            [utils.asGridCoord(7, 2)]: true,
+            [utils.asGridCoord(6, 13)]: true,
+            [utils.asGridCoord(1, 5)]: true,
+            [utils.asGridCoord(2, 5)]: true,
+            [utils.asGridCoord(3, 5)]: true,
+            [utils.asGridCoord(4, 5)]: true,
+            [utils.asGridCoord(4, 4)]: true,
+            [utils.asGridCoord(5, 3)]: true,
+            [utils.asGridCoord(6, 4)]: true,
+            [utils.asGridCoord(6, 5)]: true,
+            [utils.asGridCoord(8, 3)]: true,
+            [utils.asGridCoord(9, 4)]: true,
+            [utils.asGridCoord(10, 5)]: true,
+            [utils.asGridCoord(11, 5)]: true,
+            [utils.asGridCoord(12, 5)]: true,
+            [utils.asGridCoord(11, 7)]: true,
+            [utils.asGridCoord(12, 7)]: true,
+            [utils.asGridCoord(2, 7)]: true,
+            [utils.asGridCoord(3, 7)]: true,
+            [utils.asGridCoord(4, 7)]: true,
+            [utils.asGridCoord(7, 7)]: true,
+            [utils.asGridCoord(8, 7)]: true,
+            [utils.asGridCoord(9, 7)]: true,
+            [utils.asGridCoord(2, 10)]: true,
+            [utils.asGridCoord(3, 10)]: true,
+            [utils.asGridCoord(4, 10)]: true,
+            [utils.asGridCoord(7, 10)]: true,
+            [utils.asGridCoord(8, 10)]: true,
+            [utils.asGridCoord(9, 10)]: true,
+            [utils.asGridCoord(1, 12)]: true,
+            [utils.asGridCoord(2, 12)]: true,
+            [utils.asGridCoord(3, 12)]: true,
+            [utils.asGridCoord(4, 12)]: true,
+            [utils.asGridCoord(5, 12)]: true,
+            [utils.asGridCoord(7, 12)]: true,
+            [utils.asGridCoord(8, 12)]: true,
+            [utils.asGridCoord(9, 12)]: true,
+            [utils.asGridCoord(10, 12)]: true,
+            [utils.asGridCoord(11, 12)]: true,
+            [utils.asGridCoord(12, 12)]: true,
+            [utils.asGridCoord(0, 4)]: true,
+            [utils.asGridCoord(0, 5)]: true,
+            [utils.asGridCoord(0, 6)]: true,
+            [utils.asGridCoord(0, 8)]: true,
+            [utils.asGridCoord(0, 9)]: true,
+            [utils.asGridCoord(0, 10)]: true,
+            [utils.asGridCoord(0, 11)]: true,
+            [utils.asGridCoord(13, 4)]: true,
+            [utils.asGridCoord(13, 5)]: true,
+            [utils.asGridCoord(13, 6)]: true,
+            [utils.asGridCoord(13, 8)]: true,
+            [utils.asGridCoord(13, 9)]: true,
+            [utils.asGridCoord(13, 10)]: true,
+            [utils.asGridCoord(13, 11)]: true,
+        }
+    },
+    diningRoom2: {
+        id: "diningRoom2",
+        lowerSrc: "/images/maps/DiningRoomLower.png",
+        upperSrc: "/images/maps/DiningRoomUpper.png",
+        configObjects: {
+            hero: {
+                type: "Person",
+                isPlayerControlled: true,
+            },
+            epicGuest:{
+                type:"Person",
+                src:"/images/characters/people/erio.png",
+                x:utils.withGrid(2),
+                y:utils.withGrid(7),
+                direction:"right",
+                talking:[
+                    {
+                        required:["TALKED_TO_FATHER"],
+                        events:[
+                            // {type:"textMessage",text:"Де Рубильдо:ГДЕ МОЯ ФИРМЕННАЯ ЗНАМЕНИТАЯ ХВАЛЁНАЯ ПИЦЦА КУППЕРОВ?!"},
+                            // {type:"textMessage",text:"Де Рубильдо:ПРИНЕСИТЕ ЖЕ ЕЁ БЫСТРЕЕ!!!"}
+                        ]
+                    },
+                    {
+                        events:[
+                            // {type:"textMessage",text:"Посетитель:ГДЕ МОЯ ФИРМЕННАЯ ЗНАМЕНИТАЯ ХВАЛЁНАЯ ПИЦЦА КУППЕРОВ?!"},
+                            // {type:"textMessage",text:"Посетитель:ПРИНЕСИТЕ ЖЕ ЕЁ БЫСТРЕЕ!!!"}
+                        ]
+                    }
+                ]
+            },
+            batya:{
+                type:"Person",
+                src:"/images/characters/people/npc3.png",
+                x:utils.withGrid(2),
+                y:utils.withGrid(6),
+                direction:"down",
+                talking:[
+                    {
+                        required:["RUINED_GUEST"],
+                        events:
+                        [
+                            {type:"textMessage",text:"Отец:..."},
+                            {type:"textMessage",text:"Отец:Как такое возможно..."},
+                            {type:"textMessage",text:"Отец:Ты хоть понимаешь..."},
+                            {type:"textMessage",text:"Отец:ЧТО ТЫ НАДЕЛАЛ?!!"},
+                            {type:"textMessage",text:"Отец:Какая же ты всё таки бездарность!"},
+                            {type:"textMessage",text:"Отец:Так и знал что от тебя не будет никакого толку!"},
+                            {type:"textMessage",text:"Отец:Всё, моё терпение лопнуло."},
+                            {type:"textMessage",text:"Отец:Уходи и не возвращайся, пока не станешь достойным нашей семьи!"},
+                            {type:"textMessage",text:"Отец:Познай путь пиццы."},
+                            {type:"changeMap",map:"street",direction:"down",x:utils.withGrid(16),y:utils.withGrid(18)},
+                            {type:"textMessage",text:"Вы:Так и знал, что произойдёт что-то ужасное..."},
+                        ]
+                    },
+                    {
+                        events:[
+                            {type:"textMessage",text:"Отец:Что скажете, граф Де Рубильдо?Вам нравится?"},
+                            {type:"textMessage",text:"Отец:Наши лучшие повара старались изо всех сил для такого гостя, как вы!"},
+                            {type:"textMessage",text:"Отец:К тому же наше семейное фирменное блюдо требует большой подготовки для создания."},
+                            {type:"textMessage",text:"Де Рубильдо:И ЭТО ВЫ НАЗЫВАЕТЕ УВАЖЕНИЕМ К СВОИМ КЛИЕНТАМ?!"},
+                            {type:"textMessage",text:"Де Рубильдо:ЭТО НЕУВАЖЕНИЕ НЕ ТОЛЬКО КО МНЕ, НО И КО ВСЕМ ПОСЕТИТЕЛЯМ ДАННОГО ЗАВЕДЕНИЯ!"},
+                            {type:"textMessage",text:"Де Рубильдо:ДА Я ДАЖЕ ВРАГУ НЕ ПОСМЕЮ РЕКОММЕНДОВАТЬ ЭТУ ПИЦЦЕРИЮ!ПОЛНЫЙ УЖАС!!!"},
+                            {type:"textMessage",text:"Де Рубильдо:ПРОТИВНО ОТ ЭТОГО МЕСТА!"},
+                            {type:"addStoryFlag",flag:"RUINED_GUEST"},
+                            {who:"epicGuest",type:"walk",direction:"down"},
+                            {who:"epicGuest",type:"walk",direction:"right"},
+                            {who:"epicGuest",type:"walk",direction:"right"},
+                            {who:"epicGuest",type:"walk",direction:"right"},
+                            {who:"epicGuest",type:"walk",direction:"down"},
+                            {who:"epicGuest",type:"walk",direction:"down"},
+                            {who:"epicGuest",type:"walk",direction:"down"},
+                            {who:"epicGuest",type:"walk",direction:"right"},
+                            {who:"epicGuest",type:"walk",direction:"down"},
+                            {who:"epicGuest",type:"walk",direction:"down"},
+                        ]
+                    }
+                ]
+            }
         },
         cutsceneSpaces: {
             [utils.asGridCoord(7, 3)]: [
@@ -774,7 +989,7 @@ window.OverworldMaps = {
         walls: {
             [utils.asGridCoord(6, 3)]: true,
             [utils.asGridCoord(7, 2)]: true,
-            [utils.asGridCoord(6, 13)]: true,
+            // [utils.asGridCoord(6, 13)]: true,
             [utils.asGridCoord(1, 5)]: true,
             [utils.asGridCoord(2, 5)]: true,
             [utils.asGridCoord(3, 5)]: true,
@@ -784,6 +999,7 @@ window.OverworldMaps = {
             [utils.asGridCoord(6, 4)]: true,
             [utils.asGridCoord(6, 5)]: true,
             [utils.asGridCoord(8, 3)]: true,
+            [utils.asGridCoord(4, 6)]: true,
             [utils.asGridCoord(9, 4)]: true,
             [utils.asGridCoord(10, 5)]: true,
             [utils.asGridCoord(11, 5)]: true,
