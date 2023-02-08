@@ -24,11 +24,22 @@ window.Actions = {
     },
     damage2:{
         name:"Слабый удар пиццы",
+        description:"Несильно ударить врага. Но это максимум возможностей этой пиццы.",
         success:[
             {type:"textMessage",text:"{CASTER} слабо атакует!"},
             {type:"animation",animation:"spin"},
             {type:"stateChange",damage:5}
         ]
+    },
+    clumsyStatus2: {
+        name: "Немного масла",
+        success: [
+            {type: "textMessage", text: "{CASTER} кидает {ACTION}!"},
+            {type: "animation", animation:"glob", color: '#dafd2a'},
+            {type: "stateChange", status:{type: "Масло", expiresIn: 2} },
+            {type: "textMessage", text: "{TARGET} вся в масле!"},
+        ],
+        description: "Бросить во врага немного масла.Он может упасть, пропустив свой ход. Действует 2 хода."
     },
     suicide:{
         name:"Самоубийство",

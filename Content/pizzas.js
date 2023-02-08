@@ -17,9 +17,9 @@ window.Pizzas = {
   },
   "nedotepa":{
     name: `Неудачная "Пицца Купперов"`,
-    type:PizzaTypes.normal,
+    type:PizzaTypes.spicy,
     description:"Полный крах...Но это всё, на что вы способны.",
-    scr:"images/characters/pizzas/v001.png",
+    src:"/images/characters/pizzas/v001.png",
     icon:"/images/icons/chill.png",
     actions:["damage2","clumsyStatus2"]
   },
