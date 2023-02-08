@@ -28,7 +28,7 @@ class BattleEvent {
       target.update({
         hp: target.hp - damage
       })
-      
+      document.getElementById("hitsound1").play();
       //начать моргать пицце после получения урона
       target.pizzaElement.classList.add("battle-damage-blink");
     }
