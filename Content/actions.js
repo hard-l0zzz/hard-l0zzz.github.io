@@ -39,7 +39,7 @@ window.Actions = {
             {type: "stateChange", status:{type: "Масло", expiresIn: 2} },
             {type: "textMessage", text: "{TARGET} вся в масле!"},
         ],
-        description: "Бросить во врага немного масла.Он может упасть, пропустив свой ход. Действует 2 хода."
+        description: "Бросить во врага масло.Масло даёт шанс пропустить ход. Действует 2 хода."
     },
     suicide:{
         name:"Самоубийство",
