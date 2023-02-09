@@ -58,7 +58,7 @@ class Sprite {
     updateAnimationProgress(){
         //убавлять процесс смены кадров
         if(this.animationFrameProgress > 0){
-            this.animationFrameProgress -= 1;
+            this.animationFrameProgress -= 0.75;
             return;
         }
 
