@@ -4,7 +4,7 @@ class KeyboardMenu {
       this.up = null;
       this.down = null;
       this.prevFocus = null;
-      this.select = null;
+      // this.select = null;
       this.descriptionContainer = config.descriptionContainer || null;
     }
   
@@ -28,13 +28,20 @@ class KeyboardMenu {
           const chosenOption = this.options[ Number(button.dataset.button) ];
           chosenOption.handler();
         })
-        button.addEventListener("keyup", () => {
-            if (event.keyCode === 69){
-                const chosenOption = this.options[ Number(button.dataset.button) ];
-                // var buttonSound
-                chosenOption.handler();
-            }
+        button.addEventListener("keydown", () => {
+          if(event.keyCode === 69)
+          {
+            const chosenOption = this.options[ Number(button.dataset.button) ];
+            chosenOption.handler();
+          }
         })
+        // button.addEventListener("keyup", () => {
+        //     if (event.keyCode === 69){
+        //         const chosenOption = this.options[ Number(button.dataset.button) ];
+        //         // var buttonSound
+        //         chosenOption.handler();
+        //     }
+        // })
         button.addEventListener("mouseenter", () => {
           button.focus();
         })
@@ -60,7 +67,7 @@ class KeyboardMenu {
       //место с описанием
       this.descriptionElement = document.createElement("div");
       this.descriptionElement.classList.add("DescriptionBox");
-      this.descriptionElement.innerHTML = (`<p>тут должна быть информация!</p>`);
+      this.descriptionElement.innerHTML = (`<p>Скорее всего, что-то пошло не так!</p>`);
       this.descriptionElementText = this.descriptionElement.querySelector("p");
     }
   
@@ -72,7 +79,7 @@ class KeyboardMenu {
   
       this.up.unbind();
       this.down.unbind();
-      this.select.unbind();
+      // this.select.unbind();
     }
   
     init(container) {
@@ -94,9 +101,9 @@ class KeyboardMenu {
         })
         nextButton?.focus();
       })
-      this.select = new KeyPressListener("KeyE", () => {
+      // this.select = new KeyPressListener("KeyE", () => {
 
-      })
+      // })
     }
   
   }
