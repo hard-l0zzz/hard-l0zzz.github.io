@@ -377,16 +377,16 @@ window.OverworldMaps = {
                 x: utils.withGrid(7),
                 y: utils.withGrid(5),
                 src: "/images/characters/people/npc3.png",
-                behaviorLoop:[
-                    {type:"stand",direction:"down",time:800}
+                behaviorLoop: [
+                    { type: "stand", direction: "down", time: 800 }
                 ],
                 talking: [
                     {
-                        required:["MADE_FIRST_PIZZA","TALKED_TO_FATHER"],
-                        events:[
-                            {type:"textMessage",text:"Отец:Окей, на вид выглядит неплохо, надеюсь и на вкус тоже."},
-                            {type:"textMessage",text:"Отец:Всё, времени уже нет, нужно быстрее её нести!"},
-                            {type:"changeMap",map:"diningRoom2",direction:"down",x:utils.withGrid(3),y:utils.withGrid(6)},
+                        required: ["MADE_FIRST_PIZZA", "TALKED_TO_FATHER"],
+                        events: [
+                            { type: "textMessage", text: "Отец:Окей, на вид выглядит неплохо, надеюсь и на вкус тоже." },
+                            { type: "textMessage", text: "Отец:Всё, времени уже нет, нужно быстрее её нести!" },
+                            { type: "changeMap", map: "diningRoom2", direction: "down", x: utils.withGrid(3), y: utils.withGrid(6) },
                             // {type:"textMessage",text:"Отец:Что скажете, граф Де Рубильдо?Вам нравится?"},
                             // {type:"textMessage",text:"Отец:Наши лучшие повара старались изо всех сил для такого гостя, как вы!"},
                             // {type:"textMessage",text:"Отец:К тому же наше семейное фирменное блюдо требует большой подготовки для создания."},
@@ -398,11 +398,11 @@ window.OverworldMaps = {
                         ]
                     },
                     {
-                        required:["MADE_FIRST_PIZZA"],
-                        events:[
-                            {type:"textMessage",text:"Отец:Ого, ты уже сделал пиццу!Неплохая работа, недотёпа."},
-                            {type:"textMessage",text:"Отец:Ну всё, нужно скорее её нести гостю!"},
-                            {type:"changeMap",map:"diningRoom2",direction:"down",x:utils.withGrid(3),y:utils.withGrid(6)},
+                        required: ["MADE_FIRST_PIZZA"],
+                        events: [
+                            { type: "textMessage", text: "Отец:Ого, ты уже сделал пиццу!Неплохая работа, недотёпа." },
+                            { type: "textMessage", text: "Отец:Ну всё, нужно скорее её нести гостю!" },
+                            { type: "changeMap", map: "diningRoom2", direction: "down", x: utils.withGrid(3), y: utils.withGrid(6) },
                             // {type:"textMessage",text:"Отец:Что скажете, граф Де Рубильдо?Вам нравится?"},
                             // {type:"textMessage",text:"Отец:Наши лучшие повара старались изо всех сил для такого гостя, как вы!"},
                             // {type:"textMessage",text:"Отец:К тому же наше семейное фирменное блюдо требует большой подготовки для создания."},
@@ -413,9 +413,9 @@ window.OverworldMaps = {
                         ]
                     },
                     {
-                        required:["TALKED_TO_FATHER"],
-                        events:[
-                            {type:"textMessage",text:"Отец:Поторопись!Время не ждёт."}
+                        required: ["TALKED_TO_FATHER"],
+                        events: [
+                            { type: "textMessage", text: "Отец:Поторопись!Время не ждёт." }
                         ]
                     },
                     {
@@ -425,7 +425,7 @@ window.OverworldMaps = {
                             { type: "textMessage", text: "Отец:Сам граф Де Рубильдо хочет нашу фирменную пиццу!Тебе нельзя облажаться." },
                             { type: "textMessage", text: "Отец:Я поручаю это задание тебе, ведь тебе нужно доказать, что ты чего-то стоишь в нашей семье." },
                             { type: "textMessage", text: "Отец:А теперь, покажи все свои навыки и приготовь пиццу, достойную графа!Он уже ждёт!" },
-                            {type:"addStoryFlag",flag:"TALKED_TO_FATHER"}
+                            { type: "addStoryFlag", flag: "TALKED_TO_FATHER" }
                         ]
                     }
                 ],
@@ -434,12 +434,12 @@ window.OverworldMaps = {
                 //     { type: "stand", direction: "right", time: 300 }
                 // ]
             },
-            table:{
-                type:"PizzaStone",
-                x:utils.withGrid(8),
-                y:utils.withGrid(9),
-                pizzas:["nedotepa"],
-                storyFlag:"MADE_FIRST_PIZZA"
+            table: {
+                type: "PizzaStone",
+                x: utils.withGrid(8),
+                y: utils.withGrid(9),
+                pizzas: ["nedotepa"],
+                storyFlag: "MADE_FIRST_PIZZA"
             }
             // lizard_girl: {
             //     type: "Person",
@@ -588,9 +588,9 @@ window.OverworldMaps = {
                 src: "images/characters/people/lizard_girl.png",
                 talking: [
                     {
-                        required:["secret"],
-                        events:[
-                            {type:"textMessage",text:"пасхалка"}
+                        required: ["secret"],
+                        events: [
+                            { type: "textMessage", text: "пасхалка" }
                         ]
                     },
                     {
@@ -618,11 +618,11 @@ window.OverworldMaps = {
             // [utils.asGridCoord(15,14)]:true,
             // [utils.asGridCoord(16,15)]:true
         },
-        cutsceneSpaces:{
-            [utils.asGridCoord(10,10)]:[
+        cutsceneSpaces: {
+            [utils.asGridCoord(10, 10)]: [
                 {
-                    events:[
-                        {type:"addStoryFlag",flag:"secret"}
+                    events: [
+                        { type: "addStoryFlag", flag: "secret" }
                     ]
                 }
             ]
@@ -671,6 +671,26 @@ window.OverworldMaps = {
                     }
                 ]
             },
+            babka: {
+                type: "Person",
+                x: utils.withGrid(26),
+                y: utils.withGrid(16),
+                src: "/images/characters/people/npc4.png",
+                talking: [
+                    {
+                        events:
+                            [
+                                { type: "textMessage", text: "Бабуля:Какой чудесный день!",faceHero:"babka" },
+                                { type: "stand", direction: "left", time: 2,who:"babka" },
+                                { type: "stand", direction: "right", time: 3,who:"babka" },
+                                { type: "stand", direction: "up", time: 5,who:"babka" },
+                            ]
+                    }
+                ],
+                behaviorLoop:[
+                    {type:"stand",direction:"down",time:800}
+                ]
+            }
         },
         cutsceneSpaces: {
             [utils.asGridCoord(36, 13)]:
@@ -681,29 +701,89 @@ window.OverworldMaps = {
                         ]
                     }
                 ],
-            [utils.asGridCoord(16,17)]:
+            [utils.asGridCoord(16, 17)]:
+                [
+                    {
+                        events: [
+                            // {type:"changeMap",map:"diningRoom", direction:"up", x:utils.withGrid(6), y:utils.withGrid(11)}
+                            { type: "textMessage", text: "Мне пока лучше не возвращаться..." }
+                        ]
+                    }
+                ],
+            [utils.asGridCoord(40, 17)]:
+                [
+                    {
+                        events: [
+                            { type: "changeMap", map: "shop", direction: "up", x: utils.withGrid(5), y: utils.withGrid(11) }
+                        ]
+                    }
+                ],
+            [utils.asGridCoord(27,17)]:
             [
                 {
                     events:[
-                        // {type:"changeMap",map:"diningRoom", direction:"up", x:utils.withGrid(6), y:utils.withGrid(11)}
-                        {type:"textMessage",text:"Мне пока лучше не возвращаться..."}
+                        {type:"textMessage",text:"Бабуля:Внучок, ты что это творишь?"},
+                        {type:"textMessage",text:"Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!"},
+                        {type:"battle",enemyId:"babka"}
                     ]
                 }
             ],
-            [utils.asGridCoord(40,17)]:
+            [utils.asGridCoord(28,17)]:
             [
                 {
                     events:[
-                        {type:"changeMap",map:"shop",direction:"up",x:utils.withGrid(5),y:utils.withGrid(11)}
+                        {type:"textMessage",text:"Бабуля:Внучок, ты что это творишь?"},
+                        {type:"textMessage",text:"Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!"},
+                        {type:"battle",enemyId:"babka"}
+                    ]
+                }
+            ],
+            [utils.asGridCoord(27,18)]:
+            [
+                {
+                    events:[
+                        {type:"textMessage",text:"Бабуля:Внучок, ты что это творишь?"},
+                        {type:"textMessage",text:"Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!"},
+                        {type:"battle",enemyId:"babka"}
+                    ]
+                }
+            ],
+            [utils.asGridCoord(28,18)]:
+            [
+                {
+                    events:[
+                        {type:"textMessage",text:"Бабуля:Внучок, ты что это творишь?"},
+                        {type:"textMessage",text:"Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!"},
+                        {type:"battle",enemyId:"babka"}
+                    ]
+                }
+            ],
+            [utils.asGridCoord(27,19)]:
+            [
+                {
+                    events:[
+                        {type:"textMessage",text:"Бабуля:Внучок, ты что это творишь?"},
+                        {type:"textMessage",text:"Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!"},
+                        {type:"battle",enemyId:"babka"}
+                    ]
+                }
+            ],
+            [utils.asGridCoord(28,19)]:
+            [
+                {
+                    events:[
+                        {type:"textMessage",text:"Бабуля:Внучок, ты что это творишь?"},
+                        {type:"textMessage",text:"Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!"},
+                        {type:"battle",enemyId:"babka"}
                     ]
                 }
             ]
         },
         // walls:{
-            // [utils.asGridCoord(14,18)]:true,
-            // [utils.asGridCoord(14,19)]:true,
-            // [utils.asGridCoord(14,20)]:true,
-            // [utils.asGridCoord(14,21)]:true,
+        // [utils.asGridCoord(14,18)]:true,
+        // [utils.asGridCoord(14,19)]:true,
+        // [utils.asGridCoord(14,20)]:true,
+        // [utils.asGridCoord(14,21)]:true,
         //     [utils.asGridCoord(15,22)]:true,
         //     [utils.asGridCoord(16,22)]:true,
         //     [utils.asGridCoord(17,22)]:true,
@@ -750,80 +830,80 @@ window.OverworldMaps = {
         //     [utils.asGridCoord(37,15)]:true,
         //     [utils.asGridCoord(38,15)]:true,
         // }
-        walls:{
-            [utils.asGridCoord(17,17)]: true,
-[utils.asGridCoord(18,17)]: true,
-[utils.asGridCoord(19,17)]: true,
-[utils.asGridCoord(20,17)]: true,
-[utils.asGridCoord(21,17)]: true,
-[utils.asGridCoord(22,17)]: true,
-[utils.asGridCoord(41,17)]: true,
-[utils.asGridCoord(42,17)]: true,
-[utils.asGridCoord(43,17)]: true,
-[utils.asGridCoord(44,17)]: true,
-[utils.asGridCoord(45,18)]: true,
-[utils.asGridCoord(45,19)]: true,
-[utils.asGridCoord(45,20)]: true,
-[utils.asGridCoord(45,21)]: true,
-[utils.asGridCoord(23,17)]: true,
-[utils.asGridCoord(24,16)]: true,
-[utils.asGridCoord(25,16)]: true,
-[utils.asGridCoord(26,15)]: true,
-[utils.asGridCoord(27,15)]: true,
-[utils.asGridCoord(14,18)]:true,
-[utils.asGridCoord(14,19)]:true,
-[utils.asGridCoord(14,20)]:true,
-[utils.asGridCoord(14,21)]:true,
-[utils.asGridCoord(28,15)]: true,
-[utils.asGridCoord(29,15)]: true,
-[utils.asGridCoord(30,15)]: true,
-[utils.asGridCoord(31,15)]: true,
-[utils.asGridCoord(32,15)]: true,
-[utils.asGridCoord(33,15)]: true,
-[utils.asGridCoord(34,15)]: true,
-[utils.asGridCoord(35,15)]: true,
-[utils.asGridCoord(35,14)]: true,
-[utils.asGridCoord(35,13)]: true,
-[utils.asGridCoord(37,13)]: true,
-[utils.asGridCoord(37,14)]: true,
-[utils.asGridCoord(37,15)]: true,
-[utils.asGridCoord(38,15)]: true,
-[utils.asGridCoord(39,16)]: true,
-[utils.asGridCoord(39,17)]: true,
-[utils.asGridCoord(42,17)]: true,
-[utils.asGridCoord(15,22)]: true,
-[utils.asGridCoord(16,22)]: true,
-[utils.asGridCoord(18,22)]: true,
-[utils.asGridCoord(19,22)]: true,
-[utils.asGridCoord(20,22)]: true,
-[utils.asGridCoord(21,22)]: true,
-[utils.asGridCoord(22,22)]: true,
-[utils.asGridCoord(23,22)]: true,
-[utils.asGridCoord(24,22)]: true,
-[utils.asGridCoord(25,22)]: true,
-[utils.asGridCoord(26,22)]: true,
-[utils.asGridCoord(27,22)]: true,
-[utils.asGridCoord(28,22)]: true,
-[utils.asGridCoord(29,22)]: true,
-[utils.asGridCoord(30,22)]: true,
-[utils.asGridCoord(31,22)]: true,
-[utils.asGridCoord(32,22)]: true,
-[utils.asGridCoord(33,22)]: true,
-[utils.asGridCoord(34,22)]: true,
-[utils.asGridCoord(35,22)]: true,
-[utils.asGridCoord(36,22)]: true,
-[utils.asGridCoord(37,22)]: true,
-[utils.asGridCoord(38,22)]: true,
-[utils.asGridCoord(39,22)]: true,
-[utils.asGridCoord(40,22)]: true,
-[utils.asGridCoord(41,22)]: true,
-[utils.asGridCoord(42,22)]: true,
-[utils.asGridCoord(43,22)]: true,
-[utils.asGridCoord(44,22)]: true,
-// [utils.asGridCoord(16,21)]: true,
-// [utils.asGridCoord(17,21)]: true,
-// [utils.asGridCoord(18,21)]: true,
-// [utils.asGridCoord(19,21)]: true,
+        walls: {
+            [utils.asGridCoord(17, 17)]: true,
+            [utils.asGridCoord(18, 17)]: true,
+            [utils.asGridCoord(19, 17)]: true,
+            [utils.asGridCoord(20, 17)]: true,
+            [utils.asGridCoord(21, 17)]: true,
+            [utils.asGridCoord(22, 17)]: true,
+            [utils.asGridCoord(41, 17)]: true,
+            [utils.asGridCoord(42, 17)]: true,
+            [utils.asGridCoord(43, 17)]: true,
+            [utils.asGridCoord(44, 17)]: true,
+            [utils.asGridCoord(45, 18)]: true,
+            [utils.asGridCoord(45, 19)]: true,
+            [utils.asGridCoord(45, 20)]: true,
+            [utils.asGridCoord(45, 21)]: true,
+            [utils.asGridCoord(23, 17)]: true,
+            [utils.asGridCoord(24, 16)]: true,
+            [utils.asGridCoord(25, 16)]: true,
+            [utils.asGridCoord(26, 15)]: true,
+            [utils.asGridCoord(27, 15)]: true,
+            [utils.asGridCoord(14, 18)]: true,
+            [utils.asGridCoord(14, 19)]: true,
+            [utils.asGridCoord(14, 20)]: true,
+            [utils.asGridCoord(14, 21)]: true,
+            [utils.asGridCoord(28, 15)]: true,
+            [utils.asGridCoord(29, 15)]: true,
+            [utils.asGridCoord(30, 15)]: true,
+            [utils.asGridCoord(31, 15)]: true,
+            [utils.asGridCoord(32, 15)]: true,
+            [utils.asGridCoord(33, 15)]: true,
+            [utils.asGridCoord(34, 15)]: true,
+            [utils.asGridCoord(35, 15)]: true,
+            [utils.asGridCoord(35, 14)]: true,
+            [utils.asGridCoord(35, 13)]: true,
+            [utils.asGridCoord(37, 13)]: true,
+            [utils.asGridCoord(37, 14)]: true,
+            [utils.asGridCoord(37, 15)]: true,
+            [utils.asGridCoord(38, 15)]: true,
+            [utils.asGridCoord(39, 16)]: true,
+            [utils.asGridCoord(39, 17)]: true,
+            [utils.asGridCoord(42, 17)]: true,
+            [utils.asGridCoord(15, 22)]: true,
+            [utils.asGridCoord(16, 22)]: true,
+            [utils.asGridCoord(18, 22)]: true,
+            [utils.asGridCoord(19, 22)]: true,
+            [utils.asGridCoord(20, 22)]: true,
+            [utils.asGridCoord(21, 22)]: true,
+            [utils.asGridCoord(22, 22)]: true,
+            [utils.asGridCoord(23, 22)]: true,
+            [utils.asGridCoord(24, 22)]: true,
+            [utils.asGridCoord(25, 22)]: true,
+            [utils.asGridCoord(26, 22)]: true,
+            [utils.asGridCoord(27, 22)]: true,
+            [utils.asGridCoord(28, 22)]: true,
+            [utils.asGridCoord(29, 22)]: true,
+            [utils.asGridCoord(30, 22)]: true,
+            [utils.asGridCoord(31, 22)]: true,
+            [utils.asGridCoord(32, 22)]: true,
+            [utils.asGridCoord(33, 22)]: true,
+            [utils.asGridCoord(34, 22)]: true,
+            [utils.asGridCoord(35, 22)]: true,
+            [utils.asGridCoord(36, 22)]: true,
+            [utils.asGridCoord(37, 22)]: true,
+            [utils.asGridCoord(38, 22)]: true,
+            [utils.asGridCoord(39, 22)]: true,
+            [utils.asGridCoord(40, 22)]: true,
+            [utils.asGridCoord(41, 22)]: true,
+            [utils.asGridCoord(42, 22)]: true,
+            [utils.asGridCoord(43, 22)]: true,
+            [utils.asGridCoord(44, 22)]: true,
+            // [utils.asGridCoord(16,21)]: true,
+            // [utils.asGridCoord(17,21)]: true,
+            // [utils.asGridCoord(18,21)]: true,
+            // [utils.asGridCoord(19,21)]: true,
         }
     },
     streetNorth: {
@@ -837,88 +917,88 @@ window.OverworldMaps = {
                 direction: "up"
             }
         },
-        cutsceneSpaces:{
-            [utils.asGridCoord(7,16)]:[
+        cutsceneSpaces: {
+            [utils.asGridCoord(7, 16)]: [
                 {
-                    events:[
-                        {type:"changeMap",map:"street",direction:"down",x:utils.withGrid(36),y:utils.withGrid(14)}
+                    events: [
+                        { type: "changeMap", map: "street", direction: "down", x: utils.withGrid(36), y: utils.withGrid(14) }
                     ]
                 }
             ]
         },
-        walls:{
-            [utils.asGridCoord(14,25)]:true,
-            [utils.asGridCoord(13,25)]:true,
-            [utils.asGridCoord(12,25)]:true,
-            [utils.asGridCoord(11,25)]:true,
-            [utils.asGridCoord(10,25)]:true,
-            [utils.asGridCoord(9,25)]:true,
-            [utils.asGridCoord(8,25)]:true,
+        walls: {
+            [utils.asGridCoord(14, 25)]: true,
+            [utils.asGridCoord(13, 25)]: true,
+            [utils.asGridCoord(12, 25)]: true,
+            [utils.asGridCoord(11, 25)]: true,
+            [utils.asGridCoord(10, 25)]: true,
+            [utils.asGridCoord(9, 25)]: true,
+            [utils.asGridCoord(8, 25)]: true,
             // [utils.asGridCoord(9,24)]:true,
-            [utils.asGridCoord(9,23)]:true,
-            [utils.asGridCoord(9,22)]:true,
-            [utils.asGridCoord(9,21)]:true,
-            [utils.asGridCoord(9,20)]:true,
-            [utils.asGridCoord(9,19)]:true,
-            [utils.asGridCoord(9,18)]:true,
-            [utils.asGridCoord(9,17)]:true,
-            [utils.asGridCoord(8,16)]:true,
-            [utils.asGridCoord(9,16)]:true,
-            [utils.asGridCoord(10,16)]:true,
-            [utils.asGridCoord(11,16)]:true,
-            [utils.asGridCoord(11,15)]:true,
-            [utils.asGridCoord(12,14)]:true,
-            [utils.asGridCoord(13,14)]:true,
-            [utils.asGridCoord(14,14)]:true,
-            [utils.asGridCoord(16,14)]:true,
-            [utils.asGridCoord(17,14)]:true,
-            [utils.asGridCoord(18,14)]:true,
-            [utils.asGridCoord(19,15)]:true,
-            [utils.asGridCoord(20,15)]:true,
-            [utils.asGridCoord(21,15)]:true,
-            [utils.asGridCoord(8,23)]:true,
-            [utils.asGridCoord(7,24)]:true,
-            [utils.asGridCoord(23,23)]:true,
-            [utils.asGridCoord(22,15)]:true,
-            [utils.asGridCoord(23,15)]:true,
-            [utils.asGridCoord(22,16)]:true,
-            [utils.asGridCoord(22,17)]:true,
-            [utils.asGridCoord(22,18)]:true,
-            [utils.asGridCoord(22,19)]:true,
-            [utils.asGridCoord(22,20)]:true,
-            [utils.asGridCoord(22,21)]:true,
-            [utils.asGridCoord(22,22)]:true,
-            [utils.asGridCoord(22,23)]:true,
-            [utils.asGridCoord(24,24)]:true,
-            [utils.asGridCoord(23,25)]:true,
-            [utils.asGridCoord(22,25)]:true,
-            [utils.asGridCoord(9,24)]:true,
-            [utils.asGridCoord(22,24)]:true,
-            [utils.asGridCoord(21,25)]:true,
-            [utils.asGridCoord(20,25)]:true,
-            [utils.asGridCoord(19,25)]:true,
-            [utils.asGridCoord(18,25)]:true,
-            [utils.asGridCoord(17,25)]:true,
-            [utils.asGridCoord(16,25)]:true,
-            [utils.asGridCoord(23,25)]:true,
+            [utils.asGridCoord(9, 23)]: true,
+            [utils.asGridCoord(9, 22)]: true,
+            [utils.asGridCoord(9, 21)]: true,
+            [utils.asGridCoord(9, 20)]: true,
+            [utils.asGridCoord(9, 19)]: true,
+            [utils.asGridCoord(9, 18)]: true,
+            [utils.asGridCoord(9, 17)]: true,
+            [utils.asGridCoord(8, 16)]: true,
+            [utils.asGridCoord(9, 16)]: true,
+            [utils.asGridCoord(10, 16)]: true,
+            [utils.asGridCoord(11, 16)]: true,
+            [utils.asGridCoord(11, 15)]: true,
+            [utils.asGridCoord(12, 14)]: true,
+            [utils.asGridCoord(13, 14)]: true,
+            [utils.asGridCoord(14, 14)]: true,
+            [utils.asGridCoord(16, 14)]: true,
+            [utils.asGridCoord(17, 14)]: true,
+            [utils.asGridCoord(18, 14)]: true,
+            [utils.asGridCoord(19, 15)]: true,
+            [utils.asGridCoord(20, 15)]: true,
+            [utils.asGridCoord(21, 15)]: true,
+            [utils.asGridCoord(8, 23)]: true,
+            [utils.asGridCoord(7, 24)]: true,
+            [utils.asGridCoord(23, 23)]: true,
+            [utils.asGridCoord(22, 15)]: true,
+            [utils.asGridCoord(23, 15)]: true,
+            [utils.asGridCoord(22, 16)]: true,
+            [utils.asGridCoord(22, 17)]: true,
+            [utils.asGridCoord(22, 18)]: true,
+            [utils.asGridCoord(22, 19)]: true,
+            [utils.asGridCoord(22, 20)]: true,
+            [utils.asGridCoord(22, 21)]: true,
+            [utils.asGridCoord(22, 22)]: true,
+            [utils.asGridCoord(22, 23)]: true,
+            [utils.asGridCoord(24, 24)]: true,
+            [utils.asGridCoord(23, 25)]: true,
+            [utils.asGridCoord(22, 25)]: true,
+            [utils.asGridCoord(9, 24)]: true,
+            [utils.asGridCoord(22, 24)]: true,
+            [utils.asGridCoord(21, 25)]: true,
+            [utils.asGridCoord(20, 25)]: true,
+            [utils.asGridCoord(19, 25)]: true,
+            [utils.asGridCoord(18, 25)]: true,
+            [utils.asGridCoord(17, 25)]: true,
+            [utils.asGridCoord(16, 25)]: true,
+            [utils.asGridCoord(23, 25)]: true,
         },
-        cutsceneSpaces:{
-            [utils.asGridCoord(15,14)]:
-            [
-                {
-                    events:[
-                        {type:"changeMap",map:"greenKitchen",direction:"up",x:utils.withGrid(5),y:utils.withGrid(11)}
-                    ]
-                }
-            ],
-            [utils.asGridCoord(15,25)]:
-            [
-                {
-                    events:[
-                        {type:"changeMap",map:"street",direction:"down",x:utils.withGrid(36),y:utils.withGrid(14)}
-                    ]
-                }
-            ]
+        cutsceneSpaces: {
+            [utils.asGridCoord(15, 14)]:
+                [
+                    {
+                        events: [
+                            { type: "changeMap", map: "greenKitchen", direction: "up", x: utils.withGrid(5), y: utils.withGrid(11) }
+                        ]
+                    }
+                ],
+            [utils.asGridCoord(15, 25)]:
+                [
+                    {
+                        events: [
+                            { type: "changeMap", map: "street", direction: "down", x: utils.withGrid(36), y: utils.withGrid(14) }
+                        ]
+                    }
+                ]
         }
     },
     diningRoom: {
@@ -930,24 +1010,24 @@ window.OverworldMaps = {
                 type: "Person",
                 isPlayerControlled: true,
             },
-            epicGuest:{
-                type:"Person",
-                src:"/images/characters/people/erio.png",
-                x:utils.withGrid(2),
-                y:utils.withGrid(7),
-                direction:"right",
-                talking:[
+            epicGuest: {
+                type: "Person",
+                src: "/images/characters/people/erio.png",
+                x: utils.withGrid(2),
+                y: utils.withGrid(7),
+                direction: "right",
+                talking: [
                     {
-                        required:["TALKED_TO_FATHER"],
-                        events:[
-                            {type:"textMessage",text:"Де Рубильдо:ГДЕ МОЯ ФИРМЕННАЯ ЗНАМЕНИТАЯ ХВАЛЁНАЯ ПИЦЦА КУППЕРОВ?!"},
-                            {type:"textMessage",text:"Де Рубильдо:ПРИНЕСИТЕ ЖЕ ЕЁ БЫСТРЕЕ!!!"}
+                        required: ["TALKED_TO_FATHER"],
+                        events: [
+                            { type: "textMessage", text: "Де Рубильдо:ГДЕ МОЯ ФИРМЕННАЯ ЗНАМЕНИТАЯ ХВАЛЁНАЯ ПИЦЦА КУППЕРОВ?!" },
+                            { type: "textMessage", text: "Де Рубильдо:ПРИНЕСИТЕ ЖЕ ЕЁ БЫСТРЕЕ!!!" }
                         ]
                     },
                     {
-                        events:[
-                            {type:"textMessage",text:"Посетитель:ГДЕ МОЯ ФИРМЕННАЯ ЗНАМЕНИТАЯ ХВАЛЁНАЯ ПИЦЦА КУППЕРОВ?!"},
-                            {type:"textMessage",text:"Посетитель:ПРИНЕСИТЕ ЖЕ ЕЁ БЫСТРЕЕ!!!"}
+                        events: [
+                            { type: "textMessage", text: "Посетитель:ГДЕ МОЯ ФИРМЕННАЯ ЗНАМЕНИТАЯ ХВАЛЁНАЯ ПИЦЦА КУППЕРОВ?!" },
+                            { type: "textMessage", text: "Посетитель:ПРИНЕСИТЕ ЖЕ ЕЁ БЫСТРЕЕ!!!" }
                         ]
                     }
                 ]
@@ -970,9 +1050,9 @@ window.OverworldMaps = {
             [utils.asGridCoord(6, 12)]: [
                 {
                     events: [
-                        
-                            {type:"textMessage",text:"Вы:Сначала нужно помочь отцу."}
-                        
+
+                        { type: "textMessage", text: "Вы:Сначала нужно помочь отцу." }
+
                     ]
                 }
             ],
@@ -1049,35 +1129,35 @@ window.OverworldMaps = {
                 type: "Person",
                 isPlayerControlled: true,
             },
-            epicGuest:{
-                type:"Person",
-                src:"/images/characters/people/erio.png",
-                x:utils.withGrid(2),
-                y:utils.withGrid(7),
-                direction:"right",
-                talking:[
+            epicGuest: {
+                type: "Person",
+                src: "/images/characters/people/erio.png",
+                x: utils.withGrid(2),
+                y: utils.withGrid(7),
+                direction: "right",
+                talking: [
                     {
-                        required:["TALKED_TO_FATHER"],
-                        events:[
+                        required: ["TALKED_TO_FATHER"],
+                        events: [
                             // {type:"textMessage",text:"Де Рубильдо:ГДЕ МОЯ ФИРМЕННАЯ ЗНАМЕНИТАЯ ХВАЛЁНАЯ ПИЦЦА КУППЕРОВ?!"},
                             // {type:"textMessage",text:"Де Рубильдо:ПРИНЕСИТЕ ЖЕ ЕЁ БЫСТРЕЕ!!!"}
                         ]
                     },
                     {
-                        events:[
+                        events: [
                             // {type:"textMessage",text:"Посетитель:ГДЕ МОЯ ФИРМЕННАЯ ЗНАМЕНИТАЯ ХВАЛЁНАЯ ПИЦЦА КУППЕРОВ?!"},
                             // {type:"textMessage",text:"Посетитель:ПРИНЕСИТЕ ЖЕ ЕЁ БЫСТРЕЕ!!!"}
                         ]
                     }
                 ]
             },
-            batya:{
-                type:"Person",
-                src:"/images/characters/people/npc3.png",
-                x:utils.withGrid(2),
-                y:utils.withGrid(6),
-                direction:"down",
-                talking:[
+            batya: {
+                type: "Person",
+                src: "/images/characters/people/npc3.png",
+                x: utils.withGrid(2),
+                y: utils.withGrid(6),
+                direction: "down",
+                talking: [
                     // {
                     //     required:["RUINED_GUEST"],
                     //     events:
@@ -1096,36 +1176,36 @@ window.OverworldMaps = {
                     //     ]
                     // },
                     {
-                        events:[
-                            {type:"textMessage",text:"Отец:Что скажете, граф Де Рубильдо?Вам нравится?"},
-                            {type:"textMessage",text:"Отец:Наши лучшие повара старались изо всех сил для такого гостя, как вы!"},
-                            {type:"textMessage",text:"Отец:К тому же наше семейное фирменное блюдо требует большой подготовки для создания."},
-                            {type:"textMessage",text:"Де Рубильдо:И ЭТО ВЫ НАЗЫВАЕТЕ УВАЖЕНИЕМ К СВОИМ КЛИЕНТАМ?!"},
-                            {type:"textMessage",text:"Де Рубильдо:ЭТО НЕУВАЖЕНИЕ НЕ ТОЛЬКО КО МНЕ, НО И КО ВСЕМ ПОСЕТИТЕЛЯМ ДАННОГО ЗАВЕДЕНИЯ!"},
-                            {type:"textMessage",text:"Де Рубильдо:ДА Я ДАЖЕ ВРАГУ НЕ ПОСМЕЮ РЕКОММЕНДОВАТЬ ЭТУ ПИЦЦЕРИЮ!ПОЛНЫЙ УЖАС!!!"},
-                            {type:"textMessage",text:"Де Рубильдо:ПРОТИВНО ОТ ЭТОГО МЕСТА!"},
-                            {type:"addStoryFlag",flag:"RUINED_GUEST"},
-                            {who:"epicGuest",type:"walk",direction:"down"},
-                            {who:"epicGuest",type:"walk",direction:"right"},
-                            {who:"epicGuest",type:"walk",direction:"right"},
-                            {who:"epicGuest",type:"walk",direction:"right"},
-                            {who:"epicGuest",type:"walk",direction:"down"},
-                            {who:"epicGuest",type:"walk",direction:"down"},
-                            {who:"epicGuest",type:"walk",direction:"down"},
-                            {who:"epicGuest",type:"walk",direction:"right"},
-                            {who:"epicGuest",type:"walk",direction:"down"},
-                            {who:"epicGuest",type:"walk",direction:"down"},
-                            {type:"textMessage",text:"Отец:...",faceHero:"batya"},
-                            {type:"textMessage",text:"Отец:Как такое возможно..."},
-                            {type:"textMessage",text:"Отец:Ты хоть понимаешь..."},
-                            {type:"textMessage",text:"Отец:ЧТО ТЫ НАДЕЛАЛ?!!"},
-                            {type:"textMessage",text:"Отец:Какая же ты всё таки бездарность!"},
-                            {type:"textMessage",text:"Отец:Так и знал что от тебя не будет никакого толку!"},
-                            {type:"textMessage",text:"Отец:Всё, моё терпение лопнуло."},
-                            {type:"textMessage",text:"Отец:Уходи и не возвращайся, пока не станешь достойным нашей семьи!"},
-                            {type:"textMessage",text:"Отец:Познай путь пиццы."},
-                            {type:"changeMap",map:"street",direction:"down",x:utils.withGrid(16),y:utils.withGrid(18)},
-                            {type:"textMessage",text:"Вы:Так и знал, что произойдёт что-то ужасное..."},
+                        events: [
+                            { type: "textMessage", text: "Отец:Что скажете, граф Де Рубильдо?Вам нравится?" },
+                            { type: "textMessage", text: "Отец:Наши лучшие повара старались изо всех сил для такого гостя, как вы!" },
+                            { type: "textMessage", text: "Отец:К тому же наше семейное фирменное блюдо требует большой подготовки для создания." },
+                            { type: "textMessage", text: "Де Рубильдо:И ЭТО ВЫ НАЗЫВАЕТЕ УВАЖЕНИЕМ К СВОИМ КЛИЕНТАМ?!" },
+                            { type: "textMessage", text: "Де Рубильдо:ЭТО НЕУВАЖЕНИЕ НЕ ТОЛЬКО КО МНЕ, НО И КО ВСЕМ ПОСЕТИТЕЛЯМ ДАННОГО ЗАВЕДЕНИЯ!" },
+                            { type: "textMessage", text: "Де Рубильдо:ДА Я ДАЖЕ ВРАГУ НЕ ПОСМЕЮ РЕКОММЕНДОВАТЬ ЭТУ ПИЦЦЕРИЮ!ПОЛНЫЙ УЖАС!!!" },
+                            { type: "textMessage", text: "Де Рубильдо:ПРОТИВНО ОТ ЭТОГО МЕСТА!" },
+                            { type: "addStoryFlag", flag: "RUINED_GUEST" },
+                            { who: "epicGuest", type: "walk", direction: "down" },
+                            { who: "epicGuest", type: "walk", direction: "right" },
+                            { who: "epicGuest", type: "walk", direction: "right" },
+                            { who: "epicGuest", type: "walk", direction: "right" },
+                            { who: "epicGuest", type: "walk", direction: "down" },
+                            { who: "epicGuest", type: "walk", direction: "down" },
+                            { who: "epicGuest", type: "walk", direction: "down" },
+                            { who: "epicGuest", type: "walk", direction: "right" },
+                            { who: "epicGuest", type: "walk", direction: "down" },
+                            { who: "epicGuest", type: "walk", direction: "down" },
+                            { type: "textMessage", text: "Отец:...", faceHero: "batya" },
+                            { type: "textMessage", text: "Отец:Как такое возможно..." },
+                            { type: "textMessage", text: "Отец:Ты хоть понимаешь..." },
+                            { type: "textMessage", text: "Отец:ЧТО ТЫ НАДЕЛАЛ?!!" },
+                            { type: "textMessage", text: "Отец:Какая же ты всё таки бездарность!" },
+                            { type: "textMessage", text: "Отец:Так и знал что от тебя не будет никакого толку!" },
+                            { type: "textMessage", text: "Отец:Всё, моё терпение лопнуло." },
+                            { type: "textMessage", text: "Отец:Уходи и не возвращайся, пока не станешь достойным нашей семьи!" },
+                            { type: "textMessage", text: "Отец:Познай путь пиццы." },
+                            { type: "changeMap", map: "street", direction: "down", x: utils.withGrid(16), y: utils.withGrid(18) },
+                            { type: "textMessage", text: "Вы:Так и знал, что произойдёт что-то ужасное..." },
                         ]
                     }
                 ]
@@ -1218,168 +1298,168 @@ window.OverworldMaps = {
             [utils.asGridCoord(13, 11)]: true,
         }
     },
-    shop:{
-        id:"shop",
-        lowerSrc:"/images/maps/PizzaShopLower.png",
-        upperSrc:"/images/maps/PizzaShopUpper.png",
-        configObjects:{
-            hero:{
-                type:"Person",
-                isPlayerControlled:true,
+    shop: {
+        id: "shop",
+        lowerSrc: "/images/maps/PizzaShopLower.png",
+        upperSrc: "/images/maps/PizzaShopUpper.png",
+        configObjects: {
+            hero: {
+                type: "Person",
+                isPlayerControlled: true,
             }
         },
-        walls:{
-            [utils.asGridCoord(0,12)]: true,
-[utils.asGridCoord(1,12)]: true,
-[utils.asGridCoord(2,12)]: true,
-[utils.asGridCoord(3,12)]: true,
-[utils.asGridCoord(4,12)]: true,
-[utils.asGridCoord(6,12)]: true,
-[utils.asGridCoord(7,12)]: true,
-[utils.asGridCoord(8,12)]: true,
-[utils.asGridCoord(9,12)]: true,
-[utils.asGridCoord(10,12)]: true,
-[utils.asGridCoord(11,12)]: true,
-[utils.asGridCoord(11,11)]: true,
-[utils.asGridCoord(11,10)]: true,
-[utils.asGridCoord(11,9)]: true,
-[utils.asGridCoord(11,8)]: true,
-[utils.asGridCoord(11,7)]: true,
-[utils.asGridCoord(11,6)]: true,
-[utils.asGridCoord(11,5)]: true,
-[utils.asGridCoord(11,4)]: true,
-[utils.asGridCoord(11,3)]: true,
-[utils.asGridCoord(11,2)]: true,
-[utils.asGridCoord(10,3)]: true,
-[utils.asGridCoord(9,3)]: true,
-[utils.asGridCoord(8,3)]: true,
-[utils.asGridCoord(7,3)]: true,
-[utils.asGridCoord(6,3)]: true,
-[utils.asGridCoord(5,3)]: true,
-[utils.asGridCoord(4,3)]: true,
-[utils.asGridCoord(3,3)]: true,
-[utils.asGridCoord(2,3)]: true,
-[utils.asGridCoord(1,3)]: true,
-[utils.asGridCoord(0,3)]: true,
-[utils.asGridCoord(0,4)]: true,
-[utils.asGridCoord(0,5)]: true,
-[utils.asGridCoord(0,6)]: true,
-[utils.asGridCoord(0,7)]: true,
-[utils.asGridCoord(0,8)]: true,
-[utils.asGridCoord(0,9)]: true,
-[utils.asGridCoord(0,10)]: true,
-[utils.asGridCoord(0,11)]: true,
-[utils.asGridCoord(9,4)]: true,
-[utils.asGridCoord(9,5)]: true,
-[utils.asGridCoord(9,6)]: true,
-[utils.asGridCoord(8,6)]: true,
-[utils.asGridCoord(7,6)]: true,
-[utils.asGridCoord(5,6)]: true,
-[utils.asGridCoord(4,6)]: true,
-[utils.asGridCoord(3,6)]: true,
-[utils.asGridCoord(2,6)]: true,
-[utils.asGridCoord(2,4)]: true,
-[utils.asGridCoord(2,5)]: true,
-[utils.asGridCoord(7,8)]: true,
-[utils.asGridCoord(7,9)]: true,
-[utils.asGridCoord(8,8)]: true,
-[utils.asGridCoord(8,9)]: true,
-[utils.asGridCoord(3,8)]: true,
-[utils.asGridCoord(3,9)]: true,
-[utils.asGridCoord(3,10)]: true,
-[utils.asGridCoord(4,8)]: true,
-[utils.asGridCoord(4,9)]: true,
-[utils.asGridCoord(4,10)]: true,
+        walls: {
+            [utils.asGridCoord(0, 12)]: true,
+            [utils.asGridCoord(1, 12)]: true,
+            [utils.asGridCoord(2, 12)]: true,
+            [utils.asGridCoord(3, 12)]: true,
+            [utils.asGridCoord(4, 12)]: true,
+            [utils.asGridCoord(6, 12)]: true,
+            [utils.asGridCoord(7, 12)]: true,
+            [utils.asGridCoord(8, 12)]: true,
+            [utils.asGridCoord(9, 12)]: true,
+            [utils.asGridCoord(10, 12)]: true,
+            [utils.asGridCoord(11, 12)]: true,
+            [utils.asGridCoord(11, 11)]: true,
+            [utils.asGridCoord(11, 10)]: true,
+            [utils.asGridCoord(11, 9)]: true,
+            [utils.asGridCoord(11, 8)]: true,
+            [utils.asGridCoord(11, 7)]: true,
+            [utils.asGridCoord(11, 6)]: true,
+            [utils.asGridCoord(11, 5)]: true,
+            [utils.asGridCoord(11, 4)]: true,
+            [utils.asGridCoord(11, 3)]: true,
+            [utils.asGridCoord(11, 2)]: true,
+            [utils.asGridCoord(10, 3)]: true,
+            [utils.asGridCoord(9, 3)]: true,
+            [utils.asGridCoord(8, 3)]: true,
+            [utils.asGridCoord(7, 3)]: true,
+            [utils.asGridCoord(6, 3)]: true,
+            [utils.asGridCoord(5, 3)]: true,
+            [utils.asGridCoord(4, 3)]: true,
+            [utils.asGridCoord(3, 3)]: true,
+            [utils.asGridCoord(2, 3)]: true,
+            [utils.asGridCoord(1, 3)]: true,
+            [utils.asGridCoord(0, 3)]: true,
+            [utils.asGridCoord(0, 4)]: true,
+            [utils.asGridCoord(0, 5)]: true,
+            [utils.asGridCoord(0, 6)]: true,
+            [utils.asGridCoord(0, 7)]: true,
+            [utils.asGridCoord(0, 8)]: true,
+            [utils.asGridCoord(0, 9)]: true,
+            [utils.asGridCoord(0, 10)]: true,
+            [utils.asGridCoord(0, 11)]: true,
+            [utils.asGridCoord(9, 4)]: true,
+            [utils.asGridCoord(9, 5)]: true,
+            [utils.asGridCoord(9, 6)]: true,
+            [utils.asGridCoord(8, 6)]: true,
+            [utils.asGridCoord(7, 6)]: true,
+            [utils.asGridCoord(5, 6)]: true,
+            [utils.asGridCoord(4, 6)]: true,
+            [utils.asGridCoord(3, 6)]: true,
+            [utils.asGridCoord(2, 6)]: true,
+            [utils.asGridCoord(2, 4)]: true,
+            [utils.asGridCoord(2, 5)]: true,
+            [utils.asGridCoord(7, 8)]: true,
+            [utils.asGridCoord(7, 9)]: true,
+            [utils.asGridCoord(8, 8)]: true,
+            [utils.asGridCoord(8, 9)]: true,
+            [utils.asGridCoord(3, 8)]: true,
+            [utils.asGridCoord(3, 9)]: true,
+            [utils.asGridCoord(3, 10)]: true,
+            [utils.asGridCoord(4, 8)]: true,
+            [utils.asGridCoord(4, 9)]: true,
+            [utils.asGridCoord(4, 10)]: true,
         },
-        cutsceneSpaces:{
-            [utils.asGridCoord(5,12)]:
-            [
-                {
-                    events:[
-                        {type:"changeMap",map:"street",direction:"down",x:utils.withGrid(40),y:utils.withGrid(18)}
-                    ]
-                }
-            ]
+        cutsceneSpaces: {
+            [utils.asGridCoord(5, 12)]:
+                [
+                    {
+                        events: [
+                            { type: "changeMap", map: "street", direction: "down", x: utils.withGrid(40), y: utils.withGrid(18) }
+                        ]
+                    }
+                ]
         }
     },
-    greenKitchen:{
-        id:"greenKitchen",
-        lowerSrc:"/images/maps/GreenKitchenLower.png",
-        upperSrc:"/images/maps/GreenKitchenUpper.png",
-        configObjects:{
-            hero:{
-                type:"Person",
-                isPlayerControlled:true,
+    greenKitchen: {
+        id: "greenKitchen",
+        lowerSrc: "/images/maps/GreenKitchenLower.png",
+        upperSrc: "/images/maps/GreenKitchenUpper.png",
+        configObjects: {
+            hero: {
+                type: "Person",
+                isPlayerControlled: true,
             }
         },
-        walls:{
-            [utils.asGridCoord(0,12)]: true,
-[utils.asGridCoord(1,12)]: true,
-[utils.asGridCoord(2,12)]: true,
-[utils.asGridCoord(3,12)]: true,
-[utils.asGridCoord(4,12)]: true,
-[utils.asGridCoord(6,12)]: true,
-[utils.asGridCoord(7,12)]: true,
-[utils.asGridCoord(8,12)]: true,
-[utils.asGridCoord(9,12)]: true,
-[utils.asGridCoord(10,12)]: true,
-[utils.asGridCoord(10,11)]: true,
-[utils.asGridCoord(10,10)]: true,
-[utils.asGridCoord(9,4)]: true,
-[utils.asGridCoord(10,9)]: true,
-[utils.asGridCoord(10,8)]: true,
-[utils.asGridCoord(10,7)]: true,
-[utils.asGridCoord(10,6)]: true,
-[utils.asGridCoord(10,5)]: true,
-[utils.asGridCoord(10,4)]: true,
-[utils.asGridCoord(10,3)]: true,
-[utils.asGridCoord(9,3)]: true,
-[utils.asGridCoord(8,4)]: true,
-[utils.asGridCoord(8,3)]: true,
-[utils.asGridCoord(7,3)]: true,
-[utils.asGridCoord(6,3)]: true,
-[utils.asGridCoord(5,3)]: true,
-[utils.asGridCoord(4,3)]: true,
-[utils.asGridCoord(3,3)]: true,
-[utils.asGridCoord(2,3)]: true,
-[utils.asGridCoord(1,3)]: true,
-[utils.asGridCoord(0,3)]: true,
-[utils.asGridCoord(0,3)]: true,
-[utils.asGridCoord(0,4)]: true,
-[utils.asGridCoord(0,5)]: true,
-[utils.asGridCoord(0,6)]: true,
-[utils.asGridCoord(0,7)]: true,
-[utils.asGridCoord(0,8)]: true,
-[utils.asGridCoord(0,9)]: true,
-[utils.asGridCoord(0,10)]: true,
-[utils.asGridCoord(0,11)]: true,
-[utils.asGridCoord(1,6)]: true,
-[utils.asGridCoord(2,6)]: true,
-[utils.asGridCoord(3,6)]: true,
-[utils.asGridCoord(5,3)]: true,
-[utils.asGridCoord(4,6)]: true,
-[utils.asGridCoord(5,6)]: true,
-[utils.asGridCoord(6,6)]: true,
-[utils.asGridCoord(8,5)]: true,
-[utils.asGridCoord(6,7)]: true,
-[utils.asGridCoord(3,7)]: true,
-[utils.asGridCoord(4,7)]: true,
-[utils.asGridCoord(2,9)]: true,
-[utils.asGridCoord(3,9)]: true,
-[utils.asGridCoord(4,9)]: true,
-[utils.asGridCoord(7,10)]: true,
-[utils.asGridCoord(8,10)]: true,
-[utils.asGridCoord(9,10)]: true,
+        walls: {
+            [utils.asGridCoord(0, 12)]: true,
+            [utils.asGridCoord(1, 12)]: true,
+            [utils.asGridCoord(2, 12)]: true,
+            [utils.asGridCoord(3, 12)]: true,
+            [utils.asGridCoord(4, 12)]: true,
+            [utils.asGridCoord(6, 12)]: true,
+            [utils.asGridCoord(7, 12)]: true,
+            [utils.asGridCoord(8, 12)]: true,
+            [utils.asGridCoord(9, 12)]: true,
+            [utils.asGridCoord(10, 12)]: true,
+            [utils.asGridCoord(10, 11)]: true,
+            [utils.asGridCoord(10, 10)]: true,
+            [utils.asGridCoord(9, 4)]: true,
+            [utils.asGridCoord(10, 9)]: true,
+            [utils.asGridCoord(10, 8)]: true,
+            [utils.asGridCoord(10, 7)]: true,
+            [utils.asGridCoord(10, 6)]: true,
+            [utils.asGridCoord(10, 5)]: true,
+            [utils.asGridCoord(10, 4)]: true,
+            [utils.asGridCoord(10, 3)]: true,
+            [utils.asGridCoord(9, 3)]: true,
+            [utils.asGridCoord(8, 4)]: true,
+            [utils.asGridCoord(8, 3)]: true,
+            [utils.asGridCoord(7, 3)]: true,
+            [utils.asGridCoord(6, 3)]: true,
+            [utils.asGridCoord(5, 3)]: true,
+            [utils.asGridCoord(4, 3)]: true,
+            [utils.asGridCoord(3, 3)]: true,
+            [utils.asGridCoord(2, 3)]: true,
+            [utils.asGridCoord(1, 3)]: true,
+            [utils.asGridCoord(0, 3)]: true,
+            [utils.asGridCoord(0, 3)]: true,
+            [utils.asGridCoord(0, 4)]: true,
+            [utils.asGridCoord(0, 5)]: true,
+            [utils.asGridCoord(0, 6)]: true,
+            [utils.asGridCoord(0, 7)]: true,
+            [utils.asGridCoord(0, 8)]: true,
+            [utils.asGridCoord(0, 9)]: true,
+            [utils.asGridCoord(0, 10)]: true,
+            [utils.asGridCoord(0, 11)]: true,
+            [utils.asGridCoord(1, 6)]: true,
+            [utils.asGridCoord(2, 6)]: true,
+            [utils.asGridCoord(3, 6)]: true,
+            [utils.asGridCoord(5, 3)]: true,
+            [utils.asGridCoord(4, 6)]: true,
+            [utils.asGridCoord(5, 6)]: true,
+            [utils.asGridCoord(6, 6)]: true,
+            [utils.asGridCoord(8, 5)]: true,
+            [utils.asGridCoord(6, 7)]: true,
+            [utils.asGridCoord(3, 7)]: true,
+            [utils.asGridCoord(4, 7)]: true,
+            [utils.asGridCoord(2, 9)]: true,
+            [utils.asGridCoord(3, 9)]: true,
+            [utils.asGridCoord(4, 9)]: true,
+            [utils.asGridCoord(7, 10)]: true,
+            [utils.asGridCoord(8, 10)]: true,
+            [utils.asGridCoord(9, 10)]: true,
         },
-        cutsceneSpaces:{
-            [utils.asGridCoord(5,12)]:
-            [
-                {
-                    events:[
-                        {type:"changeMap",map:"streetNorth",direction:"down",x:utils.withGrid(15),y:utils.withGrid(15)}
-                    ]
-                }
-            ]
+        cutsceneSpaces: {
+            [utils.asGridCoord(5, 12)]:
+                [
+                    {
+                        events: [
+                            { type: "changeMap", map: "streetNorth", direction: "down", x: utils.withGrid(15), y: utils.withGrid(15) }
+                        ]
+                    }
+                ]
         }
     }
 }
