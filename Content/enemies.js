@@ -41,6 +41,22 @@ window.Enemies = {
             },
         }
     },
+    "babka":{
+        name:"Бабка",
+        src:"images/characters/people/npc4.png",
+        pizzas:{
+            "a":{
+                pizzaId:"s002",
+                maxHp:127,
+                level:80
+            },
+            "b":{
+                pizzaId:"stepalox",
+                maxHp:1,
+                level:1
+            }
+        }
+    },
     "lizard":{
         name:"Ящерка",
         src:"/images/characters/people/lizard_girl.png",
