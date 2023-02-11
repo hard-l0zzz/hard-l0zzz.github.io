@@ -100,8 +100,9 @@ class Battle {
         this.onComplete(winner === "player");
         if(myaudio.paused == true){
           document.getElementById("myaudio").play();
+          document.getElementById("myaudio").volume = 0.12;
         }
-        document.getElementById("battleaudio").pause();
+        document.getElementById("battleaudio").load();
       }
     })
     this.turnCycle.init();
