@@ -113,7 +113,7 @@ class BattleEvent {
 
         if(combatant.xp === combatant.maxXp) {
           combatant.xp = 0;
-          combatant.maxXp = 100;
+          combatant.maxXp = combatant.maxXp + 10;
           combatant.level += 1;
         }
 
