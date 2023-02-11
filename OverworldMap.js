@@ -831,6 +831,8 @@ window.OverworldMaps = {
         //     [utils.asGridCoord(38,15)]:true,
         // }
         walls: {
+            [utils.asGridCoord(15, 17)]: true,
+            [utils.asGridCoord(16, 16)]: true,
             [utils.asGridCoord(17, 17)]: true,
             [utils.asGridCoord(18, 17)]: true,
             [utils.asGridCoord(19, 17)]: true,
