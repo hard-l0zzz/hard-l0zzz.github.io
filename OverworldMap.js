@@ -74,8 +74,6 @@ class OverworldMap {
         }
 
         this.isCutscenePlaying = false;
-        //ресет поведения нпс
-        //Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this))
     }
 
     checkForActionCutscene() {
@@ -115,25 +113,11 @@ window.OverworldMaps = {
         upperSrc: "/images/maps/DemoUpper.png",
         configObjects: {
             hero: {
-                // type:"stand",
-                // direction:"up",
-                // time:1,
                 type: "Person",
                 isPlayerControlled: true,
                 x: utils.withGrid(5),
                 y: utils.withGrid(9)
             },
-            /*box: new Person({
-                x:utils.withGrid(10),
-                y:utils.withGrid(6),
-                src:"/images/characters/box.png",
-                talking: [{
-                    events:[
-                        {type:"textMessage",text:"Это коробка"},
-                        {type:"textMessage",text:"Взять её?"}
-                    ]
-                }]
-            }),*/
             cat: {
                 type: "Person",
                 x: utils.withGrid(6),
@@ -241,7 +225,6 @@ window.OverworldMaps = {
                         events: [
                             { type: "textMessage", text: "Охранник:...", faceHero: "npc2" },
                             { type: "addStoryFlag", flag: "TALKED_TO_NPC2" },
-                            //{type:"disappear",who:"hero"}
                         ]
                     },
                     {
@@ -259,13 +242,6 @@ window.OverworldMaps = {
                 storyFlag: "USED_PIZZA_STONE",
                 pizzas: ["v001", "f001"],
             },
-            // box: {
-            //     type:"Box",
-            //     x:utils.withGrid(3),
-            //     y:utils.withGrid(8),
-            //     items:["item_recoverHp","item_recoverHp"],
-            //     storyFlag: "USED_BOX"
-            // }
         },
         walls: {
             [utils.asGridCoord(7, 7)]: true,
@@ -324,30 +300,6 @@ window.OverworldMaps = {
                     ]
                 }
             ],
-            // [utils.asGridCoord(5,8)]:[
-            //     {
-            //         events:[
-            //             {type:"addStoryFlag",flag:"HAS_TO_SEE_INTRO"}
-            //         ],
-            //         required:["HAS_TO_SEE_INTRO"],
-            //         events:[
-            //             {type:"textMessage", text:"wow"},
-            //             {type:"addStoryFlag",flag:"SEEN_INTRO"},
-            //             {type:"removeStoryFlag",flag:"HAS_TO_SEE_INTRO"}
-            //         ],
-            //         required:["SEEN_INTRO"],
-            //         events:[
-            //             {type:"addStoryFlag",flag:"NOTHING"}
-            //         ]
-            //     },
-            // ],
-            // [utils.asGridCoord(5,9)]:[
-            //     {
-            //     events:[
-            //         {type:"textMessage", text:"Однажды вы жили в богатой семье знаменитых на весь мир поваров..."}
-            //     ]
-            // }
-            // ],
             [utils.asGridCoord(5, 10)]: [
                 {
                     events: [
@@ -364,13 +316,8 @@ window.OverworldMaps = {
         upperSrc: "/images/maps/KitchenUpper.png",
         configObjects: {
             hero: {
-                // type:"stand",
-                // direction:"up",
-                // time:1,
                 type: "Person",
                 isPlayerControlled: true,
-                // x:utils.withGrid(5),
-                // y:utils.withGrid(9)
             },
             batya: {
                 type: "Person",
@@ -387,14 +334,6 @@ window.OverworldMaps = {
                             { type: "textMessage", text: "Отец:Окей, на вид выглядит неплохо, надеюсь и на вкус тоже." },
                             { type: "textMessage", text: "Отец:Всё, времени уже нет, нужно быстрее её нести!" },
                             { type: "changeMap", map: "diningRoom2", direction: "down", x: utils.withGrid(3), y: utils.withGrid(6) },
-                            // {type:"textMessage",text:"Отец:Что скажете, граф Де Рубильдо?Вам нравится?"},
-                            // {type:"textMessage",text:"Отец:Наши лучшие повара старались изо всех сил для такого гостя, как вы!"},
-                            // {type:"textMessage",text:"Отец:К тому же наше семейное фирменное блюдо требует большой подготовки для создания."},
-                            // {type:"textMessage",text:"Де Рубильдо:И ЭТО ВЫ НАЗЫВАЕТЕ УВАЖЕНИЕМ К СВОИМ КЛИЕНТАМ?!"},
-                            // {type:"textMessage",text:"Де Рубильдо:ЭТО НЕУВАЖЕНИЕ НЕ ТОЛЬКО КО МНЕ, НО И КО ВСЕМ ПОСЕТИТЕЛЯМ ДАННОГО ЗАВЕДЕНИЯ!"},
-                            // {type:"textMessage",text:"Де Рубильдо:ДА Я ДАЖЕ ВРАГУ НЕ ПОСМЕЮ РЕКОММЕНДОВАТЬ ЭТУ ПИЦЦЕРИЮ!ПОЛНЫЙ УЖАС!!!"},
-                            // {type:"textMessage",text:"Де Рубильдо:ПРОТИВНО ОТ ЭТОГО МЕСТА!"},
-                            // {who:"epicGuest",type:"walk",direction:"down"}
                         ]
                     },
                     {
@@ -403,13 +342,6 @@ window.OverworldMaps = {
                             { type: "textMessage", text: "Отец:Ого, ты уже сделал пиццу!Неплохая работа, недотёпа." },
                             { type: "textMessage", text: "Отец:Ну всё, нужно скорее её нести гостю!" },
                             { type: "changeMap", map: "diningRoom2", direction: "down", x: utils.withGrid(3), y: utils.withGrid(6) },
-                            // {type:"textMessage",text:"Отец:Что скажете, граф Де Рубильдо?Вам нравится?"},
-                            // {type:"textMessage",text:"Отец:Наши лучшие повара старались изо всех сил для такого гостя, как вы!"},
-                            // {type:"textMessage",text:"Отец:К тому же наше семейное фирменное блюдо требует большой подготовки для создания."},
-                            // {type:"textMessage",text:"Де Рубильдо:И ЭТО ВЫ НАЗЫВАЕТЕ УВАЖЕНИЕМ К СВОИМ КЛИЕНТАМ?!"},
-                            // {type:"textMessage",text:"Де Рубильдо:ЭТО НЕУВАЖЕНИЕ НЕ ТОЛЬКО КО МНЕ, НО И КО ВСЕМ ПОСЕТИТЕЛЯМ ДАННОГО ЗАВЕДЕНИЯ!"},
-                            // {type:"textMessage",text:"Де Рубильдо:ДА Я ДАЖЕ ВРАГУ НЕ ПОСМЕЮ РЕКОММЕНДОВАТЬ ЭТУ ПИЦЦЕРИЮ!ПОЛНЫЙ УЖАС!!!"},
-                            // {type:"textMessage",text:"Де Рубильдо:ПРОТИВНО ОТ ЭТОГО МЕСТА!"},
                         ]
                     },
                     {
@@ -429,10 +361,10 @@ window.OverworldMaps = {
                         ]
                     }
                 ],
-                // behaviorLoop: [
-                //     { type: "stand", direction: "left", time: 200 },
-                //     { type: "stand", direction: "right", time: 300 }
-                // ]
+                behaviorLoop: [
+                    { type: "stand", direction: "left", time: 200 },
+                    { type: "stand", direction: "right", time: 300 }
+                ]
             },
             table: {
                 type: "PizzaStone",
@@ -441,25 +373,6 @@ window.OverworldMaps = {
                 pizzas: ["nedotepa"],
                 storyFlag: "MADE_FIRST_PIZZA"
             }
-            // lizard_girl: {
-            //     type: "Person",
-            //     x: utils.withGrid(4),
-            //     y: utils.withGrid(4),
-            //     src: "images/characters/people/lizard_girl.png",
-            //     behaviorLoop: [
-            //         { type: "stand", direction: "down", time: 800 }
-            //     ],
-            //     talking: [
-            //         {
-            //             events: [
-            //                 { type: "textMessage", text: "Ящерка: külön" },
-            //                 { type: "textMessage", text: "Ящерка: köszönet" },
-            //                 { type: "battle", enemyId: "lizard" },
-            //                 { type: "changeMap", map: "secret", x: utils.withGrid(0), y: utils.withGrid(15), direction: "up" }
-            //             ]
-            //         }
-            //     ]
-            // },
         },
         cutsceneSpaces: {
             [utils.asGridCoord(5, 10)]: [
@@ -469,13 +382,6 @@ window.OverworldMaps = {
                     ]
                 }
             ],
-            // [utils.asGridCoord(n,n)]: [
-            //     {
-            //         events:[
-            //             {type:"textMessage", text:""},
-            //         ]
-            //     }
-            // ]
         },
         walls: {
             [utils.asGridCoord(2, 4)]: true,
@@ -489,7 +395,6 @@ window.OverworldMaps = {
             [utils.asGridCoord(8, 4)]: true,
             [utils.asGridCoord(9, 3)]: true,
             [utils.asGridCoord(10, 3)]: true,
-            // [utils.asGridCoord(11, 5)]: true,
             [utils.asGridCoord(12, 4)]: true,
             [utils.asGridCoord(13, 5)]: true,
             [utils.asGridCoord(13, 6)]: true,
@@ -575,7 +480,6 @@ window.OverworldMaps = {
         configObjects: {
             hero: {
                 type: "Person",
-                // src:"images/characters/people/bigHero.png",
                 isPlayerControlled: true,
                 x: utils.withGrid(15),
                 y: utils.withGrid(15),
@@ -614,9 +518,6 @@ window.OverworldMaps = {
         walls:
         {
             // [utils.asGridCoord(15,16)]:true,
-            // [utils.asGridCoord(14,15)]:true,
-            // [utils.asGridCoord(15,14)]:true,
-            // [utils.asGridCoord(16,15)]:true
         },
         cutsceneSpaces: {
             [utils.asGridCoord(10, 10)]: [
@@ -681,9 +582,6 @@ window.OverworldMaps = {
                         events:
                             [
                                 { type: "textMessage", text: "Бабуля:Какой чудесный день!",faceHero:"babka" },
-                                { type: "stand", direction: "left", time: 2,who:"babka" },
-                                { type: "stand", direction: "right", time: 3,who:"babka" },
-                                { type: "stand", direction: "up", time: 5,who:"babka" },
                             ]
                     }
                 ],
@@ -705,7 +603,6 @@ window.OverworldMaps = {
                 [
                     {
                         events: [
-                            // {type:"changeMap",map:"diningRoom", direction:"up", x:utils.withGrid(6), y:utils.withGrid(11)}
                             { type: "textMessage", text: "Мне пока лучше не возвращаться..." }
                         ]
                     }
@@ -779,57 +676,6 @@ window.OverworldMaps = {
                 }
             ]
         },
-        // walls:{
-        // [utils.asGridCoord(14,18)]:true,
-        // [utils.asGridCoord(14,19)]:true,
-        // [utils.asGridCoord(14,20)]:true,
-        // [utils.asGridCoord(14,21)]:true,
-        //     [utils.asGridCoord(15,22)]:true,
-        //     [utils.asGridCoord(16,22)]:true,
-        //     [utils.asGridCoord(17,22)]:true,
-        //     [utils.asGridCoord(18,22)]:true,
-        //     [utils.asGridCoord(19,22)]:true,
-        //     [utils.asGridCoord(20,22)]:true,
-        //     [utils.asGridCoord(21,22)]:true,
-        //     [utils.asGridCoord(22,22)]:true,
-        //     [utils.asGridCoord(23,22)]:true,
-        //     [utils.asGridCoord(24,22)]:true,
-        //     [utils.asGridCoord(25,22)]:true,
-        //     [utils.asGridCoord(26,22)]:true,
-        //     [utils.asGridCoord(27,22)]:true,
-        //     [utils.asGridCoord(28,22)]:true,
-        //     [utils.asGridCoord(29,22)]:true,
-        //     [utils.asGridCoord(30,22)]:true,
-        //     [utils.asGridCoord(31,22)]:true,
-        //     [utils.asGridCoord(32,22)]:true,
-        //     [utils.asGridCoord(33,22)]:true,
-        //     [utils.asGridCoord(34,22)]:true,
-        //     [utils.asGridCoord(35,22)]:true,
-        //     [utils.asGridCoord(36,22)]:true,
-        //     [utils.asGridCoord(37,22)]:true,
-        //     [utils.asGridCoord(38,22)]:true,
-        //     [utils.asGridCoord(39,22)]:true,
-        //     [utils.asGridCoord(40,22)]:true,
-        //     [utils.asGridCoord(41,22)]:true,
-        //     [utils.asGridCoord(42,22)]:true,
-        //     [utils.asGridCoord(43,22)]:true,
-        //     [utils.asGridCoord(44,22)]:true,
-        //     [utils.asGridCoord(45,21)]:true,
-        //     [utils.asGridCoord(45,19)]:true,
-        //     [utils.asGridCoord(45,20)]:true,
-        //     [utils.asGridCoord(45,18)]:true,
-        //     [utils.asGridCoord(44,17)]:true,
-        //     [utils.asGridCoord(43,17)]:true,
-        //     [utils.asGridCoord(41,17)]:true,
-        //     [utils.asGridCoord(39,17)]:true,
-        //     [utils.asGridCoord(39,16)]:true,
-        //     [utils.asGridCoord(37,13)]:true,
-        //     [utils.asGridCoord(38,13)]:true,
-        //     [utils.asGridCoord(37,14)]:true,
-        //     [utils.asGridCoord(38,14)]:true,
-        //     [utils.asGridCoord(37,15)]:true,
-        //     [utils.asGridCoord(38,15)]:true,
-        // }
         walls: {
             [utils.asGridCoord(15, 17)]: true,
             [utils.asGridCoord(16, 16)]: true,
@@ -902,10 +748,6 @@ window.OverworldMaps = {
             [utils.asGridCoord(42, 22)]: true,
             [utils.asGridCoord(43, 22)]: true,
             [utils.asGridCoord(44, 22)]: true,
-            // [utils.asGridCoord(16,21)]: true,
-            // [utils.asGridCoord(17,21)]: true,
-            // [utils.asGridCoord(18,21)]: true,
-            // [utils.asGridCoord(19,21)]: true,
         }
     },
     streetNorth: {
@@ -936,7 +778,6 @@ window.OverworldMaps = {
             [utils.asGridCoord(10, 25)]: true,
             [utils.asGridCoord(9, 25)]: true,
             [utils.asGridCoord(8, 25)]: true,
-            // [utils.asGridCoord(9,24)]:true,
             [utils.asGridCoord(9, 23)]: true,
             [utils.asGridCoord(9, 22)]: true,
             [utils.asGridCoord(9, 21)]: true,
@@ -1082,19 +923,11 @@ window.OverworldMaps = {
             [utils.asGridCoord(12, 4)]: true,
             [utils.asGridCoord(11, 7)]: true,
             [utils.asGridCoord(12, 7)]: true,
-            // [utils.asGridCoord(2, 7)]: true,
             [utils.asGridCoord(0, 7)]: true,
             [utils.asGridCoord(3, 7)]: true,
-            // [utils.asGridCoord(4, 7)]: true,
-            // [utils.asGridCoord(7, 7)]: true,
             [utils.asGridCoord(8, 7)]: true,
-            // [utils.asGridCoord(9, 7)]: true,
-            // [utils.asGridCoord(2, 10)]: true,
             [utils.asGridCoord(3, 10)]: true,
-            // [utils.asGridCoord(4, 10)]: true,
-            // [utils.asGridCoord(7, 10)]: true,
             [utils.asGridCoord(8, 10)]: true,
-            // [utils.asGridCoord(9, 10)]: true,
             [utils.asGridCoord(1, 12)]: true,
             [utils.asGridCoord(2, 12)]: true,
             [utils.asGridCoord(3, 12)]: true,
@@ -1141,14 +974,10 @@ window.OverworldMaps = {
                     {
                         required: ["TALKED_TO_FATHER"],
                         events: [
-                            // {type:"textMessage",text:"Де Рубильдо:ГДЕ МОЯ ФИРМЕННАЯ ЗНАМЕНИТАЯ ХВАЛЁНАЯ ПИЦЦА КУППЕРОВ?!"},
-                            // {type:"textMessage",text:"Де Рубильдо:ПРИНЕСИТЕ ЖЕ ЕЁ БЫСТРЕЕ!!!"}
                         ]
                     },
                     {
                         events: [
-                            // {type:"textMessage",text:"Посетитель:ГДЕ МОЯ ФИРМЕННАЯ ЗНАМЕНИТАЯ ХВАЛЁНАЯ ПИЦЦА КУППЕРОВ?!"},
-                            // {type:"textMessage",text:"Посетитель:ПРИНЕСИТЕ ЖЕ ЕЁ БЫСТРЕЕ!!!"}
                         ]
                     }
                 ]
@@ -1160,23 +989,6 @@ window.OverworldMaps = {
                 y: utils.withGrid(6),
                 direction: "down",
                 talking: [
-                    // {
-                    //     required:["RUINED_GUEST"],
-                    //     events:
-                    //     [
-                    //         {type:"textMessage",text:"Отец:...",faceHero:"batya"},
-                    //         {type:"textMessage",text:"Отец:Как такое возможно..."},
-                    //         {type:"textMessage",text:"Отец:Ты хоть понимаешь..."},
-                    //         {type:"textMessage",text:"Отец:ЧТО ТЫ НАДЕЛАЛ?!!"},
-                    //         {type:"textMessage",text:"Отец:Какая же ты всё таки бездарность!"},
-                    //         {type:"textMessage",text:"Отец:Так и знал что от тебя не будет никакого толку!"},
-                    //         {type:"textMessage",text:"Отец:Всё, моё терпение лопнуло."},
-                    //         {type:"textMessage",text:"Отец:Уходи и не возвращайся, пока не станешь достойным нашей семьи!"},
-                    //         {type:"textMessage",text:"Отец:Познай путь пиццы."},
-                    //         {type:"changeMap",map:"street",direction:"down",x:utils.withGrid(16),y:utils.withGrid(18)},
-                    //         {type:"textMessage",text:"Вы:Так и знал, что произойдёт что-то ужасное..."},
-                    //     ]
-                    // },
                     {
                         events: [
                             { type: "textMessage", text: "Отец:Что скажете, граф Де Рубильдо?Вам нравится?" },
@@ -1244,7 +1056,6 @@ window.OverworldMaps = {
         walls: {
             [utils.asGridCoord(6, 3)]: true,
             [utils.asGridCoord(7, 2)]: true,
-            // [utils.asGridCoord(6, 13)]: true,
             [utils.asGridCoord(1, 5)]: true,
             [utils.asGridCoord(2, 5)]: true,
             [utils.asGridCoord(3, 5)]: true,
