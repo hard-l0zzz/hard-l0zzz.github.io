@@ -26,7 +26,7 @@ class BattleEvent {
     if (damage) {
       //наносить урон цели чтобы у неё уменьшалось хп
       target.update({
-        hp: target.hp - damage
+        hp: target.hp - (damage + caster.level * 1.05)
       })
       document.getElementById("hitsound1").play();
       //начать моргать пицце после получения урона

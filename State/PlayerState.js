@@ -10,15 +10,6 @@ class PlayerState {
                 level: 1,
                 status: null
             },
-            // "p2":{
-            //     pizzaId:"s002",
-            //     hp: 50,
-            //     maxHp: 50,
-            //     xp: 0,
-            //     maxXp: 100,
-            //     level: 1,
-            //     status: null
-            // }
         }
         this.lineup = ["p1"];
         this.items = [
@@ -29,6 +20,10 @@ class PlayerState {
         this.storyFlags = {
             // HAS_TO_SEE_INTRO:true
         }
+    }
+    addItem(actionId, instanceId,) {
+      this.item = {actionId,instanceId}
+      this.items.push(this.item)
     }
     addPizza(pizzaId) {
         const newId = `p${Date.now()}`+Math.floor(Math.random() * 99999);

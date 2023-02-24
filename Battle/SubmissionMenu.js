@@ -1,10 +1,9 @@
-class SubmissionMenu { 
-  constructor({ caster, enemy, onComplete, items, replacements }) {
+class   SubmissionMenu { 
+  constructor({ caster, enemy, onComplete, items, replacements, }) {
     this.caster = caster;
     this.enemy = enemy;
     this.replacements = replacements;
     this.onComplete = onComplete;
-
     let quantityMap = {};
     items.forEach(item => {
       if (item.team === caster.team) {
@@ -24,7 +23,6 @@ class SubmissionMenu {
   }
 
   getPages() {
-
     const backOption = {
       label: "Назад",
       description: "Вернуться на прошлую страницу",
@@ -59,6 +57,15 @@ class SubmissionMenu {
             //посмотреть варианты для смены пиццы
           }
         },
+        // {
+        //   label:"Сбежать",
+        //   description:"Трусливо покинуть битву.",
+        //   handler: () =>{
+        //     if(winner != undefined){
+        //       this.turnCycle.onWinner(this.winner);
+        //     }
+        //   }
+        // }
       ],
       attacks: [
         ...this.caster.actions.map(key => {
@@ -156,7 +163,6 @@ class SubmissionMenu {
   }
 
   init(container) {
-
     if (this.caster.isPlayerControlled) {
       //показать интерфейс
       this.showMenu(container)

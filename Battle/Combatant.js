@@ -98,6 +98,7 @@ class Combatant {
 
   getPostEvents() {
     if (this.status?.type === "Соус") {
+      this.status.name = "Соус"
       return [
         {type:"textMessage",text:"Чувствуется соус!"},
         {type:"stateChange",recover:7,onCaster:true}
@@ -122,7 +123,7 @@ class Combatant {
         })
         return{
             type:"textMessage",
-            text:"Эффект кончился!"
+            text:`Эффект у ${this.name} кончился!`
         }
       }
     }

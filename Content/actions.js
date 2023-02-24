@@ -1,10 +1,12 @@
 window.Actions = {
-    damage1: {
+    damage1:
+    {
         name: "Удар!",
-        success: [
+        success:
+        [
             {type: "textMessage", text: "{CASTER} использует {ACTION}!"},
             {type: "animation", animation:"spin"},
-            {type: "stateChange", damage: 10}
+            {type: "stateChange", damage:3 },
         ],
         description:"Жёстко ударить врага >:D"
     },
@@ -28,7 +30,7 @@ window.Actions = {
         success:[
             {type:"textMessage",text:"{CASTER} слабо атакует!"},
             {type:"animation",animation:"spin"},
-            {type:"stateChange",damage:5}
+            {type:"stateChange",damage:10}
         ]
     },
     clumsyStatus2: {
