@@ -44,8 +44,5 @@ class CraftingMenu {
       this.keyboardMenu.setOptions(this.getOptions())
   
       container.appendChild(this.element);
-      // this.esc = new KeyPressListener("Escape", () => {
-      //   this.close();
-      // })
     }
   }

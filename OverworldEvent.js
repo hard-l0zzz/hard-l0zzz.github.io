@@ -51,10 +51,6 @@ class OverworldEvent{
       message.init(document.querySelector(".game-container"))
   }
 
-  disappear(){
-    const who = this.map.gameObjects["npc1"];
-    who.isMounted = false;
-  }
   changeMap(resolve) {
 
     Object.values(this.map.gameObjects).forEach(obj => {

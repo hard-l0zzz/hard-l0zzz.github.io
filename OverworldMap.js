@@ -50,9 +50,6 @@ class OverworldMap {
             if (object.type === "PizzaStone") {
                 instance = new PizzaStone(object);
             }
-            if (object.type === "Box") {
-                instance = new Box(object);
-            }
             this.gameObjects[key] = instance;
             this.gameObjects[key].id = key;
             instance.mount(this);
@@ -114,12 +111,14 @@ window.OverworldMaps = {
         configObjects: {
             hero: {
                 type: "Person",
+                useShadow:true,
                 isPlayerControlled: true,
                 x: utils.withGrid(5),
                 y: utils.withGrid(9)
             },
             cat: {
                 type: "Person",
+                useShadow:true,
                 x: utils.withGrid(6),
                 y: utils.withGrid(9),
                 src: "/images/characters/hero.png",
@@ -151,6 +150,7 @@ window.OverworldMaps = {
             npc1:
             {
                 type: "Person",
+                useShadow:true,
                 x: utils.withGrid(3),
                 y: utils.withGrid(5),
                 src: "/images/characters/people/npc1.png",
@@ -215,6 +215,7 @@ window.OverworldMaps = {
             npc2: {
                 type: "Person",
                 x: utils.withGrid(8),
+                useShadow:true,
                 y: utils.withGrid(5),
                 src: "images/characters/people/npc2.png",
                 behaviorLoop: [
@@ -318,9 +319,11 @@ window.OverworldMaps = {
             hero: {
                 type: "Person",
                 isPlayerControlled: true,
+                useShadow:true,
             },
             batya: {
                 type: "Person",
+                useShadow:true,
                 x: utils.withGrid(7),
                 y: utils.withGrid(5),
                 src: "/images/characters/people/npc3.png",
@@ -441,12 +444,14 @@ window.OverworldMaps = {
         configObjects: {
             hero: {
                 type: "Person",
+                useShadow:true,
                 isPlayerControlled: true,
                 x: utils.withGrid(5),
                 y: utils.withGrid(10)
             },
             lizard_girl: {
                 type: "Person",
+                useShadow:true,
                 x: utils.withGrid(4),
                 y: utils.withGrid(4),
                 src: "images/characters/people/lizard_girl.png",
@@ -481,12 +486,14 @@ window.OverworldMaps = {
             hero: {
                 type: "Person",
                 isPlayerControlled: true,
+                useShadow:true,
                 x: utils.withGrid(15),
                 y: utils.withGrid(15),
                 direction: "up"
             },
             pizza_god: {
                 type: "Person",
+                useShadow:true,
                 x: utils.withGrid(15),
                 y: utils.withGrid(10),
                 src: "images/characters/people/lizard_girl.png",
@@ -535,6 +542,7 @@ window.OverworldMaps = {
         upperSrc: "images/maps/StreetUpper.png",
         configObjects: {
             hero: {
+                useShadow:true,
                 isPlayerControlled: true,
                 type: "Person",
                 direction: "right",
@@ -542,6 +550,7 @@ window.OverworldMaps = {
                 y: utils.withGrid(12)
             },
             cat: {
+                useShadow:true,
                 type: "Person",
                 x: utils.withGrid(21),
                 y: utils.withGrid(25),
@@ -573,11 +582,18 @@ window.OverworldMaps = {
                 ]
             },
             babka: {
+                useShadow:true,
                 type: "Person",
                 x: utils.withGrid(26),
                 y: utils.withGrid(16),
                 src: "/images/characters/people/npc4.png",
                 talking: [
+                    {
+                        required:["KNOWN_ABOUT_PIZZA_OF_TRUTH"],
+                        events:[
+                            {type:"textMessage",text:"Бабуля:Интересно, что это за Пицца Правды?"}
+                        ]
+                    },
                     {
                         events:
                             [
@@ -587,6 +603,38 @@ window.OverworldMaps = {
                 ],
                 behaviorLoop:[
                     {type:"stand",direction:"down",time:800}
+                ]
+            },
+            gazeta:{
+                type:"Person",
+                x:utils.withGrid(27),
+                y:utils.withGrid(16),
+                src:"images/characters/gazeta.png",
+                talking: [
+                    {
+                        required:["KNOWN_ABOUT_PIZZA_OF_TRUTH"],
+                        events:
+                        [
+                            
+                        ]
+                    },
+                    {
+                        events:
+                        [
+                            {type:"textMessage",text:"Бабуля:Эй, это моя газета!"},
+                            {type:"battle",enemyId:"babka"},
+                            {type:"textMessage",text:"Бабка:Ладно, забирай газету, только не трогай меня!"},
+                            {type:"textMessage",text:"Вы берёте газету и читаете, что в ней написано."},
+                            {type:"textMessage",text:"Там написано про потерянный артефакт..."},
+                            {type:"textMessage",text:`Так называемая "Пицца Правды"...`},
+                            {type:"textMessage",text:"И что её можно найти в окрестностях города..."},
+                            {type:"textMessage",text:"Вам нужно узнать о ней больше."},
+                            {type:"textMessage",text:"Вы понимаете, что это -"},
+                            {type:"textMessage",text:"Ваш единственный шанс вернуть свою репутацию."},
+                            {type:"addStoryFlag",flag:"KNOWN_ABOUT_PIZZA_OF_TRUTH"}
+                            //{type:"changeMap",map:"street2",x:utils.withGrid(),y:utils.withGrid(),direction:"right"}
+                        ]
+                    }
                 ]
             }
         },
@@ -603,7 +651,8 @@ window.OverworldMaps = {
                 [
                     {
                         events: [
-                            { type: "textMessage", text: "Мне пока лучше не возвращаться..." }
+                            { type: "textMessage", text: "Мне пока лучше не возвращаться..." },
+                            {type:"walk",who:"hero",direction:"down"}
                         ]
                     }
                 ],
@@ -757,6 +806,7 @@ window.OverworldMaps = {
         configObjects: {
             hero: {
                 type: "Person",
+                useShadow:true,
                 isPlayerControlled: true,
                 direction: "up"
             }
@@ -851,6 +901,7 @@ window.OverworldMaps = {
         configObjects: {
             hero: {
                 type: "Person",
+                useShadow:true,
                 isPlayerControlled: true,
             },
             epicGuest: {
@@ -961,11 +1012,13 @@ window.OverworldMaps = {
         upperSrc: "/images/maps/DiningRoomUpper.png",
         configObjects: {
             hero: {
+                useShadow:true,
                 type: "Person",
                 isPlayerControlled: true,
             },
             epicGuest: {
                 type: "Person",
+                useShadow:true,
                 src: "/images/characters/people/erio.png",
                 x: utils.withGrid(2),
                 y: utils.withGrid(7),
@@ -987,6 +1040,7 @@ window.OverworldMaps = {
                 src: "/images/characters/people/npc3.png",
                 x: utils.withGrid(2),
                 y: utils.withGrid(6),
+                useShadow:true,
                 direction: "down",
                 talking: [
                     {
@@ -1117,6 +1171,7 @@ window.OverworldMaps = {
         upperSrc: "/images/maps/PizzaShopUpper.png",
         configObjects: {
             hero: {
+                useShadow:true,
                 type: "Person",
                 isPlayerControlled: true,
             }
@@ -1201,6 +1256,7 @@ window.OverworldMaps = {
         upperSrc: "/images/maps/GreenKitchenUpper.png",
         configObjects: {
             hero: {
+                useShadow:true,
                 type: "Person",
                 isPlayerControlled: true,
             }

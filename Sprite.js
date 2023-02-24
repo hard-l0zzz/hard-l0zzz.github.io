@@ -8,10 +8,14 @@ class Sprite {
         }
 
 
-        this.useShadow = true;
+        this.useShadow = config.useShadow;
         this.shadow = new Image();
         if(this.useShadow){
           this.shadow.src = "/images/characters/shadow.png";
+        }
+        if(this.useShadow = false){
+            this.shadow.src = "/images/characters/hero.png";
+            this.isShadowLoaded = false;
         }
         this.shadow.onload = () => {
           this.isShadowLoaded = true;

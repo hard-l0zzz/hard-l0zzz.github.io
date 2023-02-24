@@ -4,7 +4,6 @@ class KeyboardMenu {
       this.up = null;
       this.down = null;
       this.prevFocus = null;
-      // this.select = null;
       this.descriptionContainer = config.descriptionContainer || null;
     }
   
@@ -35,13 +34,6 @@ class KeyboardMenu {
             chosenOption.handler();
           }
         })
-        // button.addEventListener("keyup", () => {
-        //     if (event.keyCode === 69){
-        //         const chosenOption = this.options[ Number(button.dataset.button) ];
-        //         // var buttonSound
-        //         chosenOption.handler();
-        //     }
-        // })
         button.addEventListener("mouseenter", () => {
           button.focus();
         })
@@ -79,7 +71,6 @@ class KeyboardMenu {
   
       this.up.unbind();
       this.down.unbind();
-      // this.select.unbind();
     }
   
     init(container) {
@@ -101,9 +92,6 @@ class KeyboardMenu {
         })
         nextButton?.focus();
       })
-      // this.select = new KeyPressListener("KeyE", () => {
-
-      // })
     }
   
   }

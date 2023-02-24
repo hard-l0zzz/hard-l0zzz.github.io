@@ -3,7 +3,9 @@ class PizzaStone extends GameObject {
       super(config);
       this.sprite = new Sprite({
         gameObject: this,
+        // useShadow: false,
         src: "/images/characters/pizza-stone.png",
+        useShadow:false,
         animations: {
           "used-down"   : [ [0,0] ],
           "unused-down" : [ [1,0] ],
@@ -18,9 +20,16 @@ class PizzaStone extends GameObject {
       
       this.talking = [
         {
+          required: ["USED_PIZZA_STONE_WOW"],
+          events: [
+            {type:"textMessage",text:"Вы уже сделали пиццу!"}
+          ]
+        },
+        {
           required: [this.storyFlag],
           events: [
-            { type: "textMessage", text: "Уже использовано." },
+            { type: "textMessage", text: "Вы сделали пиццу." },
+            {type:"addStoryFlag", flag:"USED_PIZZA_STONE_WOW"}
           ]
         },
         {

@@ -5,7 +5,11 @@ class Person extends GameObject{
         this.isStanding = false;
         this.intentPosition = null;//[x,y]
         this.isPlayerControlled = config.isPlayerControlled || false;
-
+        this.sprite = new Sprite({
+            gameObject: this,
+            useShadow: config.useShadow || false,
+            src: config.src || "/images/characters/people/hero.png",
+          });
         this.directionUpdate = {
             "up":["y",-1],
             "down":["y",1],
@@ -25,6 +29,7 @@ class Person extends GameObject{
                     type:"walk",
                     direction: state.arrow
                 })
+                // document.getElementById("hitsound1").play();
             }
             this.updateSprite(state);
         }

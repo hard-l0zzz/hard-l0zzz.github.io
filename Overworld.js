@@ -100,7 +100,6 @@ class Overworld {
       const useSaveFile = await this.titleScreen.init(container)
 
       let initialHeroState = null;
-      // const saveFile = this.progress.getSaveFile();
       if(useSaveFile) {
         this.progress.load();
         initialHeroState = {
@@ -111,9 +110,6 @@ class Overworld {
         }
       }
 
-      // this.hud = new Hud();
-      // this.hud.init(container);
-
       this.startMap(window.OverworldMaps[this.progress.mapId],initialHeroState);
       this.directionInput = new DirectionInput();
       this.directionInput.init();
@@ -121,7 +117,15 @@ class Overworld {
       this.bindActionInput();
       this.bindHeroPositioncheck();
       this.startGameLoop();
-      // document.getElementById("myaudio").volume = 0.12;
-      // document.getElementById("myaudio").play();
+      // let audio = document.getElementById("myaudio")
+      // audio.volume = 0;
+      // audio.play();
+      // let interval = setInterval(function() {
+      //   if(audio.volume < 0.12) {
+      //     audio.volume += 0.01;
+      //   } else {
+      //     clearInterval(interval);
+      //   }
+      // },3500)
   }
 }

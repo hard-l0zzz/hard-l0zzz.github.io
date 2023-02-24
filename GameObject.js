@@ -7,6 +7,7 @@ class GameObject {
       this.direction = config.direction || "down";
       this.sprite = new Sprite({
         gameObject: this,
+        // useShadow:true,
         src: config.src || "/images/characters/people/hero.png",
       });
   
