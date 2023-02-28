@@ -20,6 +20,11 @@ class PlayerState {
         this.storyFlags = {
             // HAS_TO_SEE_INTRO:true
         }
+        const shopInventory = [
+          { actionId: "item_recoverHp", instanceId: "item6" },
+          { actionId: "item_recoverHp", instanceId: "item7" },
+          { actionId: "item_recoverStatus", instanceId: "item8" },
+        ]
     }
     addItem(actionId, instanceId,) {
       this.item = {actionId,instanceId}

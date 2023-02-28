@@ -38,6 +38,12 @@ class OverworldEvent{
       document.addEventListener("PersonWalkingComplete", completeHandler)
   }
 
+  teleport(resolve){
+    const who = this.map.gameObjects[this.event.who];
+    who.x = 0;
+    who.y = 0;
+  }
+
   textMessage(resolve){
       if(this.event.faceHero){
           const obj = this.map.gameObjects[this.event.faceHero];
@@ -119,6 +125,19 @@ class OverworldEvent{
           }
         })
         menu.init(document.querySelector(".game-container"))
+      }
+
+      addItem() {
+        playerState.addItem(actionId,instanceId)
+      }
+
+      changeImage(image){
+        const who = this.map.gameObjects[this.event.who];
+        who.sprite.image.src = image;
+      }
+
+      buyItem(item){
+        
       }
 
   init(){

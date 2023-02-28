@@ -75,6 +75,18 @@ class OverworldMap {
 
     checkForActionCutscene() {
         const hero = this.gameObjects["hero"];
+        const npc15 = this.gameObjects["npc15"];
+        const npc1 = this.gameObjects["npc1"];
+        // npc1.                talking= [
+        //     {
+        //         events:[
+        //             {type:"textMessage",text:"ого"}
+        //         ]
+        //     }
+        // ];
+        // hero.sprite.image.src = "/images/characters/pizzas/stepalox2.png"
+        // npc1.sprite.image.src = "images/characters/hero.png";
+        // npc1.x = 5
         const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
         const match = Object.values(this.gameObjects).find(object => {
             return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
@@ -97,7 +109,13 @@ class OverworldMap {
         const hero = this.gameObjects["hero"];
         const match = this.cutsceneSpaces[`${hero.x},${hero.y}`];
         if (!this.isCutscenePlaying && match) {
-            this.startCutscene(match[0].events);
+            const relevantScenario = match.find(scenario => {
+                return (scenario.required || []).every(sf => {
+                    return playerState.storyFlags[sf]
+                })
+            })
+
+            relevantScenario && this.startCutscene(relevantScenario.events)
         }
     }
 }
@@ -636,6 +654,32 @@ window.OverworldMaps = {
                         ]
                     }
                 ]
+            },
+            counter1:{
+                type:"Person",
+                src:"aa",
+                x:utils.withGrid(31),
+                y:utils.withGrid(19),
+                talking:[
+                    {
+                        events:[
+                            {type:"textMessage",text:"эээ хз"}
+                        ]
+                    }
+                ]
+            },
+            counter2:{
+                type:"Person",
+                src:"aa",
+                x:utils.withGrid(32),
+                y:utils.withGrid(19),
+                talking:[
+                    {
+                        events:[
+                            {type:"textMessage",text:"эээ хз"}
+                        ]
+                    }
+                ]
             }
         },
         cutsceneSpaces: {
@@ -723,7 +767,7 @@ window.OverworldMaps = {
                         {type:"battle",enemyId:"babka"}
                     ]
                 }
-            ]
+            ],
         },
         walls: {
             [utils.asGridCoord(15, 17)]: true,
@@ -746,6 +790,10 @@ window.OverworldMaps = {
             [utils.asGridCoord(24, 16)]: true,
             [utils.asGridCoord(25, 16)]: true,
             [utils.asGridCoord(26, 15)]: true,
+            [utils.asGridCoord(31, 18)]: true,
+            [utils.asGridCoord(32, 18)]: true,
+            [utils.asGridCoord(31, 19)]: true,
+            [utils.asGridCoord(32, 19)]: true,
             [utils.asGridCoord(27, 15)]: true,
             [utils.asGridCoord(14, 18)]: true,
             [utils.asGridCoord(14, 19)]: true,
@@ -809,16 +857,81 @@ window.OverworldMaps = {
                 useShadow:true,
                 isPlayerControlled: true,
                 direction: "up"
-            }
-        },
-        cutsceneSpaces: {
-            [utils.asGridCoord(7, 16)]: [
-                {
-                    events: [
-                        { type: "changeMap", map: "street", direction: "down", x: utils.withGrid(36), y: utils.withGrid(14) }
-                    ]
-                }
-            ]
+            },
+            npc1: {
+                type:"Person",
+                useShadow:true,
+                x:utils.withGrid(21),
+                y:utils.withGrid(22),
+                direction:"left",
+                src:"/images/characters/people/npc5.png",
+                talking:[
+                    {
+                        required:["LISTENED_DIALOGUE_1"],
+                        events:[
+
+                        ]
+                    },
+                    {
+                        events:[
+                            {type:"textMessage",text:"Вы случайно слышите чужой разговор."},
+                            {type:"textMessage",text:"???:Да, Джек, пицца пропала совсем недавно."},
+                            {type:"textMessage",text:"Джек:Но кто мог её украсть?"},
+                            {type:"textMessage",text:"???:А может её и не крал никто, хм?"},
+                            {type:"textMessage",text:"Джек:Но как тогда она пропала?"},
+                            {type:"textMessage",text:"???:Слушай, никто не знает, а если и знает"},
+                            {type:"textMessage",text:"???:То не рассказывает это всем. Это ведь очевидно."},
+                            {type:"teleport",who:"npc1"},
+                            {type:"addStoryFlag",flag:"LISTENED_DIALOGUE_1"}
+                        ]
+                    },
+                ],
+                behaviorLoop:[
+                    {type:"stand",direction:"left",time:800}
+                ]
+            },
+            npc2: {
+                type:"Person",
+                useShadow:true,
+                x:utils.withGrid(20),
+                y:utils.withGrid(21),
+                direction:"down",
+                src:"/images/characters/people/npc2.png",
+                talking:[
+                    {
+                        required:["LISTENED_DIALOGUE_1"],
+                        events:[
+
+                        ]
+                    },
+                    {
+                        events:[
+                            {type:"textMessage",text:"Вы слышите чужой разговор."},
+                            {type:"textMessage",text:"???:Да, Джек, пицца пропала совсем недавно."},
+                            {type:"textMessage",text:"Джек:Но кто мог её украсть?"},
+                            {type:"textMessage",text:"???:А может её и не крал никто, хм?"},
+                            {type:"addStoryFlag",flag:"LISTENED_DIALOGUE_1"}
+                        ],
+                    },
+                ],
+                behaviorLoop:[
+                            {type:"stand",direction:"down",time:900}
+                ]
+            },
+            china_guy3:{
+                type:"Person",
+                useShadow:true,
+                x:utils.withGrid(14),
+                y:utils.withGrid(15),
+                src:"/images/characters/people/china_guy1.png"
+            },
+            china_guy4:{
+                type:"Person",
+                useShadow:true,
+                x:utils.withGrid(16),
+                y:utils.withGrid(15),
+                src:"/images/characters/people/china_guy3.png"
+            },
         },
         walls: {
             [utils.asGridCoord(14, 25)]: true,
@@ -891,7 +1004,25 @@ window.OverworldMaps = {
                             { type: "changeMap", map: "street", direction: "down", x: utils.withGrid(36), y: utils.withGrid(14) }
                         ]
                     }
-                ]
+                ],
+                [utils.asGridCoord(18,22)]: [
+                    {
+                                    required:["LISTENED_DIALOGUE_1"],
+                                    events:[
+
+                                    ]
+                    },
+                    {
+                        events:[
+                            {type:"textMessage",text:"Вы случайно слышите чужой разговор."},
+                            {type:"textMessage",text:"???:Да, Джек, пицца пропала совсем недавно."},
+                            {type:"textMessage",text:"Джек:Но кто мог её украсть?"},
+                            {type:"textMessage",text:"???:А может её и не крал никто, хм?"},
+
+                            {type:"addStoryFlag",flag:"LISTENED_DIALOGUE_1"}
+                        ]
+                    },
+                ],
         }
     },
     diningRoom: {
@@ -1259,6 +1390,39 @@ window.OverworldMaps = {
                 useShadow:true,
                 type: "Person",
                 isPlayerControlled: true,
+            },
+            main_china_guy:{
+                type:"Person",
+                useShadow:true,
+                src:"/images/characters/people/main_china_guy.png",
+                x:utils.withGrid(4),
+                y:utils.withGrid(5),
+                behaviorLoop:[
+                    // {type:"walk",direction:"left"},
+                    // {type:"walk",direction:"right"}
+                ]
+            },
+            china_guy2:{
+                type:"Person",
+                useShadow:true,
+                src:"/images/characters/people/china_guy2.png",
+                x:utils.withGrid(4),
+                y:utils.withGrid(11),
+                direction:"right"
+            },
+            talk:{
+                type:"Person",
+                useShadow:false,
+                x:utils.withGrid(4),
+                y:utils.withGrid(6),
+                src:"/images/",
+                talking:[
+                    {
+                        events:[
+                            {type:"textMessage",text:"首席中文:Бу"}
+                        ]
+                    }
+                ]
             }
         },
         walls: {
@@ -1312,7 +1476,7 @@ window.OverworldMaps = {
             [utils.asGridCoord(8, 5)]: true,
             [utils.asGridCoord(6, 7)]: true,
             [utils.asGridCoord(3, 7)]: true,
-            [utils.asGridCoord(4, 7)]: true,
+            // [utils.asGridCoord(4, 7)]: true,
             [utils.asGridCoord(2, 9)]: true,
             [utils.asGridCoord(3, 9)]: true,
             [utils.asGridCoord(4, 9)]: true,

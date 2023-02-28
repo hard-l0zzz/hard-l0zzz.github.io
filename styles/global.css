@@ -8,6 +8,10 @@
   --menu-selected-background: #7fc2ff;
 }
 
+.ds{
+  opacity: 24%;
+}
+
 * {
   box-sizing:border-box;
 }

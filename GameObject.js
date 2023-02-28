@@ -20,7 +20,7 @@ class GameObject {
   
     mount(map) {
       this.isMounted = true;
-  
+      
       //если есть поведение, начать его после задержки
       setTimeout(() => {
         this.doBehaviorEvent(map);

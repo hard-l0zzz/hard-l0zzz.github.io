@@ -59,7 +59,7 @@ class KeyboardMenu {
       //место с описанием
       this.descriptionElement = document.createElement("div");
       this.descriptionElement.classList.add("DescriptionBox");
-      this.descriptionElement.innerHTML = (`<p>Скорее всего, что-то пошло не так!</p>`);
+      this.descriptionElement.innerHTML = (`<p>...</p>`);
       this.descriptionElementText = this.descriptionElement.querySelector("p");
     }
   
