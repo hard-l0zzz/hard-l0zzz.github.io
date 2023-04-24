@@ -12,32 +12,37 @@
         <link href = "styles/Combatant.css" type = "text/css" rel = "stylesheet">
         <link href = "styles/Menus.css" type = "text/css" rel = "stylesheet">
         <link href = "styles/TitleScreen.css" type = "text/css" rel = "stylesheet">
+      </head>
     </head>
     <body>
+
         <!--музыка и звуки-->
-        <audio id = myaudio loop>
+        <audio id = myaudio class = "audio" loop>
             <source src = "main_music1.mp3">
         </audio>
-        <audio id = battleaudio loop>
+        <audio id = battleaudio class = "audio" loop>
             <source src = "battle.mp3">
         </audio>
-        <audio id = charsound>
+        <audio id = charsound class = "audio">
             <source src = "char_sound.mp3">
         </audio>
-        <audio id = hitsound1>
+        <audio id = hitsound1 class = "audio">
             <source src = "hit_sound.mp3">
         </audio>
-
-        <script>
-            document.getElementById("myaudio").play();
-        </script>
 
 
         <div class="game-container">
             <canvas class="game-canvas" width="320" height="192"></canvas>
         </div>
 
-        <p class="desc">По всем вопросам xDoodle#4581<img src = "images/ds-icon.png" width="9" class="ds">
+        <p class="desc">
+            Ходьба - WASD/Стрелочки
+            <br>
+            Взаимодействие - Е
+            <br>
+            Меню - Escape
+            <br>
+            По всем вопросам xDoodle#4581<img src = "images/ds-icon.png" width="9" class="ds">
             <br>
             v001
         </p>
@@ -61,7 +66,7 @@
         <script src = "OverworldMap.js"></script>
         <script src = "OverworldEvent.js"></script>
         <script src = "TextMessage.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src = "ChoiceMessage.js"></script>
         <script src = "KeyPressListener.js"></script>
         <script src = "RevealingText.js"></script>
         <script src = "SceneTransition.js"></script>
@@ -86,6 +91,3 @@
         <script src = "init.js"></script>
     </body>
 </html>
-<!--люблю кошкосвинку <3-->
-<!--külön köszönet Swup-->
-<!--Помогал Максим Бездарев(на самом деле Баздырев)-->

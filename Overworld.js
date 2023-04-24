@@ -6,49 +6,69 @@ class Overworld {
       this.map = null;
     }
    
-
-    startGameLoop(){
-      const step = () => {
-
-        this.ctx.clearRect(0,0,this.canvas.width, this.canvas.height);
-        
-        const cameraPerson = this.map.gameObjects.hero;
-
-
-
-        //нижнее изображение
-        this.map.drawLowerImage(this.ctx,cameraPerson);
-
-        //объекты
-        Object.values(this.map.gameObjects).sort((a,b) => {
-          return a.y - b.y;
-        }).
-          forEach(object => {
-          object.update({
+    gameLoopStepWork(delta) {
+      //Clear off the canvas
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+   
+      //Establish the camera person
+      const cameraPerson = this.map.gameObjects.hero;
+   
+      //Update all objects
+      Object.values(this.map.gameObjects).forEach(object => {
+        object.update({
+          delta,
           arrow: this.directionInput.direction,
-          map: this.map
-          })
-          object.sprite.draw(this.ctx,cameraPerson);
+          map: this.map,
         })
-
-
-        //верхнее изображение
-        this.map.drawUpperImage(this.ctx, cameraPerson);
-
-        if(!this.map.isPaused){
-        requestAnimationFrame(() => {
-          step();
-        })
-      }
-      }
-      step();
+      })
+   
+      //Draw Lower layer
+      this.map.drawLowerImage(this.ctx, cameraPerson);
+   
+      //Draw Game Objects
+      Object.values(this.map.gameObjects).sort((a,b) => {
+        return a.y - b.y;
+      }).forEach(object => {
+        object.sprite.draw(this.ctx, cameraPerson);
+      })
+   
+      //Draw Upper layer
+      this.map.drawUpperImage(this.ctx, cameraPerson);
     }
-
+   
+     startGameLoop() {
+       let previousMs;
+       const step = 1 / 120;
+   
+       const stepFn = (timestampMs) => {
+         // Stop here if paused
+         if (this.map.isPaused) {
+           return;
+         }
+         if (previousMs === undefined) {
+           previousMs = timestampMs;
+         }
+   
+         let delta = (timestampMs - previousMs) / 1000;
+         while (delta >= step) {
+           this.gameLoopStepWork(delta);
+           delta -= step;
+         }
+         previousMs = timestampMs - delta * 1000; // Make sure we don't lose unprocessed (delta) time
+   
+         // Business as usual tick
+         requestAnimationFrame(stepFn)
+       }
+   
+       // First tick
+       requestAnimationFrame(stepFn)
+    }
 
     bindActionInput() {
       new KeyPressListener ("KeyE", () => {
-        //проверка рядом ли нпс
+        if(!this.map.isCutscenePlaying){
         this.map.checkForActionCutscene();
+        }
       });
       new KeyPressListener("Escape", () => {
         if(!this.map.isCutscenePlaying){
@@ -117,15 +137,5 @@ class Overworld {
       this.bindActionInput();
       this.bindHeroPositioncheck();
       this.startGameLoop();
-      // let audio = document.getElementById("myaudio")
-      // audio.volume = 0;
-      // audio.play();
-      // let interval = setInterval(function() {
-      //   if(audio.volume < 0.12) {
-      //     audio.volume += 0.01;
-      //   } else {
-      //     clearInterval(interval);
-      //   }
-      // },3500)
   }
 }

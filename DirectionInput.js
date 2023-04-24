@@ -6,9 +6,12 @@ class DirectionInput{
             "KeyW": "up",
             "KeyS": "down",
             "KeyA": "left",
-            "KeyD": "right"
+            "KeyD": "right",
+            "ArrowUp": "up",
+            "ArrowDown": "down",
+            "ArrowLeft": "left",
+            "ArrowRight": "right",
         }
-
 
     }
 
@@ -16,14 +19,11 @@ class DirectionInput{
         return this.heldDirections[0];
     }
 
-
-
     init() {
         document.addEventListener("keydown", e => {
             const dir = this.map[e.code];
             if(dir && this.heldDirections.indexOf(dir) === -1) {
                 this.heldDirections.unshift(dir);
-                // console.log(this.heldDirections);
             }
         });
         document.addEventListener("keyup", e => {

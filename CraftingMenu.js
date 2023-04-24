@@ -23,7 +23,7 @@ class CraftingMenu {
       this.element.classList.add("CraftingMenu");
       this.element.classList.add("overlayMenu");
       this.element.innerHTML = (`
-        <h2>Создать пиццу</h2>
+        <h2>Пиццы</h2>
       `)
     }
   

@@ -3,6 +3,7 @@ class OverworldEvent{
       this.map = map;
       this.event = event;
   }
+
   stand(resolve){
       const who = this.map.gameObjects[this.event.who];
       who.startBehavior({
@@ -38,32 +39,40 @@ class OverworldEvent{
       document.addEventListener("PersonWalkingComplete", completeHandler)
   }
 
-  teleport(resolve){
-    const who = this.map.gameObjects[this.event.who];
-    who.x = 0;
-    who.y = 0;
-  }
-
-  textMessage(resolve){
-      if(this.event.faceHero){
-          const obj = this.map.gameObjects[this.event.faceHero];
-          obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
-      }
-
+  
+  textMessage(resolve) {
+    if (this.event.faceHero) {
+      const obj = this.map.gameObjects[this.event.faceHero];
+      obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
+    }
+  
+    if (this.event.choices) {
+      const choiceMessage = new ChoiceMessage({
+        text: this.event.text,
+        choices: this.event.choices,
+        onComplete: () => resolve(),
+        handleChoice: this.handleChoice,
+      });
+  
+      choiceMessage.init(document.querySelector(".game-container"), this.handleChoice); // передаем функцию handleChoice в метод init
+  
+    } else {
       const message = new TextMessage({
-          text: this.event.text,
-          onComplete: () => resolve()
-        })
-      message.init(document.querySelector(".game-container"))
+        text: this.event.text,
+        onComplete: () => resolve()
+      });
+  
+      message.init(document.querySelector(".game-container"));
+    }
   }
+
+
 
   changeMap(resolve) {
 
     Object.values(this.map.gameObjects).forEach(obj => {
         obj.isMounted = false;
     })
-
-
 
       const sceneTransition = new SceneTransition();
       sceneTransition.init(document.querySelector(".game-container"), () => {
@@ -77,6 +86,22 @@ class OverworldEvent{
   
       })
     }
+
+    // deleteObject(resolve, id) {
+    //   Object.values(this.map.gameObjects).forEach(obj => {
+    //     if (obj.id === id) { 
+    //       obj.isMounted = false;
+    //       delete this.map.gameObjects[obj.id];
+    //     }
+    //   });
+    //   resolve();
+    // }
+    
+    
+    
+    
+    
+
 
     battle(resolve) {
       const battle = new Battle({
@@ -126,19 +151,8 @@ class OverworldEvent{
         })
         menu.init(document.querySelector(".game-container"))
       }
-
-      addItem() {
-        playerState.addItem(actionId,instanceId)
-      }
-
-      changeImage(image){
-        const who = this.map.gameObjects[this.event.who];
-        who.sprite.image.src = image;
-      }
-
-      buyItem(item){
-        
-      }
+      
+      
 
   init(){
       return new Promise(resolve => {

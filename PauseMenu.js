@@ -20,7 +20,6 @@ class PauseMenu {
           }
         })
         return [
-          ...lineupPizzas,
           {
             label: "Сохранение",
             description: "Сохранить прогресс игры.",

@@ -75,24 +75,11 @@ class OverworldMap {
 
     checkForActionCutscene() {
         const hero = this.gameObjects["hero"];
-        const npc15 = this.gameObjects["npc15"];
-        const npc1 = this.gameObjects["npc1"];
-        // npc1.                talking= [
-        //     {
-        //         events:[
-        //             {type:"textMessage",text:"ого"}
-        //         ]
-        //     }
-        // ];
-        // hero.sprite.image.src = "/images/characters/pizzas/stepalox2.png"
-        // npc1.sprite.image.src = "images/characters/hero.png";
-        // npc1.x = 5
         const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
         const match = Object.values(this.gameObjects).find(object => {
             return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
         });
         if (!this.isCutscenePlaying && match && match.talking.length) {
-
             const relevantScenario = match.talking.find(scenario => {
                 return (scenario.required || []).every(sf => {
                     return playerState.storyFlags[sf]
@@ -129,14 +116,14 @@ window.OverworldMaps = {
         configObjects: {
             hero: {
                 type: "Person",
-                useShadow:true,
+                useShadow: true,
                 isPlayerControlled: true,
                 x: utils.withGrid(5),
                 y: utils.withGrid(9)
             },
             cat: {
                 type: "Person",
-                useShadow:true,
+                useShadow: true,
                 x: utils.withGrid(6),
                 y: utils.withGrid(9),
                 src: "/images/characters/hero.png",
@@ -168,7 +155,7 @@ window.OverworldMaps = {
             npc1:
             {
                 type: "Person",
-                useShadow:true,
+                useShadow: true,
                 x: utils.withGrid(3),
                 y: utils.withGrid(5),
                 src: "/images/characters/people/npc1.png",
@@ -233,7 +220,7 @@ window.OverworldMaps = {
             npc2: {
                 type: "Person",
                 x: utils.withGrid(8),
-                useShadow:true,
+                useShadow: true,
                 y: utils.withGrid(5),
                 src: "images/characters/people/npc2.png",
                 behaviorLoop: [
@@ -337,11 +324,11 @@ window.OverworldMaps = {
             hero: {
                 type: "Person",
                 isPlayerControlled: true,
-                useShadow:true,
+                useShadow: true,
             },
             batya: {
                 type: "Person",
-                useShadow:true,
+                useShadow: true,
                 x: utils.withGrid(7),
                 y: utils.withGrid(5),
                 src: "/images/characters/people/npc3.png",
@@ -376,7 +363,7 @@ window.OverworldMaps = {
                             { type: "textMessage", text: "Отец:Наконец-то я тебя дождался, недотёпа!", faceHero: ["batya"] },
                             { type: "textMessage", text: "Отец:В общем, у нас сегодня утром поступил очень важный заказ." },
                             { type: "textMessage", text: "Отец:Сам граф Де Рубильдо хочет нашу фирменную пиццу!Тебе нельзя облажаться." },
-                            { type: "textMessage", text: "Отец:Я поручаю это задание тебе, ведь тебе нужно доказать, что ты чего-то стоишь в нашей семье." },
+                            { type: "textMessage", text: "Отец:Я поручаю это задание тебе, ведь тебе нужно доказать, что ты чего-то стоишь!" },
                             { type: "textMessage", text: "Отец:А теперь, покажи все свои навыки и приготовь пиццу, достойную графа!Он уже ждёт!" },
                             { type: "addStoryFlag", flag: "TALKED_TO_FATHER" }
                         ]
@@ -462,14 +449,14 @@ window.OverworldMaps = {
         configObjects: {
             hero: {
                 type: "Person",
-                useShadow:true,
+                useShadow: true,
                 isPlayerControlled: true,
                 x: utils.withGrid(5),
                 y: utils.withGrid(10)
             },
             lizard_girl: {
                 type: "Person",
-                useShadow:true,
+                useShadow: true,
                 x: utils.withGrid(4),
                 y: utils.withGrid(4),
                 src: "images/characters/people/lizard_girl.png",
@@ -504,17 +491,17 @@ window.OverworldMaps = {
             hero: {
                 type: "Person",
                 isPlayerControlled: true,
-                useShadow:true,
+                useShadow: true,
                 x: utils.withGrid(15),
                 y: utils.withGrid(15),
                 direction: "up"
             },
             pizza_god: {
                 type: "Person",
-                useShadow:true,
+                useShadow: true,
                 x: utils.withGrid(15),
-                y: utils.withGrid(10),
-                src: "images/characters/people/lizard_girl.png",
+                y: utils.withGrid(9),
+                src: "images/characters/people/god_of_pizza.png",
                 talking: [
                     {
                         required: ["secret"],
@@ -560,7 +547,7 @@ window.OverworldMaps = {
         upperSrc: "images/maps/StreetUpper.png",
         configObjects: {
             hero: {
-                useShadow:true,
+                useShadow: true,
                 isPlayerControlled: true,
                 type: "Person",
                 direction: "right",
@@ -568,7 +555,7 @@ window.OverworldMaps = {
                 y: utils.withGrid(12)
             },
             cat: {
-                useShadow:true,
+                useShadow: true,
                 type: "Person",
                 x: utils.withGrid(21),
                 y: utils.withGrid(25),
@@ -595,88 +582,112 @@ window.OverworldMaps = {
                         events: [
                             { type: "textMessage", text: "Кот:мяу" },
                             { type: "battle", enemyId: "cat" },
+                            { type: "battle", enemyId: "babka" }
                         ]
                     }
                 ]
             },
             babka: {
-                useShadow:true,
+                useShadow: true,
                 type: "Person",
                 x: utils.withGrid(26),
                 y: utils.withGrid(16),
                 src: "/images/characters/people/npc4.png",
                 talking: [
                     {
-                        required:["KNOWN_ABOUT_PIZZA_OF_TRUTH"],
-                        events:[
-                            {type:"textMessage",text:"Бабуля:Интересно, что это за Пицца Правды?"}
+                        required: ["KNOWN_ABOUT_PIZZA_OF_TRUTH"],
+                        events: [
+                            { type: "textMessage", text: "Бабуля:Интересно, что это за Пицца Правды?" }
                         ]
                     },
                     {
                         events:
                             [
-                                { type: "textMessage", text: "Бабуля:Какой чудесный день!",faceHero:"babka" },
+                                { type: "textMessage", text: "Бабуля:Какой чудесный день!", faceHero: "babka" },
                             ]
                     }
                 ],
-                behaviorLoop:[
-                    {type:"stand",direction:"down",time:800}
+                behaviorLoop: [
+                    { type: "stand", direction: "down", time: 800 }
                 ]
             },
-            gazeta:{
-                type:"Person",
-                x:utils.withGrid(27),
-                y:utils.withGrid(16),
-                src:"images/characters/gazeta.png",
+            gazeta: {
+                type: "Person",
+                x: utils.withGrid(27),
+                y: utils.withGrid(16),
+                src: "images/characters/gazeta.png",
                 talking: [
                     {
-                        required:["KNOWN_ABOUT_PIZZA_OF_TRUTH"],
+                        required: ["KNOWN_ABOUT_PIZZA_OF_TRUTH"],
                         events:
-                        [
-                            
-                        ]
+                            [
+
+                            ]
                     },
                     {
                         events:
-                        [
-                            {type:"textMessage",text:"Бабуля:Эй, это моя газета!"},
-                            {type:"battle",enemyId:"babka"},
-                            {type:"textMessage",text:"Бабка:Ладно, забирай газету, только не трогай меня!"},
-                            {type:"textMessage",text:"Вы берёте газету и читаете, что в ней написано."},
-                            {type:"textMessage",text:"Там написано про потерянный артефакт..."},
-                            {type:"textMessage",text:`Так называемая "Пицца Правды"...`},
-                            {type:"textMessage",text:"И что её можно найти в окрестностях города..."},
-                            {type:"textMessage",text:"Вам нужно узнать о ней больше."},
-                            {type:"textMessage",text:"Вы понимаете, что это -"},
-                            {type:"textMessage",text:"Ваш единственный шанс вернуть свою репутацию."},
-                            {type:"addStoryFlag",flag:"KNOWN_ABOUT_PIZZA_OF_TRUTH"}
-                            //{type:"changeMap",map:"street2",x:utils.withGrid(),y:utils.withGrid(),direction:"right"}
+                            [
+                                { type: "textMessage", text: "Бабуля:Эй, это моя газета!" },
+                                { type: "battle", enemyId: "babka" },
+                                { type: "textMessage", text: "Бабка:Ладно, забирай газету, только не трогай меня!" },
+                                { type: "textMessage", text: "Вы берёте газету и читаете, что в ней написано." },
+                                { type: "textMessage", text: "Там написано про потерянный артефакт..." },
+                                { type: "textMessage", text: `Так называемая "Пицца Правды"...` },
+                                { type: "textMessage", text: "И что её можно найти в окрестностях города..." },
+                                { type: "textMessage", text: "Вам нужно узнать о ней больше." },
+                                { type: "textMessage", text: "Вы понимаете, что это -" },
+                                { type: "textMessage", text: "Ваш единственный шанс вернуть свою репутацию." },
+                                { type: "addStoryFlag", flag: "KNOWN_ABOUT_PIZZA_OF_TRUTH" }
+                            ]
+                    }
+                ]
+            },
+            counter1: {
+                type: "Person",
+                src: "aa",
+                x: utils.withGrid(31),
+                y: utils.withGrid(19),
+                talking: [
+                    {
+                        events: [
+
                         ]
                     }
                 ]
             },
-            counter1:{
-                type:"Person",
-                src:"aa",
-                x:utils.withGrid(31),
-                y:utils.withGrid(19),
-                talking:[
+            counter2: {
+                type: "Person",
+                src: "aa",
+                x: utils.withGrid(32),
+                y: utils.withGrid(19),
+                talking: [
                     {
-                        events:[
-                            {type:"textMessage",text:"эээ хз"}
+                        required: ["TALKED_TO_BETH"],
+                        events: [
+                            { type: "textMessage", text: "Бетт:Удачи!" }
                         ]
-                    }
-                ]
-            },
-            counter2:{
-                type:"Person",
-                src:"aa",
-                x:utils.withGrid(32),
-                y:utils.withGrid(19),
-                talking:[
+                    },
                     {
-                        events:[
-                            {type:"textMessage",text:"эээ хз"}
+                        required: ["TALKED_TO_MAIN_CHINA_GUY"],
+                        events: [
+                            { type: "textMessage", text: "Бетт:Привет!" },
+                            { type: "textMessage", text: "Вы:Привет!" },
+                            { type: "textMessage", text: "Вы:Можно узнать поподробнее про предстоящий турнир?" },
+                            { type: "textMessage", text: "Бетт:Конечно! Он состоится завтра у входа в китайский ресторан." },
+                            { type: "textMessage", text: "Бетт:Там будет, думаю, 4 участника." },
+                            { type: "textMessage", text: "Бетт:Победит тот, кто одолеет всех." },
+                            { type: "textMessage", text: "Бетт:Приз скорее всего будет очень интересным!" },
+                            { type: "textMessage", text: "Бетт:А ты будешь зрителем или участником?" },
+                            { type: "textMessage", text: "Вы:Ну, похоже, что участником." },
+                            { type: "textMessage", text: "Бетт:Ого! Ну тогда удачи. Возьми это с собой." },
+                            { type: "craftingMenu", pizzas: ["v001"] },
+                            { type: "textMessage", text: "Вы:Спасибо!" },
+                            { type: "addStoryFlag", flag: "TALKED_TO_BETH" }
+                        ]
+                    },
+                    {
+                        events: [
+
                         ]
                     }
                 ]
@@ -696,7 +707,7 @@ window.OverworldMaps = {
                     {
                         events: [
                             { type: "textMessage", text: "Мне пока лучше не возвращаться..." },
-                            {type:"walk",who:"hero",direction:"down"}
+                            { type: "walk", who: "hero", direction: "down" }
                         ]
                     }
                 ],
@@ -708,66 +719,66 @@ window.OverworldMaps = {
                         ]
                     }
                 ],
-            [utils.asGridCoord(27,17)]:
-            [
-                {
-                    events:[
-                        {type:"textMessage",text:"Бабуля:Внучок, ты что это творишь?"},
-                        {type:"textMessage",text:"Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!"},
-                        {type:"battle",enemyId:"babka"}
-                    ]
-                }
-            ],
-            [utils.asGridCoord(28,17)]:
-            [
-                {
-                    events:[
-                        {type:"textMessage",text:"Бабуля:Внучок, ты что это творишь?"},
-                        {type:"textMessage",text:"Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!"},
-                        {type:"battle",enemyId:"babka"}
-                    ]
-                }
-            ],
-            [utils.asGridCoord(27,18)]:
-            [
-                {
-                    events:[
-                        {type:"textMessage",text:"Бабуля:Внучок, ты что это творишь?"},
-                        {type:"textMessage",text:"Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!"},
-                        {type:"battle",enemyId:"babka"}
-                    ]
-                }
-            ],
-            [utils.asGridCoord(28,18)]:
-            [
-                {
-                    events:[
-                        {type:"textMessage",text:"Бабуля:Внучок, ты что это творишь?"},
-                        {type:"textMessage",text:"Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!"},
-                        {type:"battle",enemyId:"babka"}
-                    ]
-                }
-            ],
-            [utils.asGridCoord(27,19)]:
-            [
-                {
-                    events:[
-                        {type:"textMessage",text:"Бабуля:Внучок, ты что это творишь?"},
-                        {type:"textMessage",text:"Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!"},
-                        {type:"battle",enemyId:"babka"}
-                    ]
-                }
-            ],
-            [utils.asGridCoord(28,19)]:
-            [
-                {
-                    events:[
-                        {type:"textMessage",text:"Бабуля:Внучок, ты что это творишь?"},
-                        {type:"textMessage",text:"Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!"},
-                        {type:"battle",enemyId:"babka"}
-                    ]
-                }
-            ],
+            [utils.asGridCoord(27, 17)]:
+                [
+                    {
+                        events: [
+                            { type: "textMessage", text: "Бабуля:Внучок, ты что это творишь?" },
+                            { type: "textMessage", text: "Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!" },
+                            { type: "battle", enemyId: "babka" }
+                        ]
+                    }
+                ],
+            [utils.asGridCoord(28, 17)]:
+                [
+                    {
+                        events: [
+                            { type: "textMessage", text: "Бабуля:Внучок, ты что это творишь?" },
+                            { type: "textMessage", text: "Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!" },
+                            { type: "battle", enemyId: "babka" }
+                        ]
+                    }
+                ],
+            [utils.asGridCoord(27, 18)]:
+                [
+                    {
+                        events: [
+                            { type: "textMessage", text: "Бабуля:Внучок, ты что это творишь?" },
+                            { type: "textMessage", text: "Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!" },
+                            { type: "battle", enemyId: "babka" }
+                        ]
+                    }
+                ],
+            [utils.asGridCoord(28, 18)]:
+                [
+                    {
+                        events: [
+                            { type: "textMessage", text: "Бабуля:Внучок, ты что это творишь?" },
+                            { type: "textMessage", text: "Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!" },
+                            { type: "battle", enemyId: "babka" }
+                        ]
+                    }
+                ],
+            [utils.asGridCoord(27, 19)]:
+                [
+                    {
+                        events: [
+                            { type: "textMessage", text: "Бабуля:Внучок, ты что это творишь?" },
+                            { type: "textMessage", text: "Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!" },
+                            { type: "battle", enemyId: "babka" }
+                        ]
+                    }
+                ],
+            [utils.asGridCoord(28, 19)]:
+                [
+                    {
+                        events: [
+                            { type: "textMessage", text: "Бабуля:Внучок, ты что это творишь?" },
+                            { type: "textMessage", text: "Бабуля:ПО ГАЗОНУ НЕ ХОДИТЬ!!!" },
+                            { type: "battle", enemyId: "babka" }
+                        ]
+                    }
+                ],
         },
         walls: {
             [utils.asGridCoord(15, 17)]: true,
@@ -799,6 +810,8 @@ window.OverworldMaps = {
             [utils.asGridCoord(14, 19)]: true,
             [utils.asGridCoord(14, 20)]: true,
             [utils.asGridCoord(14, 21)]: true,
+            [utils.asGridCoord(29, 19)]: true,
+            [utils.asGridCoord(30, 19)]: true,
             [utils.asGridCoord(28, 15)]: true,
             [utils.asGridCoord(29, 15)]: true,
             [utils.asGridCoord(30, 15)]: true,
@@ -854,83 +867,85 @@ window.OverworldMaps = {
         configObjects: {
             hero: {
                 type: "Person",
-                useShadow:true,
+                useShadow: true,
                 isPlayerControlled: true,
                 direction: "up"
             },
             npc1: {
-                type:"Person",
-                useShadow:true,
-                x:utils.withGrid(21),
-                y:utils.withGrid(22),
-                direction:"left",
-                src:"/images/characters/people/npc5.png",
-                talking:[
+                type: "Person",
+                useShadow: true,
+                x: utils.withGrid(21),
+                y: utils.withGrid(22),
+                direction: "left",
+                src: "/images/characters/people/npc5.png",
+                talking: [
                     {
-                        required:["LISTENED_DIALOGUE_1"],
-                        events:[
+                        required: ["LISTENED_TO_WORK"],
+                        events: [
 
                         ]
                     },
                     {
-                        events:[
-                            {type:"textMessage",text:"Вы случайно слышите чужой разговор."},
-                            {type:"textMessage",text:"???:Да, Джек, пицца пропала совсем недавно."},
-                            {type:"textMessage",text:"Джек:Но кто мог её украсть?"},
-                            {type:"textMessage",text:"???:А может её и не крал никто, хм?"},
-                            {type:"textMessage",text:"Джек:Но как тогда она пропала?"},
-                            {type:"textMessage",text:"???:Слушай, никто не знает, а если и знает"},
-                            {type:"textMessage",text:"???:То не рассказывает это всем. Это ведь очевидно."},
-                            {type:"teleport",who:"npc1"},
-                            {type:"addStoryFlag",flag:"LISTENED_DIALOGUE_1"}
+                        required: ["LISTENED_DIALOGUE_1"],
+                        events: [
+                            { type: "textMessage", text: "???:Хей!" },
+                            { type: "textMessage", text: "???:Видел новый ресторан сверху? Обязательно зайди!" },
+                            { type: "addStoryFlag", flag: "LISTENED_TO_WORK" },
+                        ]
+                    },
+                    {
+                        events: [
+                            { type: "textMessage", text: "Вы слышите чужой разговор." },
+                            { type: "textMessage", text: "???:Странный какой-то этот новый ресторан, Джек..." },
+                            { type: "textMessage", text: "Джек:Да, и этот менеджер слишком уж подозрительный." },
+                            { type: "addStoryFlag", flag: "LISTENED_DIALOGUE_1" }
                         ]
                     },
                 ],
-                behaviorLoop:[
-                    {type:"stand",direction:"left",time:800}
+                behaviorLoop: [
+                    { type: "stand", direction: "left", time: 800 }
                 ]
             },
             npc2: {
-                type:"Person",
-                useShadow:true,
-                x:utils.withGrid(20),
-                y:utils.withGrid(21),
-                direction:"down",
-                src:"/images/characters/people/npc2.png",
-                talking:[
+                type: "Person",
+                useShadow: true,
+                x: utils.withGrid(20),
+                y: utils.withGrid(21),
+                direction: "down",
+                src: "/images/characters/people/npc2.png",
+                talking: [
                     {
-                        required:["LISTENED_DIALOGUE_1"],
-                        events:[
-
+                        required: ["LISTENED_DIALOGUE_1"],
+                        events: [
+                            { type: "textMessage", text: "Джек:Дам тебе совет. Не заходи в тот ресторан сверху!" }
                         ]
                     },
                     {
-                        events:[
-                            {type:"textMessage",text:"Вы слышите чужой разговор."},
-                            {type:"textMessage",text:"???:Да, Джек, пицца пропала совсем недавно."},
-                            {type:"textMessage",text:"Джек:Но кто мог её украсть?"},
-                            {type:"textMessage",text:"???:А может её и не крал никто, хм?"},
-                            {type:"addStoryFlag",flag:"LISTENED_DIALOGUE_1"}
+                        events: [
+                            { type: "textMessage", text: "Вы слышите чужой разговор." },
+                            { type: "textMessage", text: "???:Странный какой-то этот новый ресторан, Джек..." },
+                            { type: "textMessage", text: "Джек:Да, и этот менеджер слишком уж подозрительный." },
+                            { type: "addStoryFlag", flag: "LISTENED_DIALOGUE_1" }
                         ],
                     },
                 ],
-                behaviorLoop:[
-                            {type:"stand",direction:"down",time:900}
+                behaviorLoop: [
+                    { type: "stand", direction: "down", time: 900 }
                 ]
             },
-            china_guy3:{
-                type:"Person",
-                useShadow:true,
-                x:utils.withGrid(14),
-                y:utils.withGrid(15),
-                src:"/images/characters/people/china_guy1.png"
+            china_guy3: {
+                type: "Person",
+                useShadow: true,
+                x: utils.withGrid(14),
+                y: utils.withGrid(15),
+                src: "/images/characters/people/china_guy1.png"
             },
-            china_guy4:{
-                type:"Person",
-                useShadow:true,
-                x:utils.withGrid(16),
-                y:utils.withGrid(15),
-                src:"/images/characters/people/china_guy3.png"
+            china_guy4: {
+                type: "Person",
+                useShadow: true,
+                x: utils.withGrid(16),
+                y: utils.withGrid(15),
+                src: "/images/characters/people/china_guy3.png"
             },
         },
         walls: {
@@ -1005,24 +1020,23 @@ window.OverworldMaps = {
                         ]
                     }
                 ],
-                [utils.asGridCoord(18,22)]: [
-                    {
-                                    required:["LISTENED_DIALOGUE_1"],
-                                    events:[
+            [utils.asGridCoord(18, 22)]: [
+                {
+                    required: ["LISTENED_DIALOGUE_1"],
+                    events: [
 
-                                    ]
-                    },
-                    {
-                        events:[
-                            {type:"textMessage",text:"Вы случайно слышите чужой разговор."},
-                            {type:"textMessage",text:"???:Да, Джек, пицца пропала совсем недавно."},
-                            {type:"textMessage",text:"Джек:Но кто мог её украсть?"},
-                            {type:"textMessage",text:"???:А может её и не крал никто, хм?"},
-
-                            {type:"addStoryFlag",flag:"LISTENED_DIALOGUE_1"}
-                        ]
-                    },
-                ],
+                    ]
+                },
+                {
+                    events: [
+                        { type: "stand", time: 1, who: "hero", direction: "right" },
+                        { type: "textMessage", text: "Вы случайно слышите чужой разговор." },
+                        { type: "textMessage", text: "???:Странный какой-то этот новый ресторан, Джек..." },
+                        { type: "textMessage", text: "Джек:Да, и этот менеджер слишком уж подозрительный." },
+                        { type: "addStoryFlag", flag: "LISTENED_DIALOGUE_1" },
+                    ]
+                },
+            ],
         }
     },
     diningRoom: {
@@ -1032,7 +1046,7 @@ window.OverworldMaps = {
         configObjects: {
             hero: {
                 type: "Person",
-                useShadow:true,
+                useShadow: true,
                 isPlayerControlled: true,
             },
             epicGuest: {
@@ -1143,13 +1157,13 @@ window.OverworldMaps = {
         upperSrc: "/images/maps/DiningRoomUpper.png",
         configObjects: {
             hero: {
-                useShadow:true,
+                useShadow: true,
                 type: "Person",
                 isPlayerControlled: true,
             },
             epicGuest: {
                 type: "Person",
-                useShadow:true,
+                useShadow: true,
                 src: "/images/characters/people/erio.png",
                 x: utils.withGrid(2),
                 y: utils.withGrid(7),
@@ -1171,7 +1185,7 @@ window.OverworldMaps = {
                 src: "/images/characters/people/npc3.png",
                 x: utils.withGrid(2),
                 y: utils.withGrid(6),
-                useShadow:true,
+                useShadow: true,
                 direction: "down",
                 talking: [
                     {
@@ -1302,7 +1316,7 @@ window.OverworldMaps = {
         upperSrc: "/images/maps/PizzaShopUpper.png",
         configObjects: {
             hero: {
-                useShadow:true,
+                useShadow: true,
                 type: "Person",
                 isPlayerControlled: true,
             }
@@ -1387,41 +1401,84 @@ window.OverworldMaps = {
         upperSrc: "/images/maps/GreenKitchenUpper.png",
         configObjects: {
             hero: {
-                useShadow:true,
+                useShadow: true,
                 type: "Person",
                 isPlayerControlled: true,
             },
-            main_china_guy:{
-                type:"Person",
-                useShadow:true,
-                src:"/images/characters/people/main_china_guy.png",
-                x:utils.withGrid(4),
-                y:utils.withGrid(5),
-                behaviorLoop:[
-                    // {type:"walk",direction:"left"},
-                    // {type:"walk",direction:"right"}
+            main_china_guy: {
+                type: "Person",
+                useShadow: true,
+                src: "/images/characters/people/main_china_guy.png",
+                x: utils.withGrid(4),
+                y: utils.withGrid(5),
+                behaviorLoop: [
+                    { type: "stand", direction: "down", time: 800 },
+                ],
+                talking: [
+                    {
+                        required: ["TALKED_TO_BETH"],
+                        events: [
+                            { type: "textMessage", text: "首席中文:Ну что...",faceHero:"main_china_guy" },
+                            { type: "textMessage", text: "首席中文: Готов к турниру?" },
+                            { type: "textMessage", text: "首席中文:Надеюсь, что да. Удачи!" },
+                            { type: "changeMap", map: "streetNorth2", direction: "up", x: utils.withGrid(15), y: utils.withGrid(23) }
+                        ]
+                    },
+                    {
+                        required: ["TALKED_TO_MAIN_CHINA_GUY"],
+                        events: [
+                            { type: "textMessage", text: "首席中文:Неплохая была битва! Заходи ещё!", faceHero: "main_china_guy" }
+                        ]
+                    },
+                    {
+                        events: [
+                            { type: "textMessage", text: "首席中文:Добро пожаловать в наш недавно открытый ресторан!", faceHero: "main_china_guy" },
+                            { type: "textMessage", text: "首席中文:Слушай, ты выглядишь довольно отчаянным." },
+                            { type: "textMessage", text: "首席中文:Может, подерёмся пиццами? Я сейчас бы не отказался!" },
+                            { type: "addStoryFlag", flag: "LOSE_MAIN_CHINA_GUY" },
+                            { type: "battle", enemyId: "MainChinaGuy" },
+                            { type: "textMessage", text: "首席中文:Ух! Это было освежающе! Не думаешь поучаствовать в завтрашнем турнире?" },
+                            { type: "textMessage", text: "首席中文:Для тебя это будет отличным испытанием!" },
+                            { type: "textMessage", text: "首席中文:Зайди в ларёк на юге и узнай поподробнее, если интересно." },
+                            { type: "addStoryFlag", flag: "TALKED_TO_MAIN_CHINA_GUY" },
+                        ]
+                    },
                 ]
             },
-            china_guy2:{
-                type:"Person",
-                useShadow:true,
-                src:"/images/characters/people/china_guy2.png",
-                x:utils.withGrid(4),
-                y:utils.withGrid(11),
-                direction:"right"
+            china_guy2: {
+                type: "Person",
+                useShadow: true,
+                src: "/images/characters/people/china_guy2.png",
+                x: utils.withGrid(4),
+                y: utils.withGrid(11),
+                direction: "right"
             },
-            talk:{
-                type:"Person",
-                useShadow:false,
-                x:utils.withGrid(4),
-                y:utils.withGrid(6),
-                src:"/images/",
-                talking:[
+            talk: {
+                type: "Person",
+                useShadow: false,
+                x: utils.withGrid(4),
+                y: utils.withGrid(6),
+                src: "/images/",
+                talking: [
                     {
-                        events:[
-                            {type:"textMessage",text:"首席中文:Бу"}
+                        required: ["TALKED_TO_MAIN_CHINA_GUY"],
+                        events: [
+                            { type: "textMessage", text: "首席中文:Неплохая была битва! Заходи ещё!", faceHero: "main_china_guy" }
                         ]
-                    }
+                    },
+                    {
+                        events: [
+                            { type: "textMessage", text: "首席中文:Добро пожаловать в наш недавно открытый ресторан!", faceHero: "main_china_guy" },
+                            { type: "textMessage", text: "首席中文:Слушай, ты выглядишь довольно отчаянным." },
+                            { type: "textMessage", text: "首席中文:Может, подерёмся пиццами? Я сейчас бы не отказался!" },
+                            { type: "addStoryFlag", flag: "LOSE_MAIN_CHINA_GUY" },
+                            { type: "battle", enemyId: "MainChinaGuy" },
+                            { type: "textMessage", text: "首席中文:Ух! Это было освежающе! Не думаешь поучаствовать в завтрашнем турнире?" },
+                            { type: "textMessage", text: "首席中文:Для тебя это будет отличным испытанием!" },
+                            { type: "textMessage", text: "首席中文:Зайди в ларёк на юге и узнай поподробнее, если интересно." },
+                            { type: "addStoryFlag", flag: "TALKED_TO_MAIN_CHINA_GUY" }
+                        ]
+                    },
                 ]
             }
         },
@@ -1494,5 +1551,198 @@ window.OverworldMaps = {
                     }
                 ]
         }
-    }
+    },
+    streetNorth2: {
+        id: "streetNorth2",
+        lowerSrc: "/images/maps/StreetNorthLower.png",
+        upperSrc: "/images/maps/StreetNorthUpper.png",
+        configObjects: {
+            hero: {
+                type: "Person",
+                useShadow: true,
+                isPlayerControlled: true,
+                direction: "up",
+                x:utils.withGrid(15),
+                y:utils.withGrid(23)
+            },
+            npc1: {
+                type: "Person",
+                useShadow: true,
+                x: utils.withGrid(10),
+                y: utils.withGrid(22),
+                direction: "right",
+                src: "/images/characters/people/npc5.png",
+                talking: [
+                    {
+                        required: ["LISTENED_DIALOGUE_1"],
+                        events: [
+                            {type:"textMessage",text:"???:Удачи!"},
+                        ]
+                    },
+                    {
+                        events: [
+                            { type: "textMessage", text: "???:И снова привет!" },
+                            {type:"textMessage",text:"???:Не ожидал тебя увидеть здесь в качестве участника."},
+                            {type:"textMessage",text:"???:Удачи!"},
+                            {type:"addStoryFlag",flag:"LISTENED_DIALOGUE_1"}
+                        ]
+                    },
+                ],
+            },
+            beth:{
+                type:"Person",
+                useShadow: true,
+                x:utils.withGrid(21),
+                direction:"left",
+                y:utils.withGrid(20),
+                src:"images/characters/people/npc1.png",
+                talking:[
+                    {
+                        required:["TALKED_TO_BETH_ON_TOURNAMENT"],
+                        events:[
+                            {type:"textMessage",text:"Бетт:Не проиграй!"}
+                        ]
+                    },
+                    {
+                        events:[
+                            {type:"textMessage",text:"Бетт:Снова приветик!"},
+                            {type:"textMessage",text:"Бетт:Надеюсь ты готовился к турниру."},
+                            {type:"textMessage",text:"Бетт:Я поставила на тебя 15 пицца-монет!"},
+                            {type:"addStoryFlag",flag:"TALKED_TO_BETH_ON_TOURNAMENT"},
+                        ]
+                    }
+                ]
+            },
+            npc2: {
+                type: "Person",
+                useShadow: true,
+                x: utils.withGrid(10),
+                y: utils.withGrid(23),
+                direction:"up",
+                src: "images/characters/people/npc2.png",
+                talking: [
+                    {
+                        required: ["LISTENED_DIALOGUE_1"],
+                        events: [
+                            { type: "textMessage", text: "Джек:Дам тебе совет. Не заходи в тот ресторан сверху!" }
+                        ]
+                    },
+                    {
+                        events: [
+                            { type: "textMessage", text: "Джек:ДА КАК ТАК?!"},
+                            { type: "textMessage", text: "Джек:КАК ТАК"},
+                            {type:"textMessage",text:"Джек:Ты попал на турнир, а я нет?!"},
+                            {type:"textMessage",text:"Джек:Я бы был лучше тебя!"},
+                            {type:"textMessage",text:"Джек:И сейчас я тебе это докажу!"},
+                            {type:"battle",enemyId:"jack"}
+                        ],
+                    },
+                ],
+            },
+            china_guy3: {
+                type: "Person",
+                useShadow: true,
+                x: utils.withGrid(14),
+                y: utils.withGrid(15),
+                src: "/images/characters/people/china_guy1.png"
+            },
+            china_guy4: {
+                type: "Person",
+                useShadow: true,
+                x: utils.withGrid(16),
+                y: utils.withGrid(15),
+                src: "/images/characters/people/china_guy3.png"
+            },
+        },
+        walls: {
+            [utils.asGridCoord(14, 25)]: true,
+            [utils.asGridCoord(13, 25)]: true,
+            [utils.asGridCoord(12, 25)]: true,
+            [utils.asGridCoord(11, 25)]: true,
+            [utils.asGridCoord(10, 25)]: true,
+            [utils.asGridCoord(9, 25)]: true,
+            [utils.asGridCoord(8, 25)]: true,
+            [utils.asGridCoord(9, 23)]: true,
+            [utils.asGridCoord(9, 22)]: true,
+            [utils.asGridCoord(9, 21)]: true,
+            [utils.asGridCoord(9, 20)]: true,
+            [utils.asGridCoord(9, 19)]: true,
+            [utils.asGridCoord(9, 18)]: true,
+            [utils.asGridCoord(9, 17)]: true,
+            [utils.asGridCoord(8, 16)]: true,
+            [utils.asGridCoord(9, 16)]: true,
+            [utils.asGridCoord(10, 16)]: true,
+            [utils.asGridCoord(11, 16)]: true,
+            [utils.asGridCoord(11, 15)]: true,
+            [utils.asGridCoord(12, 14)]: true,
+            [utils.asGridCoord(13, 14)]: true,
+            [utils.asGridCoord(14, 14)]: true,
+            [utils.asGridCoord(16, 14)]: true,
+            [utils.asGridCoord(17, 14)]: true,
+            [utils.asGridCoord(18, 14)]: true,
+            [utils.asGridCoord(19, 15)]: true,
+            [utils.asGridCoord(20, 15)]: true,
+            [utils.asGridCoord(21, 15)]: true,
+            [utils.asGridCoord(8, 23)]: true,
+            [utils.asGridCoord(7, 24)]: true,
+            [utils.asGridCoord(23, 23)]: true,
+            [utils.asGridCoord(22, 15)]: true,
+            [utils.asGridCoord(23, 15)]: true,
+            [utils.asGridCoord(22, 16)]: true,
+            [utils.asGridCoord(22, 17)]: true,
+            [utils.asGridCoord(22, 18)]: true,
+            [utils.asGridCoord(22, 19)]: true,
+            [utils.asGridCoord(22, 20)]: true,
+            [utils.asGridCoord(22, 21)]: true,
+            [utils.asGridCoord(22, 22)]: true,
+            [utils.asGridCoord(22, 23)]: true,
+            [utils.asGridCoord(24, 24)]: true,
+            [utils.asGridCoord(23, 25)]: true,
+            [utils.asGridCoord(22, 25)]: true,
+            [utils.asGridCoord(9, 24)]: true,
+            [utils.asGridCoord(22, 24)]: true,
+            [utils.asGridCoord(21, 25)]: true,
+            [utils.asGridCoord(20, 25)]: true,
+            [utils.asGridCoord(19, 25)]: true,
+            [utils.asGridCoord(18, 25)]: true,
+            [utils.asGridCoord(17, 25)]: true,
+            [utils.asGridCoord(16, 25)]: true,
+            [utils.asGridCoord(23, 25)]: true,
+        },
+        cutsceneSpaces: {
+            [utils.asGridCoord(15, 14)]:
+                [
+                    {
+                        events: [
+                            { type: "changeMap", map: "greenKitchen", direction: "up", x: utils.withGrid(5), y: utils.withGrid(11) }
+                        ]
+                    }
+                ],
+            [utils.asGridCoord(15, 25)]:
+                [
+                    {
+                        events: [
+                            { type: "changeMap", map: "street", direction: "down", x: utils.withGrid(36), y: utils.withGrid(14) }
+                        ]
+                    }
+                ],
+            [utils.asGridCoord(18, 22)]: [
+                {
+                    required: ["LISTENED_DIALOGUE_1"],
+                    events: [
+
+                    ]
+                },
+                {
+                    events: [
+                        { type: "stand", time: 1, who: "hero", direction: "right" },
+                        { type: "textMessage", text: "Вы случайно слышите чужой разговор." },
+                        { type: "textMessage", text: "???:Странный какой-то этот новый ресторан, Джек..." },
+                        { type: "textMessage", text: "Джек:Да, и этот менеджер слишком уж подозрительный." },
+                        { type: "addStoryFlag", flag: "LISTENED_DIALOGUE_1" },
+                    ]
+                },
+            ],
+        }
+    },
 }
