@@ -36,3 +36,54 @@
   right: 2px;
   bottom: 0;
 }
+
+.ChoiceMessage {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 36px;
+  background: var(--menu-background);
+  border-top: 1px solid var(--menu-border-color);
+  color: var(--menu-font-color);
+  font-family: monospace;
+}
+
+.ChoiceMessage_button {
+  margin: 0;
+  font-size: 10px;
+  --webkit-appearance: none;
+  background: var(--menu-background);
+  border:0;
+  font-family: monospace;
+  position: absolute;
+  right: 4px;
+  bottom: 0;
+  height: 30px;
+}
+
+.ChoiceMessage_button button {
+  font-size: 8px; 
+  width:35px;
+  cursor:pointer;
+  --webkit-appearance: none;
+  background: var(--menu-background);
+  border:3;
+  border-color: var(--menu-background); ;
+  font-family: monospace;
+  right: 10px;
+  bottom: 0;
+  top: 5px;
+  text-align:center;
+  vertical-align: middle;
+  height: 20px;
+}
+
+.ChoiceMessage_button_text {
+  position: relative;
+}
+
+.ChoiceMessage_text {
+  width:280px;
+  ;
+}

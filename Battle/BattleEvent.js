@@ -24,10 +24,12 @@ class BattleEvent {
     const {caster, target, damage,recover,status, action} = this.event;
     let who = this.event.onCaster ? caster : target;
     if (damage) {
-      //наносить урон цели чтобы у неё уменьшалось хп
+      const multiplier = caster.damageMultiplier || 1;
+      const calculatedDamage = damage + caster.level * 1.05;
       target.update({
-        hp: target.hp - (damage + caster.level * 1.05)
+        hp: target.hp - (calculatedDamage * multiplier)
       })
+    
       document.getElementById("hitsound1").play();
       //начать моргать пицце после получения урона
       target.pizzaElement.classList.add("battle-damage-blink");

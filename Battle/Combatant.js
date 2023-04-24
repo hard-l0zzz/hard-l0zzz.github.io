@@ -114,21 +114,24 @@ class Combatant {
   }
 
   decrementStatus(){
+    let statusName = null;
     if (this.status?.expiresIn > 0) {
       this.status.expiresIn -= 1;
       if(this.status.expiresIn === 0) 
       {
         this.update({
           status:null
-        })
+        });
         return{
             type:"textMessage",
             text:`Эффект у ${this.name} кончился!`
         }
       }
     }
-    return null;
   }
+  
+  
+  
 
   init(container) {
     this.createElement();

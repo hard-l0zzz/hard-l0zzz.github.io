@@ -7,8 +7,6 @@ window.Enemies = {
                 pizzaId:"s002",
                 maxHp:50,
                 level:1,
-                //attackBonus: 20000,
-                //.........
             },
             "b":{
                 pizzaId:"v002",
@@ -17,6 +15,22 @@ window.Enemies = {
             }
         }
     },
+    "jack":{
+        name:"Джек",
+        src:"/images/characters/people/npc5.png"
+    },
+    "MainChinaGuy":{
+        name:"首席中文",
+        src:"/images/characters/people/main_china_guy.png",
+        pizzas:{
+            "a":{
+                pizzaId: "s002",
+                maxHp:1,
+                level:5,
+                damageMultiplier: 2, // урон в два раза больше обычного
+            },
+        },
+      },      
     "beth":{
         name:"Бетт",
         src:"/images/characters/people/npc1.png",
@@ -36,7 +50,7 @@ window.Enemies = {
         pizzas:{
             "a":{
                 pizzaId:"s001",
-                maxHp:50,
+                maxHp:1,
                 level:1,
             },
         }

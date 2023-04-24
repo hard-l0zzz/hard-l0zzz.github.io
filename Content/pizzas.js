@@ -50,7 +50,7 @@ window.Pizzas = {
   "stepalox": {
     name: "Степа Лошара",
     type: PizzaTypes.fungi,
-    src: "/images/characters/pizzas/stepalox2.png",
+    src: "/images/characters/pizzas/v001.png",
     icon: "/images/icons/veggie.png",
     actions:["suicide","damage1","damage1","damage1"]
   }

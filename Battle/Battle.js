@@ -98,10 +98,10 @@ class Battle {
         }
         this.element.remove();
         this.onComplete(winner === "player");
-        if(myaudio.paused == true){
-          document.getElementById("myaudio").play();
-          document.getElementById("myaudio").volume = 0.12;
-        }
+        // if(myaudio.paused == true){
+        //   document.getElementById("myaudio").play();
+        //   document.getElementById("myaudio").volume = 0.12;
+        // }
         document.getElementById("battleaudio").load();
       }
     })
