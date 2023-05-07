@@ -1,17 +1,9 @@
 class PlayerState {
     constructor() {
         this.pizzas = {
-            "dadp1":{
-                pizzaId:"dadp1",
-                hp: 50,
-                maxHp: 50,
-                xp: 0,
-                maxXp: 100,
-                level: 1,
-                status: null
-            },
+
         }
-        this.lineup = ["dadp1"];
+        this.lineup = [];
         this.items = [
             { actionId: "item_recoverHp", instanceId: "item1" },
             { actionId: "item_recoverHp", instanceId: "item2" },
