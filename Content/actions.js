@@ -6,7 +6,7 @@ window.Actions = {
         [
             {type: "textMessage", text: "{CASTER} использует {ACTION}!"},
             {type: "animation", animation:"spin"},
-            {type: "stateChange", damage:1 },
+            {type: "stateChange", damage:15 },
         ],
         description:"Жёстко ударить врага >:D"
     },

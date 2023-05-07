@@ -45,25 +45,14 @@ class OverworldEvent{
       const obj = this.map.gameObjects[this.event.faceHero];
       obj.direction = utils.oppositeDirection(this.map.gameObjects["hero"].direction);
     }
-  
-    if (this.event.choices) {
-      const choiceMessage = new ChoiceMessage({
-        text: this.event.text,
-        choices: this.event.choices,
-        onComplete: () => resolve(),
-        handleChoice: this.handleChoice,
-      });
-  
-      choiceMessage.init(document.querySelector(".game-container"), this.handleChoice); // передаем функцию handleChoice в метод init
-  
-    } else {
+    
       const message = new TextMessage({
         text: this.event.text,
         onComplete: () => resolve()
       });
   
       message.init(document.querySelector(".game-container"));
-    }
+    
   }
 
 
@@ -96,9 +85,6 @@ class OverworldEvent{
     //   });
     //   resolve();
     // }
-    
-    
-    
     
     
 
@@ -151,7 +137,16 @@ class OverworldEvent{
         })
         menu.init(document.querySelector(".game-container"))
       }
-      
+
+      showOptions(resolve) {
+        const menu = new optionsMenu({
+          description:this.description,
+          onComplete: () => {
+            resolve();
+          }
+        })
+        menu.init(document.querySelector(".game-container"))
+      }    
       
 
   init(){

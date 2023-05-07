@@ -1418,7 +1418,7 @@ window.OverworldMaps = {
                     {
                         required: ["TALKED_TO_BETH"],
                         events: [
-                            { type: "textMessage", text: "首席中文:Ну что...",faceHero:"main_china_guy" },
+                            { type: "textMessage", text: "首席中文:Ну что...", faceHero: "main_china_guy" },
                             { type: "textMessage", text: "首席中文: Готов к турниру?" },
                             { type: "textMessage", text: "首席中文:Надеюсь, что да. Удачи!" },
                             { type: "changeMap", map: "streetNorth2", direction: "up", x: utils.withGrid(15), y: utils.withGrid(23) }
@@ -1562,55 +1562,82 @@ window.OverworldMaps = {
                 useShadow: true,
                 isPlayerControlled: true,
                 direction: "up",
-                x:utils.withGrid(15),
-                y:utils.withGrid(23)
+                x: utils.withGrid(15),
+                y: utils.withGrid(23)
             },
             npc1: {
                 type: "Person",
                 useShadow: true,
                 x: utils.withGrid(10),
                 y: utils.withGrid(22),
-                direction: "right",
+                direction: "down",
                 src: "/images/characters/people/npc5.png",
                 talking: [
                     {
-                        required: ["LISTENED_DIALOGUE_1"],
+                        required:["GOT_JACKP"],
+                        events:[
+                            {type:'textMessage',text:"???:Спасибо ещё раз!",faceHero:"npc1"}
+                        ]
+                    },
+                    {
+                        required:["WON_JACK"],
+                        events:[
+                            {type:'textMessage',text:"???:Ого! Дал ты Джеку трёпку. Спасибо!",faceHero:"npc1"},
+                            {type:'textMessage',text:"???:Он меня просто уже довольно достал. Ноет и ноет."},
+                            {type:'textMessage',text:"???:Мне такое не по душе. Он нарушает мой покой."},
+                            {type:'textMessage',text:"???:Держи это в качестве благодарности."},
+                            {type:"addStoryFlag",flag:"GOT_JACKP"},
+                            { type: "craftingMenu", pizzas: ["jackp"] },
+                        ]
+                    },
+                    {
+                        required: ["LISTENED_DIALOGUE_2"],
                         events: [
-                            {type:"textMessage",text:"???:Удачи!"},
+                            {
+                                type: "textMessage",
+                                text: "???:Удачи!",
+                                faceHero: "npc1"
+                            }
                         ]
                     },
                     {
                         events: [
-                            { type: "textMessage", text: "???:И снова привет!" },
-                            {type:"textMessage",text:"???:Не ожидал тебя увидеть здесь в качестве участника."},
-                            {type:"textMessage",text:"???:Удачи!"},
-                            {type:"addStoryFlag",flag:"LISTENED_DIALOGUE_1"}
+                            { type: "textMessage", text: "???:И снова привет!", faceHero: "npc1" },
+                            { type: "textMessage", text: "???:Не ожидал тебя увидеть здесь в качестве участника." },
+                            { type: "textMessage", text: "???:Удачи!" },
+                            { type: "addStoryFlag", flag: "LISTENED_DIALOGUE_2" }
                         ]
                     },
                 ],
+                behaviorLoop: [
+                    { type: "stand", direction: "down", time: "800" },
+                ]
             },
-            beth:{
-                type:"Person",
+            beth: {
+                type: "Person",
                 useShadow: true,
-                x:utils.withGrid(21),
-                direction:"left",
-                y:utils.withGrid(20),
-                src:"images/characters/people/npc1.png",
-                talking:[
+                x: utils.withGrid(21),
+                direction: "left",
+                y: utils.withGrid(20),
+                src: "images/characters/people/npc1.png",
+                talking: [
                     {
-                        required:["TALKED_TO_BETH_ON_TOURNAMENT"],
-                        events:[
-                            {type:"textMessage",text:"Бетт:Не проиграй!"}
+                        required: ["TALKED_TO_BETH_ON_TOURNAMENT"],
+                        events: [
+                            { type: "textMessage", text: "Бетт:Не проиграй!", faceHero: "beth" }
                         ]
                     },
                     {
-                        events:[
-                            {type:"textMessage",text:"Бетт:Снова приветик!"},
-                            {type:"textMessage",text:"Бетт:Надеюсь ты готовился к турниру."},
-                            {type:"textMessage",text:"Бетт:Я поставила на тебя 15 пицца-монет!"},
-                            {type:"addStoryFlag",flag:"TALKED_TO_BETH_ON_TOURNAMENT"},
+                        events: [
+                            { type: "textMessage", text: "Бетт:Снова приветик!", faceHero: "beth" },
+                            { type: "textMessage", text: "Бетт:Надеюсь ты готовился к турниру." },
+                            { type: "textMessage", text: "Бетт:Я поставила на тебя 15 пицца-монет!" },
+                            { type: "addStoryFlag", flag: "TALKED_TO_BETH_ON_TOURNAMENT" },
                         ]
                     }
+                ],
+                behaviorLoop: [
+                    { type: "stand", time: 800, direction: "left" }
                 ]
             },
             npc2: {
@@ -1618,26 +1645,228 @@ window.OverworldMaps = {
                 useShadow: true,
                 x: utils.withGrid(10),
                 y: utils.withGrid(23),
-                direction:"up",
+                direction: "up",
                 src: "images/characters/people/npc2.png",
                 talking: [
                     {
-                        required: ["LISTENED_DIALOGUE_1"],
+                        required: ["WON_JACK"],
                         events: [
-                            { type: "textMessage", text: "Джек:Дам тебе совет. Не заходи в тот ресторан сверху!" }
+                            { type: "textMessage", text: "Джек:Уверен, ты проиграешь первым.", faceHero: "npc2" }
+                        ]
+                    },
+                    {
+                        required: ["LOSS_JACK"],
+                        events: [
+                            { type: "textMessage", text: "Джек:Ха! Лузер. Кого только не понабирают.", faceHero: "npc2" }
                         ]
                     },
                     {
                         events: [
-                            { type: "textMessage", text: "Джек:ДА КАК ТАК?!"},
-                            { type: "textMessage", text: "Джек:КАК ТАК"},
-                            {type:"textMessage",text:"Джек:Ты попал на турнир, а я нет?!"},
-                            {type:"textMessage",text:"Джек:Я бы был лучше тебя!"},
-                            {type:"textMessage",text:"Джек:И сейчас я тебе это докажу!"},
-                            {type:"battle",enemyId:"jack"}
+                            { type: "textMessage", text: "Джек:ДА КАК ТАК?!", faceHero: "npc2" },
+                            { type: "textMessage", text: "Джек:КАК ТАК" },
+                            { type: "textMessage", text: "Джек:Ты попал на турнир, а я нет?!" },
+                            { type: "textMessage", text: "Джек:Я бы был лучше тебя!" },
+                            { type: "textMessage", text: "Джек:И сейчас я тебе это докажу!" },
+                            { type: "addStoryFlag", flag: "LOSS_JACK" },
+                            { type: "battle", enemyId: "jack" },
+                            { type: "addStoryFlag", flag: "WON_JACK" },
+                            { type: "textMessage", text: "Джек:Ну...Может я был не прав." },
+                            { type: "textMessage", text: "Джек:Хотя..Нет! Тебе просто повезло!" },
+                            { type: "textMessage", text: "Джек:Да и вообще, одна победа надо мной ничего не значит." }
                         ],
                     },
                 ],
+                behaviorLoop: [
+                    { type: "stand", direction: "up", time: "800" },
+                ]
+            },
+            dad: {
+                type: "Person",
+                useShadow: true,
+                x: utils.withGrid(15),
+                y: utils.withGrid(33),
+                src: "/images/characters/people/npc3.png"
+            },
+            main_china_guy: {
+                type: "Person",
+                useShadow: true,
+                x: utils.withGrid(15),
+                y: utils.withGrid(15),
+                src: "/images/characters/people/main_china_guy.png",
+                talking: [
+                    {
+                        required: ["3"],
+                        events: [
+                            { type: "textMessage", text: "首席中文:Главное участие!" },
+                            { type: 'textMessage', text: "首席中文:О, посмотри те ка, кто пришёл!" },
+                            { type: "textMessage", text: "首席中文:Наш последний участник!" },
+                            {type:"walk",who:"hero",direction:"left"},
+                            {type:"stand",who:"hero",direction:"down"},
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "walk", who: "dad", direction: "up" },
+                            { type: "textMessage",text:"Отец:Извините, что задержался. Сами понимаете, каково это - содержать ресторан."},
+                            { type: "textMessage",text:"首席中文:Да, это Jīngdiǎn de! Ну, ничего страшного. Раз уж все в сборе, начинаем!"},
+                            { type: "textMessage",text:"首席中文:Четыре участника, но победитель выйдет один! Да победит сильнейший!"},
+                            { type: "textMessage",text:"Вы:Постойте..ОТЕЦ?! Что ты то тут делаешь?"},
+                            { type: "textMessage",text:"首席中文:Оставьте свои семейные дела у себя! Мы тут все ради зрелища битв!"},
+                            { type: "textMessage",text:"首席中文:Хотя драма вышла бы великолепной."},
+                            { type: "textMessage",text:"首席中文:Так или иначе, сейчас Куппер Младший будет в противостоянии с Чарли!"},
+                            { type: "textMessage",text:"首席中文:Это будет справедливо, ведь они оба примерно одинаково сильны."},
+                            { type: "textMessage",text:"首席中文:Kāishǐ ba!"},
+                            {type:"walk",who:"charlie",direction:"right"},
+                            {type:"walk",who:"charlie",direction:"right"},
+                            {type:"walk",who:"charlie",direction:"right"},
+                            {type:"walk",who:"charlie",direction:"right"},
+                            {type:"walk",who:"charlie",direction:"right"},
+                            {type:"walk",who:"charlie",direction:"right"},
+                            {type:"walk",who:"charlie",direction:"right"},
+                            {type:"walk",who:"charlie",direction:"right"},
+                            {type:"walk",who:"charlie",direction:"right"},
+                            {type:"stand",who:"charlie",direction:"down"},
+                            {type:"walk",who:"dad",direction:"right"},
+                            {type:"walk",who:"dad",direction:"right"},
+                            {type:"walk",who:"dad",direction:"right"},
+                            {type:"walk",who:"dad",direction:"right"},
+                            {type:"walk",who:"dad",direction:"right"},
+                            {type:"walk",who:"dad",direction:"right"},
+                            {type:"walk",who:"dad",direction:"up"},
+                            {type:"walk",who:"dad",direction:"up"},
+                            {type:"stand",who:"dad",direction:"down"},
+                            {type:"walk",who:"hero",direction:"down"},
+                            {type:"walk",who:"hero",direction:"right"},
+                            {type:"walk",who:"hero",direction:"right"},
+                            {type:"walk",who:"hero",direction:"right"},
+                            {type:"walk",who:"hero",direction:"down"},
+                            {type:"walk",who:"hero",direction:"down"},
+                            {type:"walk",who:"hero",direction:"right"},
+                            {type:"walk",who:"hero",direction:"right"},
+                            {type:"stand",who:"hero",direction:"up"},
+                            {type:"textMessage",text:"Чарли:Н-ну главное, что я участвовала.."},
+                            {type:"textMessage",text:"Чарли:Ты меня 100% победишь!"},
+                            {type:"addStoryFlag",flag:"LOSS_CHARLIE"},
+                            {type:"battle",enemyId:"charlie"},
+                            {type:"addStoryFlag",flag:"WON_CHARLIE"},
+                            {type:"textMessage",text:"Чарли:Это было очевидно :("},
+                            {type:"textMessage",text:"Чарли:Надеюсь я была хорошим соперником!"},
+                            {type:"textMessage",text:"Чарли:Удачи в следующем раунде!"},
+                        ]
+                    },
+                    {
+                        required: ["2"],
+                        events: [
+                            { type: 'textMessage', text: "Вы:Почему я не знал, что моим противником будет Де Рубильдо?!" },
+                            { type: 'textMessage', text: "首席中文:Ой! Ну в этом турнире тогда же не было бы ни капли Xìngqù!" },
+                            { type: 'textMessage', text: "首席中文:Вообще, не сомневайся в себе!" },
+                            { type: 'textMessage', text: "首席中文:Рубильдо может и 10-кратный чемпион по Пицца-битвам, но все люди проигрывают." },
+                            { type: 'textMessage', text: "首席中文:Рано или поздно... Ну, ты лучше помолись, наверное." },
+                            { type: "addStoryFlag", flag: "3" }
+                        ]
+                    },
+                    {
+                        required: ["1"],
+                        events: [
+                            { type: 'textMessage', text: "首席中文:Всё ещё ждём..." }
+                        ]
+                    },
+                    {
+                        required: ["CHEESE_EAT2"],
+                        events: [
+                            { type: "textMessage", text: "首席中文:Что-ж, мы пока ждём последнего участника." },
+                            { type: "textMessage", text: "首席中文:Раз ты уже наелся сыра, можешь пообщаться с кем-нибудь." },
+                            { type: "textMessage", text: "首席中文:В общем, займись чем нибудь." },
+                            { type: "addStoryFlag", flag: "1" }
+                        ]
+                    },
+                    {
+                        events:
+                            [
+                                { type: "textMessage", text: "首席中文:Что-ж, мы пока ждём последнего участника." },
+                                { type: "textMessage", text: "首席中文:Ты пока можешь пообщаться с кем-нибудь." },
+                                { type: "textMessage", text: "首席中文:Или набраться сил перед боем, вкусив сыр!" },
+                                { type: "textMessage", text: "首席中文:В общем, займись чем нибудь." },
+                                { type: "addStoryFlag", flag: "1" }
+                            ]
+                    }
+                ]
+            },
+            charlie: {
+                type: "Person",
+                useShadow: true,
+                x: utils.withGrid(10),
+                y: utils.withGrid(17),
+                src: "/images/characters/people/npc4.png",
+                direction: "down",
+                behaviorLoop: [
+                    { type: "stand", time: 800, direction: "down" }
+                ],
+                talking: [
+                    {
+                        required:["LOSS_CHARLIE"],
+                        events:[
+                            {type:'textMessage',text:"Чарли:Ого! Не думала, что я смогу это сделать! Хаха!"},
+                            {type:'textMessage',text:"Чарли:Правда, скорее всего, я проиграю в следующем раунде.."},
+                            {type:'textMessage',text:"Чарли:Но всё равно, хотя-бы не всухую!"},
+                        ]
+                    },
+                    {
+                        required: ["4"],
+                        events: [
+                            { type: "textMessage", text: "Чарли:Сыр классный 0_0" }
+                        ]
+                    },
+                    {
+                        events: [
+                            { type: "textMessage", text: "Чарли:П-привет!", faceHero: "charlie" },
+                            { type: "textMessage", text: "Чарли:Т-ты тоже участвуешь, да?" },
+                            { type: "textMessage", text: "Чарли:Круто! А меня мама записала сюда... Говорит, чтобы чем-нибудь полезным занялась.." },
+                            { type: "textMessage", text: "Чарли:Ещё мне так нравится этот сыр.. Он заставляет меня чувствовать себя..крутой!" },
+                            { type: "addStoryFlag", flag: "4" }
+                        ]
+                    }
+                ]
+            },
+            cheese: {
+                type: "Person",
+                useShadow: true,
+                x: utils.withGrid(10),
+                y: utils.withGrid(19),
+                src: "/images/characters/cheese.png",
+                talking: [
+                    {
+                        required: ["CHEESE_EAT2"],
+                        events: [
+                            { type: 'textMessage', text: "Вы решаете воздержаться от сыра!" }
+                        ]
+                    },
+                    {
+                        required: ["CHEESE_EAT1"],
+                        events: [
+                            { type: "textMessage", text: "Вы решаете вкусить ещё один кусочек этого сыра..." },
+                            { type: "textMessage", text: "Что-то вам нехорошо..." },
+                            { type: "addStoryFlag", flag: "CHEESE_EAT2" }
+                        ]
+                    },
+                    {
+                        events: [
+                            { type: 'textMessage', text: "Вы вкушаете блаженство этого огромного куска сыра." },
+                            { type: 'textMessage', text: "Просто великолепно!" },
+                            { type: "addStoryFlag", flag: "CHEESE_EAT1" },
+                        ]
+                    }
+                ]
             },
             china_guy3: {
                 type: "Person",
@@ -1653,6 +1882,30 @@ window.OverworldMaps = {
                 y: utils.withGrid(15),
                 src: "/images/characters/people/china_guy3.png"
             },
+            de_rubildo: {
+                type: 'Person',
+                useShadow: true,
+                x: utils.withGrid(20),
+                y: utils.withGrid(16),
+                src: "/images/characters/people/erio.png",
+                talking: [
+                    {
+                        required: ["2"],
+                        events: [
+                            { type: "textMessage", text: "Де Рубильдо:С таким дилетантом как ты, это будет легчайшая для меня победа!" }
+                        ]
+                    },
+                    {
+                        events: [
+                            { type: 'textMessage', text: "Де Рубильдо:Ого! КОГО Я ВИЖУ? Давно не виделись!" },
+                            { type: 'textMessage', text: "Де Рубильдо:Не думал, что ты осмелишься пойти на турнир!" },
+                            { type: 'textMessage', text: "Де Рубильдо:Спорю, ты не знал, что я буду твоим оппонентом! Хаха!" },
+                            { type: 'textMessage', text: "Де Рубильдо:Я бы пожелал тебе удачи, но она тебе не поможет!!" },
+                            { type: 'addStoryFlag', flag: "2" }
+                        ]
+                    }
+                ]
+            }
         },
         walls: {
             [utils.asGridCoord(14, 25)]: true,
@@ -1664,6 +1917,7 @@ window.OverworldMaps = {
             [utils.asGridCoord(8, 25)]: true,
             [utils.asGridCoord(9, 23)]: true,
             [utils.asGridCoord(9, 22)]: true,
+            [utils.asGridCoord(15, 13)]: true,
             [utils.asGridCoord(9, 21)]: true,
             [utils.asGridCoord(9, 20)]: true,
             [utils.asGridCoord(9, 19)]: true,
@@ -1710,39 +1964,27 @@ window.OverworldMaps = {
             [utils.asGridCoord(23, 25)]: true,
         },
         cutsceneSpaces: {
-            [utils.asGridCoord(15, 14)]:
-                [
-                    {
-                        events: [
-                            { type: "changeMap", map: "greenKitchen", direction: "up", x: utils.withGrid(5), y: utils.withGrid(11) }
-                        ]
-                    }
-                ],
             [utils.asGridCoord(15, 25)]:
                 [
                     {
                         events: [
-                            { type: "changeMap", map: "street", direction: "down", x: utils.withGrid(36), y: utils.withGrid(14) }
+                            { type: "textMessage", text: "Вы:Ну, мне нечего там делать..." },
+                            { type: "textMessage", text: "Вы:Турнир - мой последний шанс." },
+                            { type: "walk", who: "hero", direction: "up" }
                         ]
                     }
                 ],
-            [utils.asGridCoord(18, 22)]: [
-                {
-                    required: ["LISTENED_DIALOGUE_1"],
-                    events: [
+            [utils.asGridCoord(15, 14)]:
+                [
+                    {
+                        events: [
+                            { type: "textMessage", text: "Вы:Ну, мне нечего там делать..." },
+                            { type: "textMessage", text: "Вы:Турнир - мой последний шанс." },
+                            { type: "walk", who: "hero", direction: "down" }
+                        ]
+                    }
+                ]
 
-                    ]
-                },
-                {
-                    events: [
-                        { type: "stand", time: 1, who: "hero", direction: "right" },
-                        { type: "textMessage", text: "Вы случайно слышите чужой разговор." },
-                        { type: "textMessage", text: "???:Странный какой-то этот новый ресторан, Джек..." },
-                        { type: "textMessage", text: "Джек:Да, и этот менеджер слишком уж подозрительный." },
-                        { type: "addStoryFlag", flag: "LISTENED_DIALOGUE_1" },
-                    ]
-                },
-            ],
         }
     },
 }

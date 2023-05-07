@@ -99,13 +99,8 @@ window.Enemies = {
         pizzas:{
             "a":{
                 pizzaId:"s002",
-                maxHp:1000,
+                maxHp:90,
                 level:2
-            },
-            "b":{
-                pizzaId:"stepalox",
-                maxHp:50,
-                level:1
             }
         }
     },
