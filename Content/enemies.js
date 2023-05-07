@@ -65,7 +65,7 @@ window.Enemies = {
         pizzas:{
             "a":{
                 pizzaId: "s002",
-                maxHp:1,
+                maxHp:75,
                 level:5,
                 damageMultiplier: 2, // урон в два раза больше обычного
             },

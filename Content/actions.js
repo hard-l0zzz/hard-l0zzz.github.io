@@ -30,7 +30,7 @@ window.Actions = {
         success:[
             {type:"textMessage",text:"{CASTER} слабо атакует!"},
             {type:"animation",animation:"spin"},
-            {type:"stateChange",damage:10}
+            {type:"stateChange",damage:20}
         ]
     },
     jackAttack:{
