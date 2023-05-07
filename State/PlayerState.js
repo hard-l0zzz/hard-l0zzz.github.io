@@ -1,8 +1,8 @@
 class PlayerState {
     constructor() {
         this.pizzas = {
-            "p1":{
-                pizzaId:"s001",
+            "dadp1":{
+                pizzaId:"dadp1",
                 hp: 50,
                 maxHp: 50,
                 xp: 0,
@@ -11,7 +11,7 @@ class PlayerState {
                 status: null
             },
         }
-        this.lineup = ["p1"];
+        this.lineup = ["dadp1"];
         this.items = [
             { actionId: "item_recoverHp", instanceId: "item1" },
             { actionId: "item_recoverHp", instanceId: "item2" },
@@ -36,7 +36,7 @@ class PlayerState {
           level: 1,
           status: null,
         }
-        if (this.lineup.length < 3) {
+        if (this.lineup.length < 5) {
           this.lineup.push(newId)
         }
         utils.emitEvent("LineupChanged");

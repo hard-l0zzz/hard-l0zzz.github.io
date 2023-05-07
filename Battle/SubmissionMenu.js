@@ -57,15 +57,6 @@ class   SubmissionMenu {
             //посмотреть варианты для смены пиццы
           }
         },
-        // {
-        //   label:"Сбежать",
-        //   description:"Трусливо покинуть битву.",
-        //   handler: () =>{
-        //     if(winner != undefined){
-        //       this.turnCycle.onWinner(this.winner);
-        //     }
-        //   }
-        // }
       ],
       attacks: [
         ...this.caster.actions.map(key => {
@@ -135,12 +126,6 @@ class   SubmissionMenu {
     if(this.enemy.status?.type == "Масло")
     {
       this.menuSubmit(Actions[this.caster.actions[0]]);
-      // if(utils.getRandomInt(100) >= 50){
-
-      // }
-      // else if(who.hp <= who.maxHp && who.status?.type != "Соус"){
-      //   this.menuSubmit(Actions[this.caster.actions[2]]);
-      // }
     }
     if(who.hp <= who.maxHp * 0.33 && who.status?.type != "Соус")
     {

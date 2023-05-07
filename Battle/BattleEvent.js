@@ -1,4 +1,4 @@
-class BattleEvent {
+class BattleEvent{
   constructor(event, battle) {
     this.event = event;
     this.battle = battle;
@@ -21,7 +21,7 @@ class BattleEvent {
   }
 
   async stateChange(resolve) {
-    const {caster, target, damage,recover,status, action} = this.event;
+    const {caster, target, damage,recover,status, selfDamage} = this.event;
     let who = this.event.onCaster ? caster : target;
     if (damage) {
       const multiplier = caster.damageMultiplier || 1;
@@ -33,6 +33,12 @@ class BattleEvent {
       document.getElementById("hitsound1").play();
       //начать моргать пицце после получения урона
       target.pizzaElement.classList.add("battle-damage-blink");
+    }
+    if(selfDamage){
+      let newHp = caster.hp - selfDamage;
+      caster.update({
+        hp:newHp
+      })
     }
     if(recover){
       let newHp = who.hp + recover;
@@ -117,6 +123,8 @@ class BattleEvent {
           combatant.xp = 0;
           combatant.maxXp = combatant.maxXp + 10;
           combatant.level += 1;
+          combatant.maxHp = combatant.maxHp + combatant.level * 20
+          combatant.hp = combatant.hp + combatant.level * 10
         }
 
         combatant.update();

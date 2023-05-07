@@ -4,6 +4,7 @@ window.PizzaTypes = {
   veggie: "veggie",
   fungi: "fungi",
   chill: "chill",
+  fire:"fire",
 }
 
 window.Pizzas = {
@@ -13,7 +14,31 @@ window.Pizzas = {
     description:"Классика",
     src: "/images/characters/pizzas/s001.png",
     icon: "/images/icons/spicy.png",
-    actions:["nothing","damage1","clumsyStatus","saucyStatus"]
+    actions:["damage1","saucyStatus","clumsyStatus"]
+  },
+  "jackp":{
+    name:"ДаблДжек",
+    type:PizzaTypes.chill,
+    description:"Пицца Джека, которую вы получили в качестве благодарности.",
+    src:"/images/characters/pizzas/jackp.png",
+    icon:"/images/icons/chill.png",
+    actions:["jackAttack","pumpkinSauce"]
+  },
+  "dadp1":{
+    name:`Легендарная "Пицца Купперов"`,
+    type:PizzaTypes.fire,
+    description:"Та самая пицца, выполненная во всех традициях Купперов!",
+    src:"/images/characters/pizzas/coop.png",
+    icon:"images/icons/fire.png",
+    actions:["fireAttack","dragonRest","fireBlast"]
+  },
+  "dadp2":{
+    name:`Запасная "Пицца Купперов"`,
+    type:PizzaTypes.spicy,
+    description:"На всякий случай.",
+    src:"/images/characters/pizzas/s003.png",
+    icon:"/images/icons/spicy.png",
+    actions:["damage1","saucyStatus","clumsyStatus"]
   },
   "nedotepa":{
     name: `Неудачная "Пицца Купперов"`,

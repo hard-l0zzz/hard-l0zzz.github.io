@@ -86,7 +86,7 @@ class Combatant {
   }
 
   getReplacedEvents(originalEvents){
-    if(this.status?.type === "Масло" && utils.getRandomInt(100) > 66){
+    if(this.status?.type === "Масло" && utils.getRandomInt(100) > 77){
       return [
         {type:"textMessage", text:`${this.name} падает!`},
       ]
@@ -102,6 +102,19 @@ class Combatant {
       return [
         {type:"textMessage",text:"Чувствуется соус!"},
         {type:"stateChange",recover:7,onCaster:true}
+      ]
+    }
+    if (this.status?.type === "Тыква") {
+      this.status.name = "Тыква"
+      return [
+        {type:"textMessage",text:"Тыковка!"},
+        {type:"stateChange",recover:22, onCaster:true},
+      ]
+    }
+    if (this.status?.type === "Огонь") {
+      return [
+        {type:"textMessage",text:"Что-то жарится!"},
+        {type:"stateChange",recover:-10, onCaster:true}
       ]
     }
     if (this.status?.type === "Соусотечение") {

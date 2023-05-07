@@ -6,7 +6,7 @@ window.Actions = {
         [
             {type: "textMessage", text: "{CASTER} использует {ACTION}!"},
             {type: "animation", animation:"spin"},
-            {type: "stateChange", damage:3 },
+            {type: "stateChange", damage:1 },
         ],
         description:"Жёстко ударить врага >:D"
     },
@@ -33,6 +33,60 @@ window.Actions = {
             {type:"stateChange",damage:10}
         ]
     },
+    jackAttack:{
+        name:"Джекатака!",
+        description:"Да что тут говорить?Джекатака!!",
+        success:[
+            {type:"textMessage",text:"{CASTER} безудержно Джекатакует!"},
+            {type:"animation",animation:"spin"},
+            {type:"stateChange",damage:15},
+            {type:"animation",animation:"jump"},
+            {type:"stateChange",damage:15},
+        ]
+    },
+    fireAttack:{
+        name:"Огненный Удар Силы",
+        description:"Мощно!",
+        success:[
+            {type:"textMessage",text:"{CASTER} использует {ACTION}"},
+            {type:"animation",animation:"jump"},
+            {type:"stateChange",damage:32},
+            {type:"stateChange", status:{type: "Огонь", expiresIn: 2}},
+            {type:"textMessage",text:"Горячо!"},
+        ]
+    },
+    fireBlast:{
+        name:"Огненный Взрыв",
+        description:"БУМ!",
+        success:[
+            {type:"textMessage",text:"{CASTER} Огненно Взрывается!"},
+            {type:"animation",animation:"fireBlast",color:"#cf1a06"},
+            {type:"stateChange",damage:30},
+            {type:"stateChange",selfDamage:15},
+            {type:"textMessage",text:"Бум!"},
+        ]
+    },
+    dragonRest:{
+        name:"Проклятье Дракона",
+        description:"Всем бывает слишком горячо! Даже Пиццам.",
+        success:[
+            {type:'textMessage',text:"{CASTER} испытывает на себе {ACTION}"},
+            // {type:"animation",animation:"dragonRest"},
+            {type:"stateChange",damage:-10},
+            {type:"stateChange",selfDamage:20},
+            {type:'textMessage',text:"Все приятно отдохнули! Спасибо Дракону!"}
+        ]
+    },
+    pumpkinSauce:{
+        name:"Тыквенный топпинг",
+        description:"Это вообще реально? Кто придумал тыквенный топпинг?",
+        success:[
+            {type:"textMessage",text:"{CASTER} использует тыквенный топпинг??"},
+            {type: "animation", animation:"sauce", color: '#eb8c34'},
+            {type: "animation", animation:"sauce", color: '#eb8c34'},
+            {type: "stateChange", onCaster:true, status:{type: "Тыква", expiresIn: 2} },
+        ]
+    },
     clumsyStatus2: {
         name: "Немного масла",
         success: [
@@ -56,6 +110,7 @@ window.Actions = {
         targetType:"friendly",
         success: [
             {type: "textMessage", text: "{CASTER} использует {ACTION}!"},
+            {type: "animation", animation:"sauce", color: '#9e0620'},
             {type: "stateChange", onCaster:true, status:{type: "Соус", expiresIn: 3} },
         ],
         description:"Скушать помидоры.Восстанавливает здоровье.Действует 3 хода"

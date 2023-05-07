@@ -17,7 +17,47 @@ window.Enemies = {
     },
     "jack":{
         name:"Джек",
-        src:"/images/characters/people/npc5.png"
+        src:"/images/characters/people/npc2.png",
+        pizzas:{
+            "a":{
+                pizzaId:"s001",
+                maxHp:75,
+                level:3,
+                damageMultiplier:1
+            }
+        }
+    },
+    "charlie":{
+        name:"Чарли",
+        src:"/images/characters/people/npc4.png",
+        pizzas:{
+            "a":{
+                pizzaId:"v001",
+                maxHp:130,
+                level:4,
+            },
+            "b":{
+                pizzaId:"f001",
+                maxHp:260,
+                level:5
+            }
+        }
+    },
+    "dad":{
+        name:"Отец",
+        src:"/images/characters/people/npc3.png",
+        pizzas:{
+            "a":{
+                pizzaId:"dadp1",
+                maxHp:96,
+                level:10,
+            },
+            "b":{
+                pizzaId:"dadp2",
+                maxHp:32,
+                level:10,
+            }
+        }
     },
     "MainChinaGuy":{
         name:"首席中文",
@@ -39,8 +79,6 @@ window.Enemies = {
                 pizzaId:"f001",
                 maxHp:50,
                 level:1,
-                //attackBonus: 20000,
-                //.........
             }
         }
     },
@@ -61,12 +99,12 @@ window.Enemies = {
         pizzas:{
             "a":{
                 pizzaId:"s002",
-                maxHp:1,
+                maxHp:1000,
                 level:2
             },
             "b":{
                 pizzaId:"stepalox",
-                maxHp:1,
+                maxHp:50,
                 level:1
             }
         }
@@ -80,21 +118,6 @@ window.Enemies = {
                 maxHp:35,
                 level:-99,
             },
-            // "b":{
-            //     pizzaId:"f001",
-            //     maxHp:1,
-            //     level:1,
-            // },
-            // "c":{
-            //     pizzaId:"f001",
-            //     maxHp:1,
-            //     level:1,
-            // },
-            // "d":{
-            //     pizzaId:"f001",
-            //     maxHp:1,
-            //     level:1,
-            // },
         }
     }
 }
